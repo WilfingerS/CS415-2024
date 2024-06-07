@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bddrcwkuo7k48"]
+
+[ext_resource type="Texture2D" uid="uid://c8ilqdqsjcfdr" path="res://Assets/Character_Tempsprite.jpg" id="1_obfm0"]
+
+[sub_resource type="GDScript" id="GDScript_rfbrb"]
+resource_name = "res://Scripts/character_control.gd"
+script/source = "extends CharacterBody2D
+
+@export var move_speed : float = 100
+
+func _physics_process(_delta):
+	# Input Direction
+	var inputDirection = Vector2(
+		Input.get_action_strength(\"right\") - Input.get_action_strength(\"left\"),
+		Input.get_action_strength(\"down\") - Input.get_action_strength(\"up\")
+	)
+	
+	#Update Velocity
+	velocity = inputDirection * move_speed
+	#Move and Slide func uses velocity of char body to move character on map
+	move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrjwu"]
+size = Vector2(256, 256)
+
+[node name="Player_Character" type="CharacterBody2D"]
+script = SubResource("GDScript_rfbrb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_obfm0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yrjwu")
