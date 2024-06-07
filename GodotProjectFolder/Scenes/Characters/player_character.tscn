@@ -6,7 +6,7 @@
 resource_name = "res://Scripts/character_control.gd"
 script/source = "extends CharacterBody2D
 
-@export var move_speed : float = 100
+@export var move_speed : float = 175
 
 func _physics_process(_delta):
 	# Input Direction
@@ -21,16 +21,18 @@ func _physics_process(_delta):
 	move_and_slide()
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrjwu"]
-size = Vector2(256, 256)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rccip"]
+size = Vector2(78, 84)
 
 [node name="Player_Character" type="CharacterBody2D"]
-position = Vector2(-1, -3)
+collision_layer = 3
 script = SubResource("GDScript_rfbrb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+position = Vector2(0, -42)
+scale = Vector2(0.0302773, 0.0328125)
 texture = ExtResource("1_obfm0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_yrjwu")
+position = Vector2(0, -42)
+shape = SubResource("RectangleShape2D_rccip")
