@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8ilqdqsjcfdr"
-path="res://.godot/imported/Character_Tempsprite.jpg-90e50d686c2599012fafb805e937a886.ctex"
+uid="uid://cw30qc3fs3oar"
+path="res://.godot/imported/placeHolderWeapon.png-b437331377dc61920f772a3097bdcfd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character_Tempsprite.jpg"
-dest_files=["res://.godot/imported/Character_Tempsprite.jpg-90e50d686c2599012fafb805e937a886.ctex"]
+source_file="res://Assets/placeHolderWeapon.png"
+dest_files=["res://.godot/imported/placeHolderWeapon.png-b437331377dc61920f772a3097bdcfd6.ctex"]
 
 [params]
 

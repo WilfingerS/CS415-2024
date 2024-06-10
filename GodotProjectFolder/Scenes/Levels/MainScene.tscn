@@ -1,7 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=5 format=3 uid="uid://babnmxqdpfmjs"]
 
-[ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/player_character.tscn" id="1_3u81v"]
+[ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
+[ext_resource type="Texture2D" uid="uid://blx5qc7dyv10u" path="res://Assets/spritePixel.png" id="2_l10ff"]
+[ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="3_3ru6k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cgwr2"]
+radius = 15.0333
 
 [node name="MainScene" type="Node2D"]
 
 [node name="Player_Character" parent="." instance=ExtResource("1_3u81v")]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(500, 311)
+
+[node name="CharSprite" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("2_l10ff")
+
+[node name="Hurtbox" type="Area2D" parent="Node2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_3ru6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hurtbox"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_cgwr2")
