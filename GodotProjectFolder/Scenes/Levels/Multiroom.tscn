@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://c0haulhy110mg"]
 
 [ext_resource type="Texture2D" uid="uid://cu3umvusrrqw7" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_3fxv8"]
+=======
+[gd_scene load_steps=4 format=3 uid="uid://nu3tppdyko0h"]
+
+[ext_resource type="Texture2D" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_3fxv8"]
+>>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6ss8"]
 texture = ExtResource("1_3fxv8")
