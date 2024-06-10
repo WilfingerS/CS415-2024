@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=3 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/player_character.tscn" id="1_3u81v"]
+[ext_resource type="PackedScene" uid="uid://c0haulhy110mg" path="res://Scenes/Levels/Multiroom.tscn" id="1_wnwm5"]
 
 [node name="MainScene" type="Node2D"]
 
+[node name="Multiroom" parent="." instance=ExtResource("1_wnwm5")]
+
 [node name="Player_Character" parent="." instance=ExtResource("1_3u81v")]
+position = Vector2(0, 0)
+scale = Vector2(0.07, 0.07)
+
+[node name="Camera2D" type="Camera2D" parent="Player_Character"]
+zoom = Vector2(4, 4)
