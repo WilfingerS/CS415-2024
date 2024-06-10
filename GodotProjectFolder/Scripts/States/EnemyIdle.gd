@@ -3,7 +3,7 @@ class_name EnemyIdle
 
 @export var enemy : CharacterBody2D
 @export var speed := 75
-@export var DetectionRange := 300
+@export var detection_range := 300
 
 var wander_direction : Vector2
 var duration : float
@@ -38,5 +38,5 @@ func Physics_Update(delta:float):
 		
 	var direction = player.global_position - enemy.global_position
 	
-	if direction.length() < DetectionRange:
+	if direction.length() < detection_range:
 		ChangeState.emit(self, "EnemyChase")

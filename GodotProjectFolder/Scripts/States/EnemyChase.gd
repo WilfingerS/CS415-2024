@@ -3,8 +3,8 @@ class_name EnemyChase
 
 @export var enemy: CharacterBody2D
 @export var speed := .25
-@export var ChaseDropDistance := 500
-@export var AttemptAttackRange := 100
+@export var chase_drop_distance := 500
+@export var attempt_attack_range := 100
 
 var player: CharacterBody2D
 
@@ -15,10 +15,10 @@ func Enter():
 func Physics_Update(delta:float):
 	var direction = player.global_position - enemy.global_position 
 	
-	if direction.length() > AttemptAttackRange:
+	if direction.length() > attempt_attack_range:
 		enemy.velocity = direction * speed
 	else:
 		ChangeState.emit(self, "EnemyAttack")
 
-	if direction.length() > ChaseDropDistance:
+	if direction.length() > chase_drop_distance:
 		ChangeState.emit(self, "EnemyIdle")

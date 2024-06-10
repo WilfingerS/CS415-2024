@@ -19,8 +19,8 @@ func _physics_process(_delta):
 		$Sprite2D.set_scale(Vector2(-1,1))
 
 func attack():
-	$AnimationPlayer.play("Attack")
 	attacking = true
+	$AnimationPlayer.play("Attack")
 	var attack_duration = $AnimationPlayer.current_animation_length
 	await get_tree().create_timer(attack_duration).timeout
 	attacking = false

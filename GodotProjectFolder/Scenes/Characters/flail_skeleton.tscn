@@ -92,7 +92,7 @@ _data = {
 
 [node name="Flail_Skeleton" type="CharacterBody2D"]
 position = Vector2(0, -1)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.5058, 1.5)
 script = ExtResource("1_f6r1p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -126,6 +126,9 @@ enemy = NodePath("../..")
 script = ExtResource("6_iecc1")
 enemy = NodePath("../..")
 
+[node name="CooldownTimer" type="Timer" parent="State Control/EnemyAttack"]
+wait_time = 0.079
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wsuqd")
@@ -141,3 +144,5 @@ polygon = PackedVector2Array(-27.3333, -54, -8, -59.3333, 20.6667, -55.3333, 41.
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack2 Hitbox"]
 polygon = PackedVector2Array(-45.3333, -41.3333, -21.3333, -21.3333, 7.33333, -13.3333, 38.6667, -19.3333, 46, -30, 37.3333, -43.3333, 24, -48, 9.33333, -36, -40, -47.3333)
+
+[connection signal="timeout" from="State Control/EnemyAttack/CooldownTimer" to="State Control/EnemyAttack" method="_on_cooldown_timer_timeout"]
