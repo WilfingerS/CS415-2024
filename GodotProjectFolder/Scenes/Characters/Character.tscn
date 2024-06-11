@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bddrcwkuo7k48"]
+[gd_scene load_steps=8 format=3 uid="uid://bddrcwkuo7k48"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_pcl0v"]
 [ext_resource type="Texture2D" uid="uid://blx5qc7dyv10u" path="res://Assets/spritePixel.png" id="2_uggow"]
 [ext_resource type="PackedScene" uid="uid://drxv8fgohuj1r" path="res://Scenes/Weapons/Weapon.tscn" id="3_dru47"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="4_62fq6"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vyssx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fi78n"]
 radius = 15.0333
@@ -20,6 +22,9 @@ script = ExtResource("1_pcl0v")
 texture = ExtResource("2_uggow")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vyssx")
+}
 
 [node name="Weapon" parent="." instance=ExtResource("3_dru47")]
 

@@ -7,9 +7,11 @@ class_name Weapon
 @onready var weapon:Node2D =  get_node("Node2D")
 @onready var sprite:Sprite2D = weapon.get_node("Sprite2D")
 @onready var hitbox:Hitbox = weapon.get_node("Hitbox")
+@onready var animPlayer:AnimationPlayer = weapon.get_node("AnimationPlayer")
 
 func ATTACK():
-	print("attack")
+	if not animPlayer.is_playing():
+		animPlayer.play("Swing")
 
 func _process(_delta):
 	#Update Rotation of weapon
