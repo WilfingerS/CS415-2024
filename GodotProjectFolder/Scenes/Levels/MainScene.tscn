@@ -1,27 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://babnmxqdpfmjs"]
 
-[ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
-[ext_resource type="Texture2D" uid="uid://blx5qc7dyv10u" path="res://Assets/spritePixel.png" id="2_l10ff"]
-[ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="3_3ru6k"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cgwr2"]
-radius = 15.0333
+[ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/player_character.tscn" id="1_3u81v"]
+[ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
+[ext_resource type="PackedScene" uid="uid://cvk5t5c7vvgv6" path="res://Scenes/Characters/flail_skeleton.tscn" id="2_2fqig"]
+[ext_resource type="PackedScene" uid="uid://bky72twc6w0xk" path="res://Scenes/Levels/torch.tscn" id="4_26dd0"]
 
 [node name="MainScene" type="Node2D"]
 
-[node name="Player_Character" parent="." instance=ExtResource("1_3u81v")]
+[node name="MultiRoom" parent="." instance=ExtResource("1_88w2w")]
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(500, 311)
+[node name="Player_Character" parent="." groups=["Player"] instance=ExtResource("1_3u81v")]
+position = Vector2(-46, 30)
+scale = Vector2(0.3, 0.3)
 
-[node name="CharSprite" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("2_l10ff")
+[node name="Camera2D" type="Camera2D" parent="Player_Character"]
+zoom = Vector2(5, 5)
 
-[node name="Hurtbox" type="Area2D" parent="Node2D"]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("3_3ru6k")
+[node name="Flail_Skeleton" parent="." instance=ExtResource("2_2fqig")]
+position = Vector2(18, 40)
+scale = Vector2(0.4, 0.4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hurtbox"]
-position = Vector2(0, 7)
-shape = SubResource("CircleShape2D_cgwr2")
+[node name="Torch" parent="." instance=ExtResource("4_26dd0")]
+position = Vector2(-41, 77)
