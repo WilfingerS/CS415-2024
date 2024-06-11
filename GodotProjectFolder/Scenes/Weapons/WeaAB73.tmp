@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://drxv8fgohuj1r"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon.gd" id="1_bqjge"]
+[ext_resource type="Texture2D" uid="uid://c8ilqdqsjcfdr" path="res://Assets/Character_Tempsprite.jpg" id="1_pa6jk"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_bqjge")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+scale = Vector2(0.003, 0.009)
+texture = ExtResource("1_pa6jk")
+offset = Vector2(0, -1024)
