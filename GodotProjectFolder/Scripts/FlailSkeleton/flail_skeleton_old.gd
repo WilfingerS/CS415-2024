@@ -13,6 +13,7 @@ func _on_detection_area_body_exited(body):
 	chase = false
 
 func _physics_process(delta):
+	move_and_slide()
 	if chase:
 		position += (player.position - position)/speed
 		$AnimatedSprite2D.play("walk")

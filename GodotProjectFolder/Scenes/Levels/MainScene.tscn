@@ -5,7 +5,7 @@
 
 [node name="MainScene" type="Node2D"]
 
-[node name="Player_Character" parent="." instance=ExtResource("1_3u81v")]
+[node name="Player_Character" parent="." groups=["Player"] instance=ExtResource("1_3u81v")]
 position = Vector2(79, 125)
 
 [node name="Flail_Skeleton" parent="." instance=ExtResource("2_2fqig")]
