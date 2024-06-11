@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cw30qc3fs3oar" path="res://Assets/placeHolderWeapon.png" id="2_co7ej"]
 [ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="3_2pag2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qabg"]
-size = Vector2(28.5983, 8.66667)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1akml"]
+radius = 4.00003
+height = 29.2634
 
 [node name="Weapon" type="Node2D"]
 scale = Vector2(1.5, 1.5)
@@ -28,6 +29,6 @@ script = ExtResource("3_2pag2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hitbox"]
 position = Vector2(-20.6174, -14.6667)
-rotation = -3.14159
-shape = SubResource("RectangleShape2D_1qabg")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1akml")
 debug_color = Color(0.891461, 0.399691, 0.56023, 0.42)

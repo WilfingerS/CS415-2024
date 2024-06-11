@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-var attacking = false
+@export var HP:int = 3
+@export var damage:int = 1
 
+var attacking = false
 func _physics_process(_delta):
 	move_and_slide()
 	
@@ -24,3 +26,17 @@ func attack():
 	var attack_duration = $AnimationPlayer.current_animation_length
 	await get_tree().create_timer(attack_duration).timeout
 	attacking = false
+	
+func take_damage(dmg:int):
+	set_hp(HP-dmg)
+	
+func set_hp(newHP):
+	if newHP <= 0:
+		HP = 0
+		kill()
+	else:
+		HP = newHP
+
+func kill():
+	print("Dead?")
+	queue_free() # apparently this will delete node after it can be

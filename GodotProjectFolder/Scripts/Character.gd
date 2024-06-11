@@ -17,6 +17,7 @@ signal hp_changed
 @onready var sprite:Sprite2D = get_node("CharSprite")
 @onready var hurtBox:Hurtbox = get_node("Hurtbox")
 @onready var weapon:Node2D = get_node("Weapon")
+@onready var damage = weapon.damage
 
 var isAttacking:bool = false
 var mov_Direction:Vector2 = Vector2.ZERO
@@ -31,7 +32,7 @@ func pickUP():
 
 # Health Stuff
 func take_damage(dmg:int):
-	HP -= dmg
+	set_hp(HP-dmg)
 	
 func set_hp(newHP):
 	if newHP < maxHP:
@@ -45,7 +46,9 @@ func set_hp(newHP):
 		
 	
 func kill():
-	pass
+	print("Player Dead?")
+	# NOTE: IF THE PLAYER DIES THE GAME WILL CLOSE LOL
+	#queue_free() # apparently this will delete node after it can be
 	
 # Movement Stuff
 func move():

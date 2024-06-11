@@ -1,8 +1,8 @@
 extends Node2D
-
+class_name Weapon
 #Exports
-@export var attackDmg:int = 1
 @export var weaponName:String = "Sword"
+@export var damage:int = 1
 #OnReady
 @onready var weapon:Node2D =  get_node("Node2D")
 @onready var sprite:Sprite2D = weapon.get_node("Sprite2D")
