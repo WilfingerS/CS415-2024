@@ -16,5 +16,5 @@ func _on_area_entered(hitbox:Hitbox) -> void:
 		return
 		
 	print(hitbox.owner.name + " hit: " + self.get_parent().name)
-	self.get_parent().take_damage(hitbox.owner.damage)
+	#self.get_wparent().take_damage(hitbox.owner.damage)
 	
