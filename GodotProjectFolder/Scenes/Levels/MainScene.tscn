@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=6 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
 [ext_resource type="PackedScene" uid="uid://cghx8ibvkewpx" path="res://Scenes/Levels/chest.tscn" id="3_y2hvb"]
 [ext_resource type="PackedScene" uid="uid://bky72twc6w0xk" path="res://Scenes/Levels/torch.tscn" id="4_26dd0"]
+[ext_resource type="PackedScene" uid="uid://cvk5t5c7vvgv6" path="res://Scenes/Characters/flail_skeleton.tscn" id="5_2gyns"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -26,3 +27,6 @@ zoom = Vector2(5, 5)
 
 [node name="Torch" parent="." instance=ExtResource("4_26dd0")]
 position = Vector2(-41, 77)
+
+[node name="Flail_Skeleton" parent="." instance=ExtResource("5_2gyns")]
+position = Vector2(58, 16)

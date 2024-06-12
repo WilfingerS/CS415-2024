@@ -2,15 +2,9 @@ extends State
 class_name EnemyChaseSkeleton
 
 @export var enemy: CharacterBody2D
-<<<<<<< Updated upstream
-@export var speed := .25
-@export var chase_drop_distance := 500
-@export var attempt_attack_range := 100
-=======
 @export var speed := .5
 @export var chase_drop_distance := 100
 @export var attempt_attack_range := 15
->>>>>>> Stashed changes
 
 var player: CharacterBody2D
 

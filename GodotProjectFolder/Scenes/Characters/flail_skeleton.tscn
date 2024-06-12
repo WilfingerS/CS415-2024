@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cr1lcmu6h5pcj" path="res://Assets/Skeleton enemy.png" id="1_1h51o"]
 [ext_resource type="Script" path="res://Scripts/FlailSkeleton/flail_skeleton.gd" id="1_f6r1p"]
-[ext_resource type="Script" path="res://Scenes/Characters/State Control.gd" id="3_b4qnn"]
+[ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="3_b4qnn"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="3_h1s6u"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyChase.gd" id="5_eaaco"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyAttack.gd" id="6_iecc1"]
