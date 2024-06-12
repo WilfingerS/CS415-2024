@@ -21,7 +21,7 @@ func randomized_stroll():
 		wander_direction = Vector2(randf_range(-1,1), randf_range(-1,1))
 	
 func Enter():
-	print("Idle")
+	#print("Idle")
 	player = get_tree().get_first_node_in_group("Player")
 	randomized_stroll()
 	
