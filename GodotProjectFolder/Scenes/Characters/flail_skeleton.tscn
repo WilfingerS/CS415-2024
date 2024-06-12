@@ -107,6 +107,7 @@ texture = ExtResource("1_1h51o")
 offset = Vector2(0, -16)
 hframes = 13
 vframes = 5
+frame = 12
 region_rect = Rect2(9, 208, 33, 33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -151,6 +152,7 @@ polygon = PackedVector2Array(-27.3333, -54, -8, -59.3333, 20.6667, -55.3333, 41.
 [node name="Attack2 Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
+monitoring = false
 script = ExtResource("7_4inpg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack2 Hitbox"]

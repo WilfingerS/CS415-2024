@@ -20,6 +20,7 @@ signal hp_changed # gonna be used for later with uh gui
 @onready var damage = weapon.damage
 
 var mov_Direction:Vector2 = Vector2.ZERO
+var blocking = false
 
 # Actions
 func attack():
@@ -28,6 +29,19 @@ func attack():
 
 func pickUP():
 	pass
+	
+#func create_bomb():
+	#if Input.is_action_just_pressed("bomb"):
+		#var instance = load("res://Scenes/Weapons/bomb.tscn").instantiate()
+		#instance.update_pos()
+
+func parry():
+	if Input.is_action_just_pressed("block"):
+		blocking = true
+		print("Block?")
+		$AnimationPlayer.play("Block")
+		await get_tree().create_timer(0.5).timeout
+		blocking = false
 
 # Health Stuff
 func take_damage(dmg:int):
@@ -63,3 +77,5 @@ func _physics_process(_delta):
 	move_and_slide()
 	move()
 	attack()
+	parry()
+	#create_bomb()
