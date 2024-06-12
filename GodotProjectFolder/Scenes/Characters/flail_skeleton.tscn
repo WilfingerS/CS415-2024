@@ -92,7 +92,7 @@ _data = {
 
 [node name="Flail_Skeleton" type="CharacterBody2D"]
 position = Vector2(0, -1)
-scale = Vector2(1.5058, 1.5)
+scale = Vector2(0.5, 0.498)
 script = ExtResource("1_f6r1p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
