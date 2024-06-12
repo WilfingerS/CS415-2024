@@ -1,24 +1,28 @@
 [gd_scene load_steps=5 format=3 uid="uid://babnmxqdpfmjs"]
 
-[ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/player_character.tscn" id="1_3u81v"]
+[ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
-[ext_resource type="PackedScene" uid="uid://cvk5t5c7vvgv6" path="res://Scenes/Characters/flail_skeleton.tscn" id="2_2fqig"]
+[ext_resource type="PackedScene" uid="uid://cghx8ibvkewpx" path="res://Scenes/Levels/chest.tscn" id="3_y2hvb"]
 [ext_resource type="PackedScene" uid="uid://bky72twc6w0xk" path="res://Scenes/Levels/torch.tscn" id="4_26dd0"]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="MultiRoom" parent="." instance=ExtResource("1_88w2w")]
 
+[node name="chest" parent="." instance=ExtResource("3_y2hvb")]
+light_mask = 0
+visibility_layer = 2
+position = Vector2(-45, -24)
+scale = Vector2(0.1, 0.1)
+
 [node name="Player_Character" parent="." groups=["Player"] instance=ExtResource("1_3u81v")]
 position = Vector2(-46, 30)
 scale = Vector2(0.3, 0.3)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player_Character"]
 zoom = Vector2(5, 5)
-
-[node name="Flail_Skeleton" parent="." instance=ExtResource("2_2fqig")]
-position = Vector2(18, 40)
-scale = Vector2(0.4, 0.4)
 
 [node name="Torch" parent="." instance=ExtResource("4_26dd0")]
 position = Vector2(-41, 77)
