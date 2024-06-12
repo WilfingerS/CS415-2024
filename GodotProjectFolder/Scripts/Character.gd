@@ -12,18 +12,18 @@ const FRICTION: float = 0.15
 @export var maxHP: int = 5 
 @export var HP: int = 5
 #Signals
-signal hp_changed
+signal hp_changed # gonna be used for later with uh gui
 #Onready's
 @onready var sprite:Sprite2D = get_node("CharSprite")
 @onready var hurtBox:Hurtbox = get_node("Hurtbox")
 @onready var weapon:Node2D = get_node("Weapon")
+@onready var damage = weapon.damage
 
-var isAttacking:bool = false
 var mov_Direction:Vector2 = Vector2.ZERO
 
 # Actions
 func attack():
-	if Input.is_action_just_pressed("attack") and not isAttacking:
+	if Input.is_action_just_pressed("attack"):
 		weapon.ATTACK()
 
 func pickUP():
@@ -31,7 +31,7 @@ func pickUP():
 
 # Health Stuff
 func take_damage(dmg:int):
-	HP -= dmg
+	set_hp(HP-dmg)
 	
 func set_hp(newHP):
 	if newHP < maxHP:
@@ -43,9 +43,10 @@ func set_hp(newHP):
 	else:
 		HP = maxHP
 		
-	
 func kill():
-	pass
+	print("Player Dead?")
+	# NOTE: IF THE PLAYER DIES THE GAME WILL CLOSE LOL
+	#queue_free() # apparently this will delete node after it can be
 	
 # Movement Stuff
 func move():
