@@ -1,24 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=6 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/player_character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
-[ext_resource type="PackedScene" uid="uid://cvk5t5c7vvgv6" path="res://Scenes/Characters/flail_skeleton.tscn" id="2_2fqig"]
 [ext_resource type="PackedScene" uid="uid://bky72twc6w0xk" path="res://Scenes/Levels/torch.tscn" id="4_26dd0"]
+[ext_resource type="PackedScene" uid="uid://clp3rxlbhwvv6" path="res://Scenes/Characters/slime_green.tscn" id="5_0sch0"]
+[ext_resource type="PackedScene" path="res://Scenes/Characters/flail_skeleton.tscn" id="5_jftmn"]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="MultiRoom" parent="." instance=ExtResource("1_88w2w")]
 
 [node name="Player_Character" parent="." groups=["Player"] instance=ExtResource("1_3u81v")]
-position = Vector2(-46, 30)
+position = Vector2(-25, 30)
 scale = Vector2(0.3, 0.3)
 
 [node name="Camera2D" type="Camera2D" parent="Player_Character"]
 zoom = Vector2(5, 5)
 
-[node name="Flail_Skeleton" parent="." instance=ExtResource("2_2fqig")]
-position = Vector2(18, 40)
-scale = Vector2(0.4, 0.4)
-
 [node name="Torch" parent="." instance=ExtResource("4_26dd0")]
 position = Vector2(-41, 77)
+
+[node name="Flail_Skeleton" parent="." instance=ExtResource("5_jftmn")]
+position = Vector2(67, 2)
+
+[node name="Flail_Skeleton2" parent="." instance=ExtResource("5_jftmn")]
+position = Vector2(-92, -7)
+
+[node name="slime_green" parent="." instance=ExtResource("5_0sch0")]
+position = Vector2(53, 55)
+
+[node name="slime_green2" parent="." instance=ExtResource("5_0sch0")]
+position = Vector2(39, -2)
+
+[node name="slime_green3" parent="." instance=ExtResource("5_0sch0")]
+position = Vector2(73, 15)

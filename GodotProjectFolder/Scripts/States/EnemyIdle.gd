@@ -2,8 +2,8 @@ extends State
 class_name EnemyIdle
 
 @export var enemy : CharacterBody2D
-@export var speed := 75
-@export var detection_range := 300
+@export var speed := 20
+@export var detection_range := 75
 
 var wander_direction : Vector2
 var duration : float
