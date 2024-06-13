@@ -133,6 +133,7 @@ height = 48.1928
 [node name="Flail_Skeleton" type="CharacterBody2D"]
 position = Vector2(0, -5.96046e-08)
 scale = Vector2(0.5, 0.498)
+motion_mode = 1
 script = ExtResource("1_f6r1p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
