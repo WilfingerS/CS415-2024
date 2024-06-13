@@ -2,7 +2,7 @@ extends State
 class_name EnemyAttack
 
 @export var enemy: CharacterBody2D
-
+@export var projectile: PackedScene = null
 
 func Enter():
 	print("Attack")
