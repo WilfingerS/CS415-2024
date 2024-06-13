@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Scripts/FlailSkeleton/flail_skeleton.gd" id="1_f6r1p"]
 [ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="3_b4qnn"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="3_h1s6u"]
-[ext_resource type="Script" path="res://Scripts/ArcaneArcher/EnemyChaseArcaneArcher.gd" id="5_0imc4"]
-[ext_resource type="Script" path="res://Scripts/ArcaneArcher/EnemyAttackArcaneArcher.gd" id="6_7lxc6"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyAttack.gd" id="5_gev0g"]
+[ext_resource type="Script" path="res://Scripts/FlailSkeleton/EnemyChaseSkeleton.gd" id="6_nnboq"]
 [ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="7_ifxcb"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="8_0m26a"]
 
@@ -158,11 +158,11 @@ script = ExtResource("3_h1s6u")
 enemy = NodePath("../..")
 
 [node name="EnemyChase" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
-script = ExtResource("5_0imc4")
+script = ExtResource("6_nnboq")
 enemy = NodePath("../..")
 
 [node name="EnemyAttack" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
-script = ExtResource("6_7lxc6")
+script = ExtResource("5_gev0g")
 enemy = NodePath("../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
