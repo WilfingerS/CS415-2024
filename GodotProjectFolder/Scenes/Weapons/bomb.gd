@@ -1,6 +1,7 @@
 extends Node2D
 
 var player: CharacterBody2D
+var damage:int = 5
 
 func create_bomb():
 	player = get_tree().get_first_node_in_group("Player")

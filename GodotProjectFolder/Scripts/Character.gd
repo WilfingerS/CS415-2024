@@ -21,6 +21,7 @@ signal hp_changed # gonna be used for later with uh gui
 
 var mov_Direction:Vector2 = Vector2.ZERO
 var blocking = false
+var isDead = false
 
 # Actions
 func attack():
@@ -59,15 +60,18 @@ func set_hp(newHP):
 		
 func kill():
 	print("Player Dead?")
+	isDead = true
 	# NOTE: IF THE PLAYER DIES THE GAME WILL CLOSE LOL
 	#queue_free() # apparently this will delete node after it can be
 	
 # Movement Stuff
 func move():
-	mov_Direction = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up")
-	).normalized()
+	mov_Direction = Vector2.ZERO
+	if not(isDead):
+		mov_Direction = Vector2(
+			Input.get_action_strength("right") - Input.get_action_strength("left"),
+			Input.get_action_strength("down") - Input.get_action_strength("up")
+		).normalized()
 	velocity += mov_Direction * acceleration
 	velocity = velocity.limit_length(maxSpeed)
 	velocity = lerp(velocity,Vector2.ZERO,FRICTION)
