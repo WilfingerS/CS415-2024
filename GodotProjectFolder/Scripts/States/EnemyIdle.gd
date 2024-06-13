@@ -13,7 +13,7 @@ var player: CharacterBody2D
 func randomized_stroll():
 	duration = randf_range(1,4)
 	
-	var still = randi_range(1,4) 
+	var still = randi_range(1,3) 
 	
 	if still == 1:
 		wander_direction = Vector2()

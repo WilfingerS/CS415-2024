@@ -72,7 +72,7 @@ height = 12.0
 radius = 7.0
 height = 14.0
 
-[node name="slime_green" type="CharacterBody2D"]
+[node name="Slime_Green" type="CharacterBody2D"]
 position = Vector2(0, -4)
 scale = Vector2(0.6, 0.6)
 motion_mode = 1
@@ -108,8 +108,6 @@ libraries = {
 }
 
 [node name="Hitbox" type="Area2D" parent="."]
-light_mask = 2
-visibility_layer = 2
 script = ExtResource("6_ky8sd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -117,6 +115,8 @@ shape = SubResource("CapsuleShape2D_wso5k")
 debug_color = Color(0.999972, 0.184834, 0.214931, 0.545098)
 
 [node name="Hurtbox" type="Area2D" parent="."]
+light_mask = 0
+visibility_layer = 2
 script = ExtResource("7_st1ej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]

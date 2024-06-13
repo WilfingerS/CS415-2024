@@ -1,5 +1,5 @@
 extends State
-class_name EnemyChase
+class_name EnemyChaseArcaneArcher
 
 @export var enemy: CharacterBody2D
 @export var speed := .5
@@ -10,7 +10,7 @@ class_name EnemyChase
 var player: CharacterBody2D
 
 func Enter():
-	print("Follow")
+	#print("Follow")
 	player = get_tree().get_first_node_in_group("Player")
 
 func Physics_Update(delta:float):
@@ -19,12 +19,12 @@ func Physics_Update(delta:float):
 	if direction.length() > attempt_attack_range:
 		enemy.velocity = direction * speed
 	else:	
-		if player.global_position.y > enemy.global_position.y || enemy.global_position.y  < player.global_position.y:
-			enemy.velocity = (enemy.global_position - player.global_position).rotated(90) * (speed) 
-		else: 
-			if player.global_position.x < enemy.global_position.x:
-				enemy.flip()
-				ChangeState.emit(self, "EnemyAttack")
+		if player.global_position.x < enemy.global_position.x:
+			enemy.flip()
+		var angle_to_player = enemy.global_position.direction_to(player.global_position).angle()
+		rayCast.global_rotation = angle_to_player
+		#if rayCast.is_colliding() and rayCast.get_collider() == player:
+		ChangeState.emit(self, "EnemyAttack")
 
 	if direction.length() > chase_drop_distance:
 		ChangeState.emit(self, "EnemyIdle")
