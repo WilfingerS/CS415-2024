@@ -80,6 +80,7 @@ func _physics_process(_delta):
 	# Character Move OverHere
 	move_and_slide()
 	move()
-	attack()
-	parry()
+	if not(isDead):
+		attack()
+		parry()
 	#create_bomb()
