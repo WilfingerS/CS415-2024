@@ -12,32 +12,32 @@ const FRICTION: float = 0.15
 @export var maxHP: int = 5 
 @export var HP: int = 5
 #Signals
-signal hp_changed # gonna be used for later with uh gui
+signal hp_changed # gonna be used for later with uh gui or something
 #Onready's
 @onready var sprite:Sprite2D = get_node("CharSprite")
 @onready var hurtBox:Hurtbox = get_node("Hurtbox")
 @onready var weapon:Node2D = get_node("Weapon")
 @onready var damage = weapon.damage
+@onready var bombScene = preload("res://Scenes/Weapons/bomb.tscn")
 
+#other used variables
 var mov_Direction:Vector2 = Vector2.ZERO
 var blocking = false
 var isDead = false
 
 # Actions
-func attack():
-	if Input.is_action_just_pressed("attack"):
-		weapon.ATTACK()
 
 func pickUP():
 	pass
 	
-#func create_bomb():
-	#if Input.is_action_just_pressed("bomb"):
-		#var instance = load("res://Scenes/Weapons/bomb.tscn").instantiate()
-		#instance.update_pos()
+func use_Bomb():
+	var bomb = bombScene.instantiate()
+	owner.add_child(bomb)
+	bomb.player = self
+	bomb.explode()
 
 func parry():
-	if Input.is_action_just_pressed("block"):
+	if not(blocking): # since events handled on _input use just_pressed
 		blocking = true
 		print("Block?")
 		$AnimationPlayer.play("Block")
@@ -80,7 +80,14 @@ func _physics_process(_delta):
 	# Character Move OverHere
 	move_and_slide()
 	move()
-	if not(isDead):
-		attack()
-		parry()
 	#create_bomb()
+func _input(event):
+	if isDead: #Can't Perform Actions if dead
+		return
+		
+	if event.is_action_pressed("attack"):
+		weapon.ATTACK()
+	if event.is_action_pressed("block"):
+		parry()
+	if event.is_action_pressed("bomb"):
+		use_Bomb()
