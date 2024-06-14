@@ -23,8 +23,8 @@ func Physics_Update(delta:float):
 			enemy.flip()
 		var angle_to_player = enemy.global_position.direction_to(player.global_position).angle()
 		rayCast.global_rotation = angle_to_player
-		#if rayCast.is_colliding() and rayCast.get_collider() == player:
-		ChangeState.emit(self, "EnemyAttack")
+		if rayCast.is_colliding() and rayCast.get_collider() == player:
+			ChangeState.emit(self, "EnemyAttack")
 
 	if direction.length() > chase_drop_distance:
 		ChangeState.emit(self, "EnemyIdle")

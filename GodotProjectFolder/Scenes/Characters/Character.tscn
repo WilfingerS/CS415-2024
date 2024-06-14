@@ -33,7 +33,7 @@ radius = 15.0333
 radius = 14.0
 height = 50.0
 
-[node name="Character" type="CharacterBody2D"]
+[node name="Character" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(-1, -3)
 script = ExtResource("1_pcl0v")
 

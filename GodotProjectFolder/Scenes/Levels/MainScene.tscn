@@ -40,7 +40,7 @@ position = Vector2(480, -50)
 [node name="slime_green" parent="." instance=ExtResource("6_pmy8v")]
 position = Vector2(-462, -8)
 
-[node name="Player_Character" parent="." groups=["Player"] instance=ExtResource("1_3u81v")]
+[node name="Player_Character" parent="." instance=ExtResource("1_3u81v")]
 position = Vector2(-46, 30)
 scale = Vector2(0.3, 0.3)
 collision_layer = 3
