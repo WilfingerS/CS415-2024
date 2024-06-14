@@ -10,6 +10,7 @@ var damage:int = 2
 		#print(self.position)
 		#self.position = player.position
 		#$AnimationPlayer.play("explosion")
+
 func _on_animation_finished(anim_name):
 	print(anim_name)
 	if anim_name == "explosion":
@@ -23,3 +24,6 @@ func explode():
 func _ready():
 	# Connect to the animation finished signal
 	$AnimationPlayer.connect("animation_finished", self._on_animation_finished)
+	
+func _exit_tree():
+	$AnimationPlayer.disconnect("animation_finished", self._on_animation_finished)
