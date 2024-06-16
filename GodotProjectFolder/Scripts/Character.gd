@@ -26,7 +26,6 @@ var blocking = false
 var isDead = false
 
 # Actions
-
 func pickUP():
 	pass
 	
@@ -46,6 +45,7 @@ func parry():
 
 # Health Stuff
 func take_damage(dmg:int):
+	#emit_signal("hp_changed",self)
 	set_hp(HP-dmg)
 	
 func set_hp(newHP):

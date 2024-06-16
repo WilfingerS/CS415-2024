@@ -10,13 +10,13 @@ func _ready():
 
 func _on_area_entered(area: Area2D) -> void:
 	var hitbox = area as Hitbox
-
-	#print(hitbox.owner.name) #the hitbox that hit them
-	#print(self.owner.name) #Hurtbox that should be damaged?
+	var isPlayer:bool = (self.get_parent().name == "Player_Character") # scuffed way imo but it works
 	if hitbox == null or hitbox.owner == self.get_parent() or self.get_parent().is_ancestor_of(hitbox): #No hitbox detected
-		#print("No hitbox or Hit itself lol?")
 		return
-	
+	# Above is used to check if hitbox is hitting itself
+	if isPlayer:
+		# Do ur stuff here maybe?
+		pass
+
 	print(hitbox.owner.name + " hit: " + self.get_parent().name)
 	self.owner.take_damage(hitbox.owner.damage)
-	
