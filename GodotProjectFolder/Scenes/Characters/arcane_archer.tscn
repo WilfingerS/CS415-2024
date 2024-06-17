@@ -138,7 +138,6 @@ initial_state = NodePath("EnemyIdle")
 [node name="EnemyIdle" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_dksyp")
 enemy = NodePath("../..")
-speed = 25
 detection_range = 200
 
 [node name="EnemyChase" type="Node" parent="State Control" node_paths=PackedStringArray("enemy", "rayCast")]

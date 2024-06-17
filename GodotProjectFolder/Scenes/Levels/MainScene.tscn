@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=12 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bj53m0le6fixn" path="res://Scenes/Characters/arcane_archer.tscn" id="8_a2862"]
 [ext_resource type="PackedScene" uid="uid://oufsqmno882m" path="res://Scenes/Levels/HallWay.tscn" id="9_cpxxh"]
 [ext_resource type="PackedScene" uid="uid://cphcsb5h4fvw4" path="res://Scenes/Levels/HallWayVert.tscn" id="10_dde4n"]
+[ext_resource type="PackedScene" uid="uid://dl6hpi8ycnpdd" path="res://Scenes/Characters/slime_red.tscn" id="11_1eg87"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -56,3 +57,18 @@ position = Vector2(474, -20)
 
 [node name="Arcane_Archer" parent="." instance=ExtResource("8_a2862")]
 position = Vector2(-3, 502)
+
+[node name="Slime_Red" parent="." instance=ExtResource("11_1eg87")]
+position = Vector2(-75, -51)
+
+[node name="Slime_Green" parent="." instance=ExtResource("6_pmy8v")]
+position = Vector2(18, 36)
+
+[node name="Slime_Red2" parent="." instance=ExtResource("11_1eg87")]
+position = Vector2(20, -13)
+
+[node name="Slime_Red3" parent="." instance=ExtResource("11_1eg87")]
+position = Vector2(54, 84)
+
+[node name="Slime_Red4" parent="." instance=ExtResource("11_1eg87")]
+position = Vector2(81, 28)
