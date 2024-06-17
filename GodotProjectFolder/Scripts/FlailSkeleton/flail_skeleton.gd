@@ -12,9 +12,6 @@ func _physics_process(_delta):
 		return
 		
 	move_and_slide()
-	
-	if attacking:
-		return
 		
 	if velocity.length() > 0:
 		$AnimationPlayer.play("Walk")
@@ -27,6 +24,8 @@ func _physics_process(_delta):
 		flip()
 
 func flip():
+	if is_dead:
+		return
 	$Sprite2D.set_scale(Vector2(-1,1))
 
 func attack():

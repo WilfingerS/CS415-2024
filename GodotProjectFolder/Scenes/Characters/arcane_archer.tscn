@@ -124,7 +124,7 @@ position = Vector2(0, -16)
 texture = ExtResource("2_76b3y")
 hframes = 8
 vframes = 8
-frame = 24
+frame = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
@@ -171,3 +171,5 @@ script = ExtResource("8_o4u7d")
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_to1xr")
 debug_color = Color(0, 1, 0, 0.0901961)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="State Control/EnemyAttack" method="_on_animation_player_animation_finished"]
