@@ -42,12 +42,13 @@ func parry():
 	blocking = true
 	print("Block?")
 	$AnimationPlayer.play("Block")
-	await get_tree().create_timer(0.5).timeout
+	var block_duration = $AnimationPlayer.current_animation_length
+	await get_tree().create_timer(block_duration).timeout
 	blocking = false
 
 # Health Stuff
 func take_damage(dmg:int):
-	if isHit:
+	if isHit || blocking:
 		return
 	
 	isHit = true

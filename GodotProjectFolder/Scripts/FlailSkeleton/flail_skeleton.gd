@@ -29,7 +29,7 @@ func flip():
 	$Sprite2D.set_scale(Vector2(-1,1))
 
 func attack():
-	if attacking:
+	if attacking || is_dead:
 		return
 	
 	attacking = true

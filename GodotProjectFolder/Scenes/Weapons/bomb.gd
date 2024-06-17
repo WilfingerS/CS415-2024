@@ -17,8 +17,7 @@ func _on_animation_finished(anim_name):
 		queue_free()
 
 func explode():
-	# Known bug is player is getting damaged as soon as its placed?
-	self.position = player.position + Vector2(0,-15)
+	self.position = player.position
 	$AnimationPlayer.play("explosion")
 	
 func _ready():
