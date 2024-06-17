@@ -19,7 +19,7 @@
 position = Vector2(160, -46)
 
 [node name="HallWay2" parent="." instance=ExtResource("10_dde4n")]
-position = Vector2(-16, -207)
+position = Vector2(21, -156)
 
 [node name="HallWay3" parent="." instance=ExtResource("10_dde4n")]
 position = Vector2(-16, 288)

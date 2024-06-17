@@ -8,7 +8,7 @@ var is_dead = false
 var is_hit = false
 
 func _physics_process(_delta):
-	if is_dead || is_hit:
+	if is_dead || is_hit || attacking:
 		return
 		
 	move_and_slide()
@@ -30,7 +30,7 @@ func flip():
 	$Sprite2D.set_scale(Vector2(-1,1))
 
 func attack():
-	if is_dead:
+	if attacking:
 		return
 	
 	attacking = true

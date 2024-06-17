@@ -24,6 +24,7 @@ signal hp_changed # gonna be used for later with uh gui or something
 var mov_Direction:Vector2 = Vector2.ZERO
 var blocking = false
 var isDead = false
+var isHit = false
 
 # Actions
 func pickUP():
@@ -36,17 +37,25 @@ func use_Bomb():
 	bomb.explode()
 
 func parry():
-	if not(blocking): # since events handled on _input use just_pressed
-		blocking = true
-		print("Block?")
-		$AnimationPlayer.play("Block")
-		await get_tree().create_timer(0.5).timeout
-		blocking = false
+	if blocking || isHit: # since events handled on _input use just_pressed
+		return
+	blocking = true
+	print("Block?")
+	$AnimationPlayer.play("Block")
+	await get_tree().create_timer(0.5).timeout
+	blocking = false
 
 # Health Stuff
 func take_damage(dmg:int):
-	#emit_signal("hp_changed",self)
-	set_hp(HP-dmg)
+	if isHit:
+		return
+	
+	isHit = true
+	$AnimationPlayer.play("OnHit")
+	var  invincibility_length = $AnimationPlayer.current_animation_length
+	await get_tree().create_timer(invincibility_length).timeout
+	set_hp(HP - dmg)
+	isHit = false
 	
 func set_hp(newHP):
 	if newHP < maxHP:

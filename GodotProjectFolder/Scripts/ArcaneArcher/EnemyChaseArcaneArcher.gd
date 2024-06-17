@@ -15,14 +15,14 @@ func Enter():
 
 func Physics_Update(delta:float):
 	var direction = player.global_position - enemy.global_position 
+	var angle_to_player = direction.angle()
+	rayCast.global_rotation = angle_to_player
 	
 	if direction.length() > attempt_attack_range:
 		enemy.velocity = direction * speed
 	else:	
 		if player.global_position.x < enemy.global_position.x:
 			enemy.flip()
-		var angle_to_player = enemy.global_position.direction_to(player.global_position).angle()
-		rayCast.global_rotation = angle_to_player
 		if rayCast.is_colliding() and rayCast.get_collider() == player:
 			ChangeState.emit(self, "EnemyAttack")
 

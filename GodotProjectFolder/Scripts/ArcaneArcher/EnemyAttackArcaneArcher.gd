@@ -15,6 +15,7 @@ func Enter():
 		#get_tree().current_scene.add_child(arrow)
 		enemy.add_child(arrow)
 		arrow.shooter = enemy
+		arrow.add_to_group("Enemies")
 		#arrow = arrow.get_node("arcane_arrow")
 		
 		arrow.global_position = enemy.global_position
