@@ -9,7 +9,7 @@ const FRICTION: float = 0.15
 @export var acceleration: int = 40
 @export var maxSpeed: int = 100
 # hp stuff yea
-@export var maxHP: int = 5
+@export var maxHP: int = 5 
 @export var HP: int = 5
 #Signals
 signal hp_changed # gonna be used for later with uh gui or something
@@ -22,11 +22,11 @@ signal hp_changed # gonna be used for later with uh gui or something
 
 #other used variables
 var mov_Direction:Vector2 = Vector2.ZERO
-var blocking = false
+@export var blocking = false
 var isDead = false
+var isHit = false
 
 # Actions
-
 func pickUP():
 	pass
 	
@@ -37,18 +37,27 @@ func use_Bomb():
 	bomb.explode()
 
 func parry():
-	if not(blocking): # since events handled on _input use just_pressed
-		blocking = true
-		hurtBox.block(blocking)
-		print("Block?")
-		$AnimationPlayer.play("Block")
-		await get_tree().create_timer(0.5).timeout
-		blocking = false
-		hurtBox.block(blocking)
+	if blocking || isHit: # since events handled on _input use just_pressed
+		return
+	blocking = true
+	print("Block?")
+	$AnimationPlayer.play("Block")
+	var block_duration = $AnimationPlayer.current_animation_length
+	await get_tree().create_timer(block_duration).timeout
+	blocking = false
 
 # Health Stuff
 func take_damage(dmg:int):
-	set_hp(HP-dmg)
+	if isHit || blocking:
+		return
+	
+	isHit = true
+	$AnimationPlayer.play("OnHit")
+	print("ouch")
+	var  invincibility_length = $AnimationPlayer.current_animation_length
+	await get_tree().create_timer(invincibility_length).timeout
+	set_hp(HP - dmg)
+	isHit = false
 	
 func set_hp(newHP):
 	if newHP < maxHP:

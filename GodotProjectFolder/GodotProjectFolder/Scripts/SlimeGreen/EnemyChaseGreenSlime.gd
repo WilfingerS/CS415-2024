@@ -2,8 +2,9 @@ extends State
 class_name EnemyChaseGreenSlime
 
 @export var enemy: CharacterBody2D
-@export var speed := .75
+@export var speed := .5
 @export var chase_drop_distance := 100
+@export var attempt_attack_range := 0
 
 var player: CharacterBody2D
 
@@ -14,7 +15,11 @@ func Enter():
 	
 func Physics_Update(delta:float):
 	var direction = player.global_position - enemy.global_position 
-	enemy.velocity = direction * speed
+	#print(direction)
+	if direction.length() > attempt_attack_range:
+		enemy.velocity = direction * speed
+	else:	
+		ChangeState.emit(self, "EnemyAttack")
 
 	if direction.length() > chase_drop_distance:
 		ChangeState.emit(self, "EnemyIdle")

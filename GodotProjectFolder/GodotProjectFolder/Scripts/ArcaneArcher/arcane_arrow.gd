@@ -3,6 +3,7 @@ class_name Projectile
 
 @export var speed := 10
 @export var damage:int = 1
+@export var attType = "ranged"
 #@onready var arrow = get_node("arcane_arrow")
 var shooter: CharacterBody2D = null
 

@@ -10,13 +10,10 @@ var is_hit = false
 var stunned = false
 
 func _physics_process(_delta):
-	if is_dead || is_hit:
+	if is_dead || is_hit || attacking:
 		return
 		
 	move_and_slide()
-	
-	if attacking:
-		return
 		
 	if velocity.length() > 0:
 		$AnimationPlayer.play("Walk")
@@ -29,10 +26,12 @@ func _physics_process(_delta):
 		flip()
 
 func flip():
+	if is_dead:
+		return
 	$Sprite2D.set_scale(Vector2(-1,1))
 
 func attack():
-	if is_dead:
+	if attacking || is_dead:
 		return
 	
 	attacking = true
@@ -40,16 +39,7 @@ func attack():
 	var attack_duration = $AnimationPlayer.current_animation_length
 	await get_tree().create_timer(attack_duration).timeout
 	attacking = false
-	
-func stun():
-	if is_dead:
-		return
-	
-	stunned = true
-	$AnimationPlayer.play("Stun")
-	var attack_duration = $AnimationPlayer.current_animation_length
-	await get_tree().create_timer(attack_duration).timeout
-	stunned = false
+
 	
 func take_damage(dmg:int):
 	if is_dead:

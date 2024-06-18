@@ -1,13 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://bj53m0le6fixn"]
+[gd_scene load_steps=19 format=3 uid="uid://bj53m0le6fixn"]
 
 [ext_resource type="Script" path="res://Scripts/ArcaneArcher/arcane_archer.gd" id="1_ltfdg"]
 [ext_resource type="Texture2D" uid="uid://dmqyal01b3l6v" path="res://Assets/archer_enemy.png" id="2_76b3y"]
 [ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="3_dk7ir"]
+[ext_resource type="Shader" path="res://Assets/on_hit_flash.gdshader" id="3_dsqkb"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_dksyp"]
 [ext_resource type="Script" path="res://Scripts/ArcaneArcher/EnemyChaseArcaneArcher.gd" id="5_uw5cu"]
 [ext_resource type="Script" path="res://Scripts/ArcaneArcher/EnemyAttackArcaneArcher.gd" id="6_qgvvr"]
 [ext_resource type="PackedScene" uid="uid://bcvjqylald7g8" path="res://Scenes/Projectiles/arcane_arrow.tscn" id="7_0t3rh"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="8_o4u7d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iu8kf"]
+resource_local_to_scene = true
+shader = ExtResource("3_dsqkb")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pdttr"]
 radius = 9.0
@@ -60,6 +67,22 @@ tracks/0/keys = {
 "values": [40, 41, 42, 43]
 }
 
+[sub_resource type="Animation" id="Animation_jv2hr"]
+resource_name = "OnHit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.5, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_b6ywu"]
 resource_name = "Walk"
 length = 0.8
@@ -82,6 +105,7 @@ _data = {
 "Attack": SubResource("Animation_cheg3"),
 "Death": SubResource("Animation_a6n62"),
 "Idle": SubResource("Animation_spb5g"),
+"OnHit": SubResource("Animation_jv2hr"),
 "Walk": SubResource("Animation_b6ywu")
 }
 
@@ -89,17 +113,18 @@ _data = {
 radius = 8.0
 height = 32.0
 
-[node name="Arcane_Archer" type="CharacterBody2D"]
+[node name="Arcane_Archer" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
 script = ExtResource("1_ltfdg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_iu8kf")
 position = Vector2(0, -16)
 texture = ExtResource("2_76b3y")
 hframes = 8
 vframes = 8
-frame = 24
+frame = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
@@ -113,13 +138,13 @@ initial_state = NodePath("EnemyIdle")
 [node name="EnemyIdle" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_dksyp")
 enemy = NodePath("../..")
-detection_range = 150
+detection_range = 200
 
 [node name="EnemyChase" type="Node" parent="State Control" node_paths=PackedStringArray("enemy", "rayCast")]
 script = ExtResource("5_uw5cu")
 enemy = NodePath("../..")
-chase_drop_distance = 175
-attempt_attack_range = 100
+chase_drop_distance = 220
+attempt_attack_range = 150
 rayCast = NodePath("../../RayCast2D")
 
 [node name="EnemyAttack" type="Node" parent="State Control" node_paths=PackedStringArray("enemy", "rayCast")]
@@ -134,8 +159,7 @@ libraries = {
 }
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, -18)
-target_position = Vector2(150, 0)
+target_position = Vector2(300, 0)
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -145,4 +169,6 @@ script = ExtResource("8_o4u7d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_to1xr")
-debug_color = Color(0.827499, 0.0109873, 3.85046e-07, 0.313726)
+debug_color = Color(0, 1, 0, 0.0901961)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="State Control/EnemyAttack" method="_on_animation_player_animation_finished"]

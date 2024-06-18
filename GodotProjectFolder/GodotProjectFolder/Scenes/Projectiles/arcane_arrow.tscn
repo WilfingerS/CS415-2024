@@ -8,6 +8,7 @@
 radius = 2.0
 
 [node name="Arrow" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("2_xg6i5")
 
 [node name="arcane_arrow" type="Area2D" parent="."]

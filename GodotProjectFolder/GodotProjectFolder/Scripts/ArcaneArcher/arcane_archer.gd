@@ -1,19 +1,17 @@
 extends CharacterBody2D
 
 @export var HP:int = 3
-@export var damage:int = 1
 
 var attacking = false
 var is_dead = false
+var is_hit = false
 
 func _physics_process(_delta):
-	if is_dead:
+	
+	if is_dead || is_hit || attacking:
 		return
 		
 	move_and_slide()
-	
-	if attacking:
-		return
 		
 	if velocity.length() > 0:
 		$AnimationPlayer.play("Walk")
@@ -26,24 +24,37 @@ func _physics_process(_delta):
 		flip()
 
 func flip():
+	if is_dead:
+		return
 	$Sprite2D.set_scale(Vector2(-1,1))
 
 func attack():
-	if is_dead:
+	print("ENTER ATTACK")
+	if is_dead || is_hit:
+		var stun_duration = $AnimationPlayer.current_animation_length
+		await get_tree().create_timer(stun_duration).timeout
 		return
-	
+		
 	attacking = true
 	$AnimationPlayer.play("Attack")
-	var attack_duration = $AnimationPlayer.current_animation_length
+	var attack_duration = $AnimationPlayer.current_animation_length + .1
 	await get_tree().create_timer(attack_duration).timeout
 	attacking = false
+	print("EXIT ATTACK")
 	
 func take_damage(dmg:int):
+	print("ENTER DMG")
 	if is_dead:
 		return
 		
+	is_hit = true
+	$AnimationPlayer.play("OnHit")
+	var stun_duration = $AnimationPlayer.current_animation_length
+	await get_tree().create_timer(stun_duration).timeout
 	set_hp(HP - dmg)
-
+	is_hit = false
+	
+	print("EXIT DMG")
 func set_hp(newHP):
 	if newHP <= 0:
 		HP = 0
