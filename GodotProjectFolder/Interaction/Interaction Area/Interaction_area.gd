@@ -8,10 +8,10 @@ var interact: Callable = func():
 
 
 func _on_body_entered(body):
-	print("registered")
-	InteractionManager.register_area(self)
+	if body.is_in_group("Player"):
+		InteractionManager.register_area(self)
 
 
 func _on_body_exited(body):
-	print("inreg")
-	InteractionManager.unregister_area(self)
+	if body.is_in_group("Player"):
+		InteractionManager.unregister_area(self)
