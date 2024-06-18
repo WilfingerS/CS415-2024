@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player: CharacterBody2D
-var damage:int = 2
+var damage:int = 3
 
 # creating bomb is now handled in the CharacterScript
 #func create_bomb():

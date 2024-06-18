@@ -3,32 +3,27 @@ class_name Projectile
 
 @export var speed := 10
 @export var damage:int = 1
-#@onready var arrow = get_node("arcane_arrow")
+
 var shooter: CharacterBody2D = null
+var player: CharacterBody2D	
 
 func _physics_process(_delta):
 	var direction = Vector2.RIGHT.rotated(rotation)
 	global_position += speed * direction 
-	#print(direction)
 
-func destory():
+func destroy():
 	queue_free()
 
-func _on_area_entered(area):
-	destory()
-	
-func _on_body_entered(body):
-	print(body)
-	if body == shooter:
-		return
-	destory()
-
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	destory()
+	destroy()
 
-func _ready():
-	pass
-	# Set the collision layer and mask for the arrow
-	# Assume 1 is the player's layer and 2 is the enemy's layer
-	#collision_layer = 1
-	#collision_mask = 2
+func _on_arcane_arrow_body_entered(body):
+	player = get_tree().get_first_node_in_group("Player")
+	if body != shooter and player.blocking == false:
+		destroy()
+
+func reflect():
+	var mouseDirection:Vector2 = (get_global_mouse_position() - global_position).normalized()
+	rotation = mouseDirection.angle()
+	self.remove_from_group("Enemies")
+	self.add_to_group("Players")

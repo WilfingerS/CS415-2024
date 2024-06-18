@@ -29,14 +29,22 @@ func flip():
 	$Sprite2D.set_scale(Vector2(-1,1))
 
 func attack():
-	if is_dead || is_hit:
-		var stun_duration = $AnimationPlayer.current_animation_length
-		await get_tree().create_timer(stun_duration).timeout
+	if attacking or is_dead:
 		return
 		
 	attacking = true
 	$AnimationPlayer.play("Attack")
-	var attack_duration = $AnimationPlayer.current_animation_length + .1
+	var attack_duration = $AnimationPlayer.current_animation_length +.1
+	await get_tree().create_timer(attack_duration).timeout
+	attacking = false
+
+func summon():
+	if attacking or is_dead:
+		return
+			
+	attacking = true
+	$AnimationPlayer.play("Summon")
+	var attack_duration = $AnimationPlayer.current_animation_length +.1
 	await get_tree().create_timer(attack_duration).timeout
 	attacking = false
 	
@@ -51,7 +59,6 @@ func take_damage(dmg:int):
 	set_hp(HP - dmg)
 	is_hit = false
 	
-	print("EXIT DMG")
 func set_hp(newHP):
 	if newHP <= 0:
 		HP = 0

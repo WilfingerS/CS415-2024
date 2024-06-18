@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bj53m0le6fixn"]
 
-[ext_resource type="Script" path="res://Scripts/ArcaneArcher/arcane_archer.gd" id="1_ltfdg"]
+[ext_resource type="Script" path="res://Scripts/Necromancer/necromancer.gd" id="1_did7g"]
 [ext_resource type="Texture2D" uid="uid://dmqyal01b3l6v" path="res://Assets/archer_enemy.png" id="2_76b3y"]
 [ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="3_dk7ir"]
 [ext_resource type="Shader" path="res://Assets/on_hit_flash.gdshader" id="3_dsqkb"]
@@ -116,7 +116,7 @@ height = 32.0
 [node name="Arcane_Archer" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
-script = ExtResource("1_ltfdg")
+script = ExtResource("1_did7g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_iu8kf")
@@ -124,7 +124,7 @@ position = Vector2(0, -16)
 texture = ExtResource("2_76b3y")
 hframes = 8
 vframes = 8
-frame = 40
+frame = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
@@ -138,13 +138,10 @@ initial_state = NodePath("EnemyIdle")
 [node name="EnemyIdle" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_dksyp")
 enemy = NodePath("../..")
-detection_range = 200
 
 [node name="EnemyChase" type="Node" parent="State Control" node_paths=PackedStringArray("enemy", "rayCast")]
 script = ExtResource("5_uw5cu")
 enemy = NodePath("../..")
-chase_drop_distance = 220
-attempt_attack_range = 150
 rayCast = NodePath("../../RayCast2D")
 
 [node name="EnemyAttack" type="Node" parent="State Control" node_paths=PackedStringArray("enemy", "rayCast")]
