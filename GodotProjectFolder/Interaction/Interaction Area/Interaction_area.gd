@@ -13,4 +13,5 @@ func _on_body_entered(body):
 
 
 func _on_body_exited(body):
+	print("inreg")
 	InteractionManager.unregister_area(self)

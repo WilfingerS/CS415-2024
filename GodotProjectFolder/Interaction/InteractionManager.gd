@@ -3,7 +3,7 @@ extends Node2D
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var label = $InteractionText
 
-const base_txt = "[E] to "
+const base_txt = "[F] to "
 
 var active_areas = []
 var can_interact = true
@@ -20,13 +20,14 @@ func unregister_area(area: InteractionArea):
 func _process(delta):
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
-		label.text = base_txt + active_areas[0].action_name
-		label.global_position = active_areas[0].global_position
-		label.global_position.y -= 36
-		label.global_position.x -= label.size / 2
-		label.show()
+		#label.text = base_txt + active_areas[0].action_name
+		#label.global_position = active_areas[0].global_position
+		#label.global_position.y -= 36
+		#label.global_position.x -= label.size / 2
+		#label.show()
 	else:
-		label.hide()
+		#label.hide()
+		return
 		
 		
 		
@@ -39,7 +40,7 @@ func _input(event):
 	if event.is_action_pressed("Interact") && can_interact:
 		if active_areas.size() > 0:
 			can_interact = false
-			label.hide()
+			#label.hide()
 			
 			await active_areas[0].interact.call()
 			
