@@ -5,7 +5,7 @@
 [node name="InteractionManager" type="Node2D"]
 script = ExtResource("1_a3aaj")
 
-[node name="Label" type="Label" parent="."]
+[node name="InteractionText" type="Label" parent="."]
 z_index = 20
 anchors_preset = 5
 anchor_left = 0.5
