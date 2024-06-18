@@ -11,4 +11,4 @@ func _ready():
 	
 	
 func _on_interact():
-	print(lines[0])
+	print("Testing F")

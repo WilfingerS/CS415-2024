@@ -59,6 +59,8 @@ height = 50.0
 
 [node name="Character" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(-1, -3)
+scale = Vector2(0.4, 0.4)
+collision_layer = 2
 script = ExtResource("1_pcl0v")
 
 [node name="CharSprite" type="Sprite2D" parent="."]
@@ -85,3 +87,6 @@ debug_color = Color(0.201334, 0.62891, 0.361697, 0.42)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_7qqmo")
 debug_color = Color(0.345241, 0.556973, 0.740921, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
