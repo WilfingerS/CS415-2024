@@ -1,17 +1,27 @@
 extends Sprite2D
 class_name Shield
 
+var is_blocking = false
+
 func Left():
-	$AnimationPlayer.play("Left")
-	
+	if not is_blocking:
+		$AnimationPlayer.play("Left")
+
 func Right():
-	$AnimationPlayer.play("Right")
-	
+	if not is_blocking:
+		$AnimationPlayer.play("Right")
+
 func Up():
-	$AnimationPlayer.play("Backward")
-	
+	if not is_blocking:
+		$AnimationPlayer.play("Backward")
+
 func Down():
-	$AnimationPlayer.play("Forward")
-	
+	if not is_blocking:
+		$AnimationPlayer.play("Forward")
+
 func Block():
+	is_blocking = true
 	$AnimationPlayer.play("Block")
+	var block_duration = $AnimationPlayer.current_animation_length
+	await get_tree().create_timer(block_duration).timeout
+	is_blocking = false

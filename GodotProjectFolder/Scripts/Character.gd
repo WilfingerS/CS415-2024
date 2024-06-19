@@ -80,7 +80,7 @@ func kill():
 # Movement Stuff
 func move():
 	mov_Direction = Vector2.ZERO
-	if not(isDead):
+	if not(isDead and blocking):
 		mov_Direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
 			Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -129,12 +129,16 @@ func _physics_process(_delta):
 				$AnimationPlayer.play("Up")
 		else:
 			if abs(angle) < PI / 4:
+				shield.Right()
 				$AnimationPlayer.play("Right_Move")
 			elif abs(angle) > 3 * PI / 4:
+				shield.Left()
 				$AnimationPlayer.play("Left_Move")
 			elif angle > 0:
+				shield.Down()
 				$AnimationPlayer.play("Down_Move")
 			else:
+				shield.Up()
 				$AnimationPlayer.play("Up_Move")
 			
 func _input(event):

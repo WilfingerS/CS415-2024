@@ -29,6 +29,23 @@ tracks/0/keys = {
 "values": [0, 1, 0]
 }
 
+[sub_resource type="Animation" id="Animation_4fjer"]
+resource_name = "Down"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_hjs10"]
 resource_name = "Down_Move"
 length = 0.75
@@ -44,6 +61,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_qbhi2"]
+resource_name = "Left"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [80]
 }
 
 [sub_resource type="Animation" id="Animation_gj5oh"]
@@ -79,40 +113,6 @@ tracks/0/keys = {
 "values": [1.0, 0.5, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_gfwco"]
-resource_name = "Right_Move"
-length = 0.75
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [40, 41, 42, 43, 44, 45, 46, 47]
-}
-
-[sub_resource type="Animation" id="Animation_kd73c"]
-resource_name = "Up_Move"
-length = 0.75
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [120, 121, 122, 123, 124, 125, 126, 127]
-}
-
 [sub_resource type="Animation" id="Animation_5gvdc"]
 resource_name = "Right"
 length = 0.1
@@ -130,9 +130,9 @@ tracks/0/keys = {
 "values": [40]
 }
 
-[sub_resource type="Animation" id="Animation_qbhi2"]
-resource_name = "Left"
-length = 0.1
+[sub_resource type="Animation" id="Animation_gfwco"]
+resource_name = "Right_Move"
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -141,27 +141,10 @@ tracks/0/path = NodePath("CharSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [80]
-}
-
-[sub_resource type="Animation" id="Animation_4fjer"]
-resource_name = "Down"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [40, 41, 42, 43, 44, 45, 46, 47]
 }
 
 [sub_resource type="Animation" id="Animation_vhl7o"]
@@ -179,6 +162,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [120]
+}
+
+[sub_resource type="Animation" id="Animation_kd73c"]
+resource_name = "Up_Move"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [120, 121, 122, 123, 124, 125, 126, 127]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vyssx"]
@@ -223,10 +223,11 @@ libraries = {
 }
 
 [node name="Weapon" parent="." instance=ExtResource("3_dru47")]
-position = Vector2(0, -15)
+position = Vector2(4.76837e-06, -15)
+rotation = 0.0
 
 [node name="Shield" parent="." instance=ExtResource("5_yrdbc")]
-position = Vector2(-12.5, -12.5)
+position = Vector2(3.8147e-06, -15)
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -255,6 +256,5 @@ script = ExtResource("4_62fq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(4.76837e-06, -25)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_crbhn")
 debug_color = Color(1, 0, 0, 0.419608)
