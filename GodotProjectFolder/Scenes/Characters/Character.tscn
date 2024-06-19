@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bddrcwkuo7k48"]
+[gd_scene load_steps=15 format=3 uid="uid://bddrcwkuo7k48"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_pcl0v"]
 [ext_resource type="Shader" path="res://Assets/on_hit_flash.gdshader" id="2_mrv5d"]
@@ -121,10 +121,6 @@ _data = {
 "Up_Move": SubResource("Animation_kd73c")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vg2sn"]
-radius = 13.0
-height = 48.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7qqmo"]
 radius = 14.0
 height = 50.0
@@ -137,7 +133,8 @@ script = ExtResource("1_pcl0v")
 
 [node name="CharSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_dqhrg")
-position = Vector2(50, 17.5)
+position = Vector2(50, 5.06639e-07)
+scale = Vector2(2.10417, 2.10417)
 texture = ExtResource("3_lddmy")
 hframes = 40
 vframes = 4
@@ -148,21 +145,19 @@ libraries = {
 }
 
 [node name="Weapon" parent="." instance=ExtResource("3_dru47")]
+position = Vector2(50, 7.5)
 
 [node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(-4.99999, 22.5)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_62fq6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-15, 27.5)
-shape = SubResource("CapsuleShape2D_vg2sn")
-debug_color = Color(0.201334, 0.62891, 0.361697, 0.42)
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(95, -5)
+position = Vector2(50, 7.5)
 shape = SubResource("CapsuleShape2D_7qqmo")
 debug_color = Color(0.345241, 0.556973, 0.740921, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+position = Vector2(50, 32.5)
+zoom = Vector2(4, 4)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=12 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bj53m0le6fixn" path="res://Scenes/Characters/arcane_archer.tscn" id="8_a2862"]
 [ext_resource type="PackedScene" uid="uid://oufsqmno882m" path="res://Scenes/Levels/HallWay.tscn" id="9_cpxxh"]
 [ext_resource type="PackedScene" uid="uid://cphcsb5h4fvw4" path="res://Scenes/Levels/HallWayVert.tscn" id="10_dde4n"]
+[ext_resource type="PackedScene" uid="uid://bcqpocv0rfv4o" path="res://Scenes/Levels/Door.tscn" id="11_s2nm7"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -56,3 +57,6 @@ position = Vector2(474, -20)
 
 [node name="Arcane_Archer" parent="." instance=ExtResource("8_a2862")]
 position = Vector2(-46, 516)
+
+[node name="Door" parent="." instance=ExtResource("11_s2nm7")]
+position = Vector2(0, -112)
