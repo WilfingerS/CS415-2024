@@ -5,15 +5,13 @@ extends CharacterBody2D
 
 var attacking = false
 var is_dead = false
+var is_hit = false
 
 func _physics_process(_delta):
-	if is_dead:
+	if is_dead || is_hit || attacking:
 		return
 		
 	move_and_slide()
-	
-	if attacking:
-		return
 		
 	if velocity.length() > 0:
 		$AnimationPlayer.play("Walk")
@@ -26,10 +24,12 @@ func _physics_process(_delta):
 		flip()
 
 func flip():
+	if is_dead:
+		return
 	$Sprite2D.set_scale(Vector2(-1,1))
 
 func attack():
-	if is_dead:
+	if attacking || is_dead:
 		return
 	
 	attacking = true
@@ -41,11 +41,13 @@ func attack():
 func take_damage(dmg:int):
 	if is_dead:
 		return
-	
+		
+	is_hit = true
 	$AnimationPlayer.play("OnHit")
-	var death_duration = $AnimationPlayer.current_animation_length
-	await get_tree().create_timer(death_duration).timeout
+	var stun_duration = $AnimationPlayer.current_animation_length
+	await get_tree().create_timer(stun_duration).timeout
 	set_hp(HP - dmg)
+	is_hit = false
 
 func set_hp(newHP):
 	if newHP <= 0:

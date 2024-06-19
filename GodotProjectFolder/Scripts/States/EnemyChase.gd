@@ -1,16 +1,11 @@
 extends State
-class_name EnemyChaseSkeleton
+class_name EnemyChase
 
 @export var enemy: CharacterBody2D
-<<<<<<< Updated upstream
-@export var speed := .25
-@export var chase_drop_distance := 500
-@export var attempt_attack_range := 100
-=======
 @export var speed := .5
 @export var chase_drop_distance := 100
-@export var attempt_attack_range := 15
->>>>>>> Stashed changes
+@export var attempt_attack_range := 50
+@export var rayCast: RayCast2D
 
 var player: CharacterBody2D
 
@@ -29,7 +24,7 @@ func Physics_Update(delta:float):
 		else: 
 			if player.global_position.x < enemy.global_position.x:
 				enemy.flip()
-			ChangeState.emit(self, "EnemyAttack")
+				ChangeState.emit(self, "EnemyAttack")
 
 	if direction.length() > chase_drop_distance:
 		ChangeState.emit(self, "EnemyIdle")
