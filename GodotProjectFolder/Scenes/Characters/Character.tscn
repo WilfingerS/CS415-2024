@@ -164,7 +164,12 @@ position = Vector2(50, 32.5)
 zoom = Vector2(4, 4)
 
 [node name="Inventory" parent="." instance=ExtResource("6_7tiec")]
-offset_left = 152.5
-offset_top = -97.5
-offset_right = 152.5
-offset_bottom = -97.5
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 115.0
+offset_top = -112.5
+offset_right = 115.0
+offset_bottom = -112.5
+grow_horizontal = 1
+grow_vertical = 1
