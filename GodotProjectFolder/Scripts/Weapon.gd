@@ -15,7 +15,7 @@ func ATTACK():
 		animPlayer.play("Swing")
 
 func _process(_delta):
-	if self.get_parent().is_in_group("Players"):
+	#if self.get_parent().is_in_group("Players"):
 		#Update Rotation of weapon
 		var mouseDirection:Vector2 = (get_global_mouse_position() - global_position).normalized()
 		if mouseDirection.x > 0 and sprite.flip_h:
