@@ -16,10 +16,10 @@ signal hp_changed # gonna be used for later with uh gui or something
 #Onready's
 @onready var sprite:Sprite2D = get_node("CharSprite")
 @onready var hurtBox:Hurtbox = get_node("Hurtbox")
+@onready var inventory = get_node("Inventory")
+@onready var bombScene = preload("res://Scenes/Weapons/bomb.tscn")
 @onready var weapon:Node2D = get_node("Weapon")
 @onready var damage = weapon.damage
-@onready var bombScene = preload("res://Scenes/Weapons/bomb.tscn")
-
 #other used variables
 var mov_Direction:Vector2 = Vector2.ZERO
 var blocking = false
@@ -31,10 +31,11 @@ func pickUP():
 	pass
 	
 func use_Bomb():
-	var bomb = bombScene.instantiate()
-	owner.add_child(bomb)
-	bomb.player = self
-	bomb.explode()
+	if inventory.use_consumable("bomb"):
+		var bomb = bombScene.instantiate()
+		owner.add_child(bomb)
+		bomb.player = self
+		bomb.explode()
 
 func parry():
 	if blocking || isHit: # since events handled on _input use just_pressed
@@ -106,3 +107,5 @@ func _input(event):
 		parry()
 	if event.is_action_pressed("bomb"):
 		use_Bomb()
+	if event.is_action_pressed("inventory"):
+		inventory.access()

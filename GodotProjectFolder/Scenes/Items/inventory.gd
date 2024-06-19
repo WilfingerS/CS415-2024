@@ -13,11 +13,12 @@ var slotScene = preload("res://Scenes/Items/slot.tscn")
 	["Shield",character.get_node("Shield")],
 	["Armor",character.get_node("Armor")],
 	["Bomb",5,null], # Consumables should maybe look like this? null for now should be the path to the item
-	["Potion",0,null]
+	["Potion",0,null],
+	
 ]
 
 
-func use_item(item:String):
+func use_consumable(item:String):
 	var canUse = false
 	if item == "bomb":
 		if inventory[3][1] > 0:
@@ -27,7 +28,7 @@ func use_item(item:String):
 		if inventory[4][1] > 0:
 			inventory[4][1] -= 1
 			canUse = true
-			
+	
 	return canUse
 	
 func access():
