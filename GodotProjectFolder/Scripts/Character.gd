@@ -26,6 +26,9 @@ var blocking = false
 var isDead = false
 var isHit = false
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 # Actions
 func pickUP():
 	pass
@@ -92,10 +95,18 @@ func _physics_process(_delta):
 	move_and_slide()
 	move()
 	
-	if velocity.x >= 0:
-		$AnimationPlayer.play("Right_Move")
-	if velocity.x < 0:
-		$AnimationPlayer.play("Left_Move")
+	if velocity.length() < 1:
+		$AnimationPlayer.stop() # or play an idle animation
+	elif abs(velocity.y) > abs(velocity.x):
+		if velocity.y > 0:
+			$AnimationPlayer.play("Down_Move")
+		else:
+			$AnimationPlayer.play("Up_Move")
+	else:
+		if velocity.x > 0:
+			$AnimationPlayer.play("Right_Move")
+		else:
+			$AnimationPlayer.play("Left_Move")
 	#create_bomb()
 func _input(event):
 	if isDead: #Can't Perform Actions if dead

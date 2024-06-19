@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://drxv8fgohuj1r"]
 
 [ext_resource type="Script" path="res://Scripts/Weapon.gd" id="1_bqjge"]
-[ext_resource type="Texture2D" uid="uid://cw30qc3fs3oar" path="res://Assets/placeHolderWeapon.png" id="2_co7ej"]
+[ext_resource type="Texture2D" uid="uid://cpxo8yur1wbhq" path="res://Assets/WEAPONS.png" id="2_fx64o"]
 [ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="3_2pag2"]
 
 [sub_resource type="Animation" id="Animation_8hnm3"]
@@ -38,19 +38,21 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1akml"]
 radius = 4.00003
-height = 29.2634
+height = 18.6667
 
 [node name="Weapon" type="Node2D"]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2.039)
 script = ExtResource("1_bqjge")
 
 [node name="Node2D" type="Node2D" parent="."]
 scale = Vector2(1.00239, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-rotation = -1.5708
-texture = ExtResource("2_co7ej")
+position = Vector2(-6.4845, 11.7705)
+rotation = -6.28319
+texture = ExtResource("2_fx64o")
 offset = Vector2(15, -15)
+hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
 libraries = {
@@ -64,8 +66,7 @@ collision_mask = 0
 script = ExtResource("3_2pag2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hitbox"]
-position = Vector2(-20.6174, -14.6667)
-rotation = 1.5708
+position = Vector2(7.98092, -3.43306)
 shape = SubResource("CapsuleShape2D_1akml")
 disabled = true
 debug_color = Color(0.891461, 0.399691, 0.56023, 0.42)
