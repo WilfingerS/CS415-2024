@@ -1,9 +1,14 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=8 format=3 uid="uid://bddrcwkuo7k48"]
+=======
+[gd_scene load_steps=13 format=3 uid="uid://bddrcwkuo7k48"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_pcl0v"]
 [ext_resource type="Texture2D" uid="uid://blx5qc7dyv10u" path="res://Assets/spritePixel.png" id="2_uggow"]
 [ext_resource type="PackedScene" uid="uid://drxv8fgohuj1r" path="res://Scenes/Weapons/Weapon.tscn" id="3_dru47"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="4_62fq6"]
+[ext_resource type="PackedScene" uid="uid://opno0b2nuak3" path="res://Scenes/Items/inventory.tscn" id="6_cubt0"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vyssx"]
 
@@ -17,6 +22,8 @@ height = 50.0
 [node name="Character" type="CharacterBody2D"]
 position = Vector2(-1, -3)
 script = ExtResource("1_pcl0v")
+maxHP = 20
+HP = 20
 
 [node name="CharSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_uggow")
@@ -40,4 +47,17 @@ shape = SubResource("CircleShape2D_fi78n")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_7qqmo")
+<<<<<<< Updated upstream
 debug_color = Color(0, 0.634924, 0.423328, 0.42)
+=======
+debug_color = Color(0.345241, 0.556973, 0.740921, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="Inventory" parent="." instance=ExtResource("6_cubt0")]
+offset_left = 30.0
+offset_top = -125.0
+offset_right = 30.0
+offset_bottom = -125.0
+>>>>>>> Stashed changes

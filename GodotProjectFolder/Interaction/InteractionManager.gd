@@ -23,7 +23,11 @@ func _process(delta):
 		label.text = base_txt + active_areas[0].action_name
 		label.global_position = active_areas[0].global_position
 		label.global_position.y -= 36
+<<<<<<< Updated upstream
 		label.global_position.x = label.size / 2
+=======
+		label.global_position.x -= label.size.x / 2
+>>>>>>> Stashed changes
 		label.show()
 	else:
 		label.hide()
