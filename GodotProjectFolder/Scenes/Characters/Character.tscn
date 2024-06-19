@@ -1,32 +1,143 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=8 format=3 uid="uid://bddrcwkuo7k48"]
-=======
-[gd_scene load_steps=13 format=3 uid="uid://bddrcwkuo7k48"]
->>>>>>> Stashed changes
+[gd_scene load_steps=15 format=3 uid="uid://bddrcwkuo7k48"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_pcl0v"]
-[ext_resource type="Texture2D" uid="uid://blx5qc7dyv10u" path="res://Assets/spritePixel.png" id="2_uggow"]
+[ext_resource type="Shader" path="res://Assets/on_hit_flash.gdshader" id="2_mrv5d"]
 [ext_resource type="PackedScene" uid="uid://drxv8fgohuj1r" path="res://Scenes/Weapons/Weapon.tscn" id="3_dru47"]
+[ext_resource type="Texture2D" uid="uid://1h4rtwaxgf8v" path="res://Assets/PLAYER_blade.png" id="3_lddmy"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="4_62fq6"]
-[ext_resource type="PackedScene" uid="uid://opno0b2nuak3" path="res://Scenes/Items/inventory.tscn" id="6_cubt0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqhrg"]
+shader = ExtResource("2_mrv5d")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_iaf3c"]
+resource_name = "Block"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_hjs10"]
+resource_name = "Down_Move"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_gj5oh"]
+resource_name = "Left_Move"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [80, 81, 82, 83, 84, 85, 86, 87]
+}
+
+[sub_resource type="Animation" id="Animation_ct02w"]
+resource_name = "OnHit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gfwco"]
+resource_name = "Right_Move"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44, 45, 46, 47]
+}
+
+[sub_resource type="Animation" id="Animation_kd73c"]
+resource_name = "Up_Move"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [120, 121, 122, 123, 124, 125, 126, 127]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vyssx"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fi78n"]
-radius = 15.0333
+_data = {
+"Block": SubResource("Animation_iaf3c"),
+"Down_Move": SubResource("Animation_hjs10"),
+"Left_Move": SubResource("Animation_gj5oh"),
+"OnHit": SubResource("Animation_ct02w"),
+"Right_Move": SubResource("Animation_gfwco"),
+"Up_Move": SubResource("Animation_kd73c")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7qqmo"]
 radius = 14.0
 height = 50.0
 
-[node name="Character" type="CharacterBody2D"]
-position = Vector2(-1, -3)
+[node name="Character" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(-20, -13)
+scale = Vector2(0.4, 0.4)
+collision_layer = 2
 script = ExtResource("1_pcl0v")
-maxHP = 20
-HP = 20
 
 [node name="CharSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_uggow")
+material = SubResource("ShaderMaterial_dqhrg")
+position = Vector2(50, 5.06639e-07)
+scale = Vector2(2.10417, 2.10417)
+texture = ExtResource("3_lddmy")
+hframes = 40
+vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -34,30 +145,19 @@ libraries = {
 }
 
 [node name="Weapon" parent="." instance=ExtResource("3_dru47")]
+position = Vector2(50, 7.5)
 
 [node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(-4.99999, 22.5)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_62fq6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 7)
-shape = SubResource("CircleShape2D_fi78n")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(50, 7.5)
 shape = SubResource("CapsuleShape2D_7qqmo")
-<<<<<<< Updated upstream
-debug_color = Color(0, 0.634924, 0.423328, 0.42)
-=======
 debug_color = Color(0.345241, 0.556973, 0.740921, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
-
-[node name="Inventory" parent="." instance=ExtResource("6_cubt0")]
-offset_left = 30.0
-offset_top = -125.0
-offset_right = 30.0
-offset_bottom = -125.0
->>>>>>> Stashed changes
+position = Vector2(50, 32.5)
+zoom = Vector2(4, 4)

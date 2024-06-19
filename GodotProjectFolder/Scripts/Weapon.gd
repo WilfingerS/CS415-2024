@@ -23,9 +23,6 @@ func _process(_delta):
 
 	weapon.rotation = mouseDirection.angle()
 	
-	if weapon.scale.y == 1 and mouseDirection.x < 0:
-		weapon.scale.y = -1
-	elif weapon.scale.y == -1 and mouseDirection.x > 0:
-		weapon.scale.y = 1
+
 	# Attack change this to the player
 	#attack()

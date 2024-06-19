@@ -12,52 +12,29 @@ const FRICTION: float = 0.15
 @export var maxHP: int = 5 
 @export var HP: int = 5
 #Signals
-signal hp_changed # gonna be used for later with uh gui
+signal hp_changed # gonna be used for later with uh gui or something
 #Onready's
 @onready var sprite:Sprite2D = get_node("CharSprite")
 @onready var hurtBox:Hurtbox = get_node("Hurtbox")
-@onready var bombScene = preload("res://Scenes/Weapons/bomb.tscn")
-@onready var inventory:Control = get_node("Inventory")
-
 @onready var weapon:Node2D = get_node("Weapon")
 @onready var damage = weapon.damage
+@onready var bombScene = preload("res://Scenes/Weapons/bomb.tscn")
 
+#other used variables
 var mov_Direction:Vector2 = Vector2.ZERO
-<<<<<<< Updated upstream
-=======
 var blocking = false
 var isDead = false
 var isHit = false
-var invOpen = false
-# Dictionary of Items for Inventory
->>>>>>> Stashed changes
 
-func access_inventory():
-	if invOpen:
-		invOpen = false
-	else:
-		invOpen = true
 # Actions
-<<<<<<< Updated upstream
-func attack():
-	if Input.is_action_just_pressed("attack"):
-		weapon.ATTACK()
-
 func pickUP():
-	pass
-=======
-func pickUP(item,type:String):
-	# Type should be the type of item it is picking up
-	# "Weapon","Shield","Armor","Potion","Bomb","Currency?"
-	# Item should be the node passed
 	pass
 	
 func use_Bomb():
-	if inventory.use_item("bomb"):
-		var bomb = bombScene.instantiate()
-		owner.add_child(bomb)
-		bomb.player = self
-		bomb.explode()
+	var bomb = bombScene.instantiate()
+	owner.add_child(bomb)
+	bomb.player = self
+	bomb.explode()
 
 func parry():
 	if blocking || isHit: # since events handled on _input use just_pressed
@@ -68,11 +45,18 @@ func parry():
 	var block_duration = $AnimationPlayer.current_animation_length
 	await get_tree().create_timer(block_duration).timeout
 	blocking = false
->>>>>>> Stashed changes
 
 # Health Stuff
 func take_damage(dmg:int):
-	set_hp(HP-dmg)
+	if isHit || blocking:
+		return
+	
+	isHit = true
+	$AnimationPlayer.play("OnHit")
+	var  invincibility_length = $AnimationPlayer.current_animation_length
+	await get_tree().create_timer(invincibility_length).timeout
+	set_hp(HP - dmg)
+	isHit = false
 	
 func set_hp(newHP):
 	if newHP < maxHP:
@@ -86,15 +70,18 @@ func set_hp(newHP):
 		
 func kill():
 	print("Player Dead?")
+	isDead = true
 	# NOTE: IF THE PLAYER DIES THE GAME WILL CLOSE LOL
 	#queue_free() # apparently this will delete node after it can be
 	
 # Movement Stuff
 func move():
-	mov_Direction = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up")
-	).normalized()
+	mov_Direction = Vector2.ZERO
+	if not(isDead):
+		mov_Direction = Vector2(
+			Input.get_action_strength("right") - Input.get_action_strength("left"),
+			Input.get_action_strength("down") - Input.get_action_strength("up")
+		).normalized()
 	velocity += mov_Direction * acceleration
 	velocity = velocity.limit_length(maxSpeed)
 	velocity = lerp(velocity,Vector2.ZERO,FRICTION)
@@ -103,9 +90,11 @@ func _physics_process(_delta):
 	# Character Move OverHere
 	move_and_slide()
 	move()
-<<<<<<< Updated upstream
-	attack()
-=======
+	
+	if velocity.x >= 0:
+		$AnimationPlayer.play("Right_Move")
+	if velocity.x < 0:
+		$AnimationPlayer.play("Left_Move")
 	#create_bomb()
 func _input(event):
 	if isDead: #Can't Perform Actions if dead
@@ -117,6 +106,3 @@ func _input(event):
 		parry()
 	if event.is_action_pressed("bomb"):
 		use_Bomb()
-	if event.is_action_pressed("inventory"):
-		inventory.access()
->>>>>>> Stashed changes

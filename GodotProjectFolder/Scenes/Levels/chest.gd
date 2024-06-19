@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var interaction_area: InteractionArea = $InteractionArea
+@onready var Inv = []
 
 const lines: Array[String] = [
 	"Hey Im a Cheast!"
@@ -11,4 +12,4 @@ func _ready():
 	
 	
 func _on_interact():
-	print(lines[0])
+	print("Testing F")

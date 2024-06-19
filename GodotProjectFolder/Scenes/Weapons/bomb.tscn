@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0kv8smv4doo2"]
+
+[ext_resource type="Texture2D" uid="uid://dooyv6iwtkcqw" path="res://Assets/bombPlaceholder.png" id="1_tgtdv"]
+[ext_resource type="Script" path="res://Scenes/Weapons/bomb.gd" id="1_vx7us"]
+[ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="2_dvpj8"]
+
+[sub_resource type="Animation" id="Animation_6fpn1"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_tl2my"]
+resource_name = "explosion"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntjxn"]
+_data = {
+"RESET": SubResource("Animation_6fpn1"),
+"explosion": SubResource("Animation_tl2my")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_owj4c"]
+
+[node name="Bomb" type="Node2D"]
+script = ExtResource("1_vx7us")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tgtdv")
+hframes = 3
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ntjxn")
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+monitoring = false
+script = ExtResource("2_dvpj8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(1.165, 1.165)
+shape = SubResource("CircleShape2D_owj4c")
+disabled = true

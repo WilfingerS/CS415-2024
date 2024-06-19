@@ -3,7 +3,7 @@ class_name EnemyIdle
 
 @export var enemy : CharacterBody2D
 @export var speed := 20
-@export var detection_range := 75
+@export var detection_range := 200
 
 var wander_direction : Vector2
 var duration : float
@@ -13,7 +13,7 @@ var player: CharacterBody2D
 func randomized_stroll():
 	duration = randf_range(1,4)
 	
-	var still = randi_range(1,4) 
+	var still = randi_range(1,3) 
 	
 	if still == 1:
 		wander_direction = Vector2()
