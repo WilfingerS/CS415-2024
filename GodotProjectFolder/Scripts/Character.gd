@@ -90,6 +90,11 @@ func _physics_process(_delta):
 	# Character Move OverHere
 	move_and_slide()
 	move()
+	
+	if velocity.x >= 0:
+		$AnimationPlayer.play("Right_Move")
+	if velocity.x < 0:
+		$AnimationPlayer.play("Left_Move")
 	#create_bomb()
 func _input(event):
 	if isDead: #Can't Perform Actions if dead

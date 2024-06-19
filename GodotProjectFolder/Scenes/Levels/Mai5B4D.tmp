@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=12 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bj53m0le6fixn" path="res://Scenes/Characters/arcane_archer.tscn" id="8_a2862"]
 [ext_resource type="PackedScene" uid="uid://oufsqmno882m" path="res://Scenes/Levels/HallWay.tscn" id="9_cpxxh"]
 [ext_resource type="PackedScene" uid="uid://cphcsb5h4fvw4" path="res://Scenes/Levels/HallWayVert.tscn" id="10_dde4n"]
+[ext_resource type="PackedScene" uid="uid://ci70mpdu1yk5g" path="res://Scenes/Characters/necromancer.tscn" id="11_o1s1h"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -19,7 +20,7 @@
 position = Vector2(160, -46)
 
 [node name="HallWay2" parent="." instance=ExtResource("10_dde4n")]
-position = Vector2(-17, -208)
+position = Vector2(21, -156)
 
 [node name="HallWay3" parent="." instance=ExtResource("10_dde4n")]
 position = Vector2(-16, 288)
@@ -34,18 +35,18 @@ position = Vector2(-1, 494)
 position = Vector2(-495, -46)
 
 [node name="Chest Room" parent="." instance=ExtResource("5_ocunj")]
-position = Vector2(443, -46)
+position = Vector2(480, -50)
 
 [node name="slime_green" parent="." instance=ExtResource("6_pmy8v")]
 position = Vector2(-462, -8)
 
 [node name="Player_Character" parent="." instance=ExtResource("1_3u81v")]
-position = Vector2(-45, 41)
+position = Vector2(-46, 30)
 scale = Vector2(0.3, 0.3)
 collision_layer = 3
 collision_mask = 3
 
-[node name="Camera2D2" type="Camera2D" parent="Player_Character"]
+[node name="Camera2D" type="Camera2D" parent="Player_Character"]
 zoom = Vector2(5, 5)
 
 [node name="Torch" parent="." instance=ExtResource("4_26dd0")]
@@ -55,4 +56,7 @@ position = Vector2(-41, 77)
 position = Vector2(474, -20)
 
 [node name="Arcane_Archer" parent="." instance=ExtResource("8_a2862")]
-position = Vector2(-46, 516)
+position = Vector2(-3, 502)
+
+[node name="Necromancer" parent="." instance=ExtResource("11_o1s1h")]
+position = Vector2(19, 36)

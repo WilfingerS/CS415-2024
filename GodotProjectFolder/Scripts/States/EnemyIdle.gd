@@ -3,7 +3,7 @@ class_name EnemyIdle
 
 @export var enemy : CharacterBody2D
 @export var speed := 20
-@export var detection_range := 75
+@export var detection_range := 200
 
 var wander_direction : Vector2
 var duration : float

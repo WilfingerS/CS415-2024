@@ -12,8 +12,19 @@ func _ready():
 func _on_area_entered(area: Area2D) -> void:
 	if _is_valid_hit(area):
 		var hitbox = area as Hitbox
+		var hurtOwner = self.get_owner()
 		print(hitbox.owner.name + " hit: " + self.get_parent().name)
-		self.owner.take_damage(hitbox.owner.damage)
+		
+		if hurtOwner.is_in_group("Player"):
+			if hurtOwner.blocking == true:
+				if hitbox.get_parent().has_method("reflect"):
+					hitbox.owner.reflect()
+				else:
+					hitbox.owner.take_damage(0)
+			else:
+				hurtOwner.take_damage(hitbox.owner.damage)
+		else:
+			hurtOwner.take_damage(hitbox.owner.damage)
 
 func _is_valid_hit(area: Area2D) -> bool:
 	if area is Hitbox:
