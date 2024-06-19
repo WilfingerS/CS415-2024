@@ -28,19 +28,32 @@ func use_consumable(item:String):
 		if inventory[4][1] > 0:
 			inventory[4][1] -= 1
 			canUse = true
-	
+	update_ui()
 	return canUse
-	
-func access():
-	visible = not(visible)
-	
+
+func add_consumable(item:String):
+	if item == "bomb":
+		if inventory[3][1] > 0:
+			inventory[3][1] += 1
+	if item == "potion":
+		if inventory[4][1] > 0:
+			inventory[4][1] += 1
+	update_ui()
+
 func update_ui():
+	slots[3].amount = inventory[3][1] #For now it only updates bomb
+	for slot in slots:
+		slot.updateSelf()
 	pass
 
+func access():
+	visible = not(visible)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
 	#print(Inventory)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(inventory)
+	pass
+	#print(inventory)
+	
