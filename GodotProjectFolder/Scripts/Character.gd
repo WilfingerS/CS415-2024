@@ -19,13 +19,14 @@ signal hp_changed # gonna be used for later with uh gui or something
 @onready var inventory = get_node("Inventory")
 @onready var bombScene = preload("res://Scenes/Weapons/bomb.tscn")
 @onready var weapon:Node2D = get_node("Weapon")
+@onready var shield:Sprite2D = get_node("Shield")
 @onready var damage = weapon.damage
 #other used variables
 var mov_Direction:Vector2 = Vector2.ZERO
 var blocking = false
 var isDead = false
 var isHit = false
-
+	
 # Actions
 func pickUP():
 	pass
@@ -41,6 +42,7 @@ func parry():
 	if blocking || isHit: # since events handled on _input use just_pressed
 		return
 	blocking = true
+	shield.Block()
 	print("Block?")
 	$AnimationPlayer.play("Block")
 	var block_duration = $AnimationPlayer.current_animation_length
@@ -78,7 +80,7 @@ func kill():
 # Movement Stuff
 func move():
 	mov_Direction = Vector2.ZERO
-	if not(isDead):
+	if not(isDead and blocking):
 		mov_Direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
 			Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -92,11 +94,53 @@ func _physics_process(_delta):
 	move_and_slide()
 	move()
 	
-	if velocity.x >= 0:
-		$AnimationPlayer.play("Right_Move")
-	if velocity.x < 0:
-		$AnimationPlayer.play("Left_Move")
-	#create_bomb()
+	# Velocity based facing
+	
+	#if velocity.length() < 1:
+		#$AnimationPlayer.stop() # or play an idle animation
+	#elif abs(velocity.y) > abs(velocity.x):
+		#if velocity.y > 0:
+			#$AnimationPlayer.play("Down_Move")
+		#else:
+			#$AnimationPlayer.play("Up_Move")
+	#else:
+		#if velocity.x > 0:
+			#$AnimationPlayer.play("Right_Move")
+		#else:
+			#$AnimationPlayer.play("Left_Move")
+	
+	#rotation based facing
+	var mouse_position = get_global_mouse_position()		
+	var direction = mouse_position - global_position
+	var angle = direction.angle()	
+	if not isHit:
+		if velocity.length() < 1:
+			if abs(angle) < PI / 4:
+				shield.Right()
+				$AnimationPlayer.play("Right")
+			elif abs(angle) > 3 * PI / 4:
+				shield.Left()
+				$AnimationPlayer.play("Left")
+			elif angle > 0:
+				shield.Down()
+				$AnimationPlayer.play("Down")
+			else:
+				shield.Up()
+				$AnimationPlayer.play("Up")
+		else:
+			if abs(angle) < PI / 4:
+				shield.Right()
+				$AnimationPlayer.play("Right_Move")
+			elif abs(angle) > 3 * PI / 4:
+				shield.Left()
+				$AnimationPlayer.play("Left_Move")
+			elif angle > 0:
+				shield.Down()
+				$AnimationPlayer.play("Down_Move")
+			else:
+				shield.Up()
+				$AnimationPlayer.play("Up_Move")
+			
 func _input(event):
 	if isDead: #Can't Perform Actions if dead
 		return
