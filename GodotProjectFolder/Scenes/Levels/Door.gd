@@ -12,7 +12,7 @@ func _on_interact():
 	if !open:
 		open = true
 		animation.play("open")
-		await get_tree().create_timer(Global.time_in_seconds).timeout
+		await get_tree().create_timer(Global.time_in_seconds-.5).timeout
 		get_node("StaticBody2D/CollisionShape2D").disabled = open
 		get_node("InteractionArea/CollisionShape2D").disabled = open
 	

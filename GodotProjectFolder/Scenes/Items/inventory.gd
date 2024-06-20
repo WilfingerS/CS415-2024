@@ -11,7 +11,7 @@ var slotScene = preload("res://Scenes/Items/slot.tscn")
 @onready var inventory = [
 	["Weapon",character.get_node("Weapon")], #These link to objects on the character
 	["Shield",character.get_node("Shield")],
-	["Armor",character.get_node("Armor")],
+	#["Armor",character.get_node("Armor")],
 	["Bomb",5,null], # Consumables should maybe look like this? null for now should be the path to the item
 	["Potion",0,null],
 	

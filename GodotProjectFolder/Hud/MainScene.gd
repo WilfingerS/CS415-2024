@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var health_bar = $CanvasLayer/HeartBar
-@onready var player = $Player_Character
+@onready var player = $Character
 
 func _ready():
 	health_bar.setMaxHealth(player.maxHP)

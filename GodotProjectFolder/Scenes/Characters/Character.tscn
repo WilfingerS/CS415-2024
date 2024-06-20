@@ -236,7 +236,7 @@ height = 50.0
 
 [node name="Character" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(-1.90735e-06, -9.53674e-07)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.3, 0.3)
 collision_layer = 2
 script = ExtResource("1_pcl0v")
 
@@ -273,6 +273,7 @@ position = Vector2(4.76838e-06, -25)
 zoom = Vector2(4, 4)
 
 [node name="Inventory" parent="." instance=ExtResource("6_7tiec")]
+z_index = 20
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
