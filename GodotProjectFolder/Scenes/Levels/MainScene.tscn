@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=17 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://mijfb7acl1x1" path="res://Scenes/Levels/Key.tscn" id="13_kdxrl"]
 [ext_resource type="PackedScene" uid="uid://cghx8ibvkewpx" path="res://Scenes/Levels/chest.tscn" id="14_f1cru"]
 [ext_resource type="PackedScene" uid="uid://rvpiujtilw1o" path="res://Scenes/Levels/chestNoKey.tscn" id="15_vdy57"]
+[ext_resource type="PackedScene" uid="uid://cqbfd3ribv0bg" path="res://Scenes/Items/coin.tscn" id="16_83xvv"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -76,3 +77,6 @@ position = Vector2(516, -13)
 
 [node name="chest2" parent="." instance=ExtResource("15_vdy57")]
 position = Vector2(-551, -14)
+
+[node name="Coin" parent="." instance=ExtResource("16_83xvv")]
+position = Vector2(18, -29)

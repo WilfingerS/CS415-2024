@@ -11,6 +11,10 @@ const FRICTION: float = 0.15
 # hp stuff yea
 @export var maxHP: int = 3
 @export var HP: int = 3
+@export var coins: int = 0
+func addCoin():
+	coins+=1
+	print(str(coins) + " coins")
 #Signals
 signal hp_changed # gonna be used for later with uh gui or something
 #Onready's
