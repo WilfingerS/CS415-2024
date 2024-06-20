@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=18 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
+[ext_resource type="Script" path="res://Hud/MainScene.gd" id="1_uv7rj"]
 [ext_resource type="PackedScene" uid="uid://bky72twc6w0xk" path="res://Scenes/Levels/torch.tscn" id="4_26dd0"]
 [ext_resource type="PackedScene" uid="uid://dqovgjukcslmp" path="res://Scenes/Levels/ChestRoomLeft.tscn" id="4_ky8q1"]
 [ext_resource type="PackedScene" uid="uid://cvk5t5c7vvgv6" path="res://Scenes/Characters/flail_skeleton.tscn" id="5_2gyns"]
@@ -15,8 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://mijfb7acl1x1" path="res://Scenes/Levels/Key.tscn" id="13_kdxrl"]
 [ext_resource type="PackedScene" uid="uid://cghx8ibvkewpx" path="res://Scenes/Levels/chest.tscn" id="14_f1cru"]
 [ext_resource type="PackedScene" uid="uid://rvpiujtilw1o" path="res://Scenes/Levels/chestNoKey.tscn" id="15_vdy57"]
+[ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="17_70ymj"]
 
 [node name="MainScene" type="Node2D"]
+position = Vector2(529, 293)
+script = ExtResource("1_uv7rj")
 
 [node name="MultiRoom" parent="." instance=ExtResource("1_88w2w")]
 
@@ -76,3 +80,10 @@ position = Vector2(516, -13)
 
 [node name="chest2" parent="." instance=ExtResource("15_vdy57")]
 position = Vector2(-551, -14)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)
+
+[node name="HeartBar" parent="CanvasLayer" instance=ExtResource("17_70ymj")]
+metadata/_edit_use_anchors_ = true

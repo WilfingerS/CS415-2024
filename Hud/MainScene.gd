@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var health_bar = $CanvasLayer/HeartBar
+@onready var health_bar = $CanvasLayer2/HeartBar
 @onready var player = $Player_Character
 
 func _ready():
