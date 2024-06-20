@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=13 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
@@ -12,38 +12,34 @@
 [ext_resource type="PackedScene" uid="uid://cphcsb5h4fvw4" path="res://Scenes/Levels/HallWayVert.tscn" id="10_dde4n"]
 [ext_resource type="PackedScene" uid="uid://bcqpocv0rfv4o" path="res://Scenes/Levels/Door.tscn" id="11_s2nm7"]
 [ext_resource type="PackedScene" uid="uid://bbb8ig83mxoo3" path="res://Scenes/Levels/Door2.tscn" id="12_tsw5y"]
-[ext_resource type="PackedScene" uid="uid://mijfb7acl1x1" path="res://Scenes/Levels/Key.tscn" id="13_kdxrl"]
-[ext_resource type="PackedScene" uid="uid://cghx8ibvkewpx" path="res://Scenes/Levels/chest.tscn" id="14_f1cru"]
-[ext_resource type="PackedScene" uid="uid://rvpiujtilw1o" path="res://Scenes/Levels/chestNoKey.tscn" id="15_vdy57"]
-[ext_resource type="PackedScene" uid="uid://cqbfd3ribv0bg" path="res://Scenes/Items/coin.tscn" id="16_83xvv"]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="MultiRoom" parent="." instance=ExtResource("1_88w2w")]
 
 [node name="HallWay" parent="." instance=ExtResource("9_cpxxh")]
-position = Vector2(160, -46)
+position = Vector2(224, -32)
 
 [node name="HallWay2" parent="." instance=ExtResource("10_dde4n")]
-position = Vector2(-17, -208)
+position = Vector2(-16, -272)
 
 [node name="HallWay3" parent="." instance=ExtResource("10_dde4n")]
-position = Vector2(-16, 288)
+position = Vector2(-16, 368)
 
 [node name="HallWay4" parent="." instance=ExtResource("9_cpxxh")]
-position = Vector2(-351, -43)
+position = Vector2(-416, -32)
 
 [node name="MultiRoom2" parent="." instance=ExtResource("1_88w2w")]
-position = Vector2(-1, 494)
+position = Vector2(0, 640)
 
 [node name="Chest Room2" parent="." instance=ExtResource("4_ky8q1")]
-position = Vector2(-495, -46)
+position = Vector2(-592, -32)
 
 [node name="Chest Room" parent="." instance=ExtResource("5_ocunj")]
-position = Vector2(443, -46)
+position = Vector2(576, -32)
 
 [node name="slime_green" parent="." instance=ExtResource("6_pmy8v")]
-position = Vector2(-462, -8)
+position = Vector2(-637, 42)
 
 [node name="Player_Character" parent="." instance=ExtResource("1_3u81v")]
 position = Vector2(-45, 41)
@@ -58,25 +54,13 @@ zoom = Vector2(5, 5)
 position = Vector2(-41, 77)
 
 [node name="Flail_Skeleton" parent="." instance=ExtResource("5_2gyns")]
-position = Vector2(474, -20)
+position = Vector2(551, -5)
 
 [node name="Arcane_Archer" parent="." instance=ExtResource("8_a2862")]
-position = Vector2(-46, 516)
+position = Vector2(-50, 602)
 
 [node name="Door" parent="." instance=ExtResource("11_s2nm7")]
-position = Vector2(0, -112)
+position = Vector2(0, -128)
 
 [node name="Door2" parent="." instance=ExtResource("12_tsw5y")]
 position = Vector2(119, 0)
-
-[node name="Key" parent="." instance=ExtResource("13_kdxrl")]
-position = Vector2(-28, -47)
-
-[node name="chest" parent="." instance=ExtResource("14_f1cru")]
-position = Vector2(516, -13)
-
-[node name="chest2" parent="." instance=ExtResource("15_vdy57")]
-position = Vector2(-551, -14)
-
-[node name="Coin" parent="." instance=ExtResource("16_83xvv")]
-position = Vector2(18, -29)
