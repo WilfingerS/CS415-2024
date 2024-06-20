@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p7teeue1xepr"
-path="res://.godot/imported/Idle.png-f3ec89cc68ceb60a20667e4ddfa84078.ctex"
+uid="uid://b3r6fcn7bxex5"
+path="res://.godot/imported/Take Hit.png-87ff3b609ffbcbc29dc787894dd83d35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Weapons/Skeleton/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-f3ec89cc68ceb60a20667e4ddfa84078.ctex"]
+source_file="res://Assets/Skeleton/Take Hit.png"
+dest_files=["res://.godot/imported/Take Hit.png-87ff3b609ffbcbc29dc787894dd83d35.ctex"]
 
 [params]
 
