@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var HP:int = 8
+@export var HP:int = 3
 
 var attacking = false
 var is_dead = false

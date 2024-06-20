@@ -99,6 +99,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [52, 53, 54]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Attack1 Hitbox/CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Attack2 Hitbox/CollisionPolygon2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_7asvx"]
 resource_name = "Walk"
@@ -141,7 +165,7 @@ texture = ExtResource("1_1h51o")
 offset = Vector2(0, -16)
 hframes = 13
 vframes = 5
-frame = 8
+frame = 52
 region_rect = Rect2(9, 208, 33, 33)
 
 [node name="Attack1 Hitbox" type="Area2D" parent="Sprite2D"]

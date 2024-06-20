@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=15 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
+[ext_resource type="Script" path="res://Hud/MainScene.gd" id="1_hc07q"]
 [ext_resource type="PackedScene" uid="uid://bky72twc6w0xk" path="res://Scenes/Levels/torch.tscn" id="4_26dd0"]
 [ext_resource type="PackedScene" uid="uid://dqovgjukcslmp" path="res://Scenes/Levels/ChestRoomLeft.tscn" id="4_ky8q1"]
 [ext_resource type="PackedScene" uid="uid://cvk5t5c7vvgv6" path="res://Scenes/Characters/flail_skeleton.tscn" id="5_2gyns"]
@@ -12,8 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://cphcsb5h4fvw4" path="res://Scenes/Levels/HallWayVert.tscn" id="10_dde4n"]
 [ext_resource type="PackedScene" uid="uid://bcqpocv0rfv4o" path="res://Scenes/Levels/Door.tscn" id="11_s2nm7"]
 [ext_resource type="PackedScene" uid="uid://bbb8ig83mxoo3" path="res://Scenes/Levels/Door2.tscn" id="12_tsw5y"]
+[ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="13_0gfro"]
 
 [node name="MainScene" type="Node2D"]
+position = Vector2(552, 292)
+script = ExtResource("1_hc07q")
 
 [node name="MultiRoom" parent="." instance=ExtResource("1_88w2w")]
 
@@ -42,13 +46,10 @@ position = Vector2(443, -46)
 position = Vector2(-462, -8)
 
 [node name="Player_Character" parent="." instance=ExtResource("1_3u81v")]
-position = Vector2(-45, 41)
+position = Vector2(-34, 38)
 scale = Vector2(0.3, 0.3)
 collision_layer = 3
 collision_mask = 3
-
-[node name="Camera2D2" type="Camera2D" parent="Player_Character"]
-zoom = Vector2(5, 5)
 
 [node name="Torch" parent="." instance=ExtResource("4_26dd0")]
 position = Vector2(-41, 77)
@@ -64,3 +65,14 @@ position = Vector2(0, -112)
 
 [node name="Door2" parent="." instance=ExtResource("12_tsw5y")]
 position = Vector2(119, 0)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)
+
+[node name="HeartBar" parent="CanvasLayer2" instance=ExtResource("13_0gfro")]
+offset_left = 5.5
+offset_top = 9.5
+offset_right = 94.5
+offset_bottom = 17.5
+metadata/_edit_use_anchors_ = true

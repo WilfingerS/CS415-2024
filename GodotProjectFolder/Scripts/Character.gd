@@ -9,8 +9,8 @@ const FRICTION: float = 0.15
 @export var acceleration: int = 40
 @export var maxSpeed: int = 100
 # hp stuff yea
-@export var maxHP: int = 5 
-@export var HP: int = 5
+@export var maxHP: int = 3
+@export var HP: int = 3
 #Signals
 signal hp_changed # gonna be used for later with uh gui or something
 #Onready's
@@ -42,16 +42,12 @@ func parry():
 	if blocking || isHit: # since events handled on _input use just_pressed
 		return
 	blocking = true
-	shield.Block()
-	print("Block?")
-	$AnimationPlayer.play("Block")
-	var block_duration = $AnimationPlayer.current_animation_length
-	await get_tree().create_timer(block_duration).timeout
+	await shield.Block()
 	blocking = false
 
 # Health Stuff
 func take_damage(dmg:int):
-	if isHit || blocking:
+	if isHit or blocking or isDead:
 		return
 	
 	isHit = true
@@ -70,17 +66,23 @@ func set_hp(newHP):
 			HP = newHP
 	else:
 		HP = maxHP
-		
+	hp_changed.emit(newHP)
 func kill():
-	print("Player Dead?")
+	#print("Player Dead?")
 	isDead = true
+	weapon.visible = false
+	shield.visible = false  
+	$AnimationPlayer.play("Death_Roll")
+	await get_tree().create_timer(1.5).timeout
+	$AnimationPlayer.play("Death")
+	
 	# NOTE: IF THE PLAYER DIES THE GAME WILL CLOSE LOL
 	#queue_free() # apparently this will delete node after it can be
 	
 # Movement Stuff
 func move():
 	mov_Direction = Vector2.ZERO
-	if not(isDead and blocking):
+	if not(isDead):
 		mov_Direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
 			Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -113,7 +115,7 @@ func _physics_process(_delta):
 	var mouse_position = get_global_mouse_position()		
 	var direction = mouse_position - global_position
 	var angle = direction.angle()	
-	if not isHit:
+	if not isHit and not isDead:
 		if velocity.length() < 1:
 			if abs(angle) < PI / 4:
 				shield.Right()
