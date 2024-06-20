@@ -18,7 +18,10 @@ func Physics_Update(delta:float):
 	var angle_to_player = direction.angle()
 	rayCast.global_rotation = angle_to_player
 	
-	if direction.length() > attempt_attack_range:
+	if direction.length() >= attempt_attack_range:
+		enemy.velocity = direction * speed
+	if direction.length() < attempt_attack_range:
+		direction = enemy.global_position - player.global_position
 		enemy.velocity = direction * speed
 	else:	
 		if player.global_position.x < enemy.global_position.x:

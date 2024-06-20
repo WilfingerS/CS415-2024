@@ -2,12 +2,10 @@ extends CharacterBody2D
 
 @export var HP:int = 5
 @export var damage:int = 2
-@export var attType = "melee"
 
 var attacking = false
 var is_dead = false
 var is_hit = false
-var stunned = false
 
 func _physics_process(_delta):
 	if is_dead || is_hit || attacking:
@@ -39,7 +37,6 @@ func attack():
 	var attack_duration = $AnimationPlayer.current_animation_length
 	await get_tree().create_timer(attack_duration).timeout
 	attacking = false
-
 	
 func take_damage(dmg:int):
 	if is_dead:

@@ -9,27 +9,22 @@ func _init():
 func _ready():
 	connect("area_entered", self._on_area_entered)
 
-
 func _on_area_entered(area: Area2D) -> void:
 	if _is_valid_hit(area):
 		var hitbox = area as Hitbox
 		var hurtOwner = self.get_owner()
 		print(hitbox.owner.name + " hit: " + self.get_parent().name)
+		
 		if hurtOwner.is_in_group("Player"):
 			if hurtOwner.blocking == true:
-				print("parried")
-				if (hitbox.owner.attType == "melee"):
-					print("stun")
-					hitbox.owner.take_damage(hitbox.owner.damage)
-				elif (hitbox.owner.attType == "ranged"):
-					# spawn projectile and reflect it
-					pass
+				if hitbox.get_parent().has_method("reflect"):
+					hitbox.owner.reflect()
 				else:
-					pass
+					hitbox.owner.take_damage(0)
 			else:
-				self.owner.take_damage(hitbox.owner.damage)
+				hurtOwner.take_damage(hitbox.owner.damage)
 		else:
-			self.owner.take_damage(hitbox.owner.damage)
+			hurtOwner.take_damage(hitbox.owner.damage)
 
 func _is_valid_hit(area: Area2D) -> bool:
 	if area is Hitbox:
@@ -38,5 +33,3 @@ func _is_valid_hit(area: Area2D) -> bool:
 		var hurtboxGroup = self.get_owner().get_groups()
 		return hitboxGroup != hurtboxGroup and hitbox.owner != self.get_parent() and not self.get_parent().is_ancestor_of(hitbox)
 	return false
-	
-	

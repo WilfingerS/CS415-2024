@@ -11,35 +11,43 @@ const FRICTION: float = 0.15
 # hp stuff yea
 @export var maxHP: int = 5 
 @export var HP: int = 5
+@export var coins: int = 0
 #Signals
 signal hp_changed # gonna be used for later with uh gui or something
 #Onready's
 @onready var sprite:Sprite2D = get_node("CharSprite")
 @onready var hurtBox:Hurtbox = get_node("Hurtbox")
-@onready var weapon:Node2D = get_node("Weapon")
-@onready var damage = weapon.damage
+@onready var inventory = get_node("Inventory")
 @onready var bombScene = preload("res://Scenes/Weapons/bomb.tscn")
-
+@onready var weapon:Node2D = get_node("Weapon")
+@onready var shield:Sprite2D = get_node("Shield")
+@onready var damage = weapon.damage
 #other used variables
 var mov_Direction:Vector2 = Vector2.ZERO
-@export var blocking = false
+var blocking = false
 var isDead = false
 var isHit = false
-
+	
 # Actions
 func pickUP():
 	pass
 	
+func addCoin():
+	coins+=1
+	print(str(coins) + " coins")
+	
 func use_Bomb():
-	var bomb = bombScene.instantiate()
-	owner.add_child(bomb)
-	bomb.player = self
-	bomb.explode()
+	if inventory.use_consumable("bomb"):
+		var bomb = bombScene.instantiate()
+		owner.add_child(bomb)
+		bomb.player = self
+		bomb.explode()
 
 func parry():
 	if blocking || isHit: # since events handled on _input use just_pressed
 		return
 	blocking = true
+	shield.Block()
 	print("Block?")
 	$AnimationPlayer.play("Block")
 	var block_duration = $AnimationPlayer.current_animation_length
@@ -53,7 +61,6 @@ func take_damage(dmg:int):
 	
 	isHit = true
 	$AnimationPlayer.play("OnHit")
-	print("ouch")
 	var  invincibility_length = $AnimationPlayer.current_animation_length
 	await get_tree().create_timer(invincibility_length).timeout
 	set_hp(HP - dmg)
@@ -91,7 +98,50 @@ func _physics_process(_delta):
 	# Character Move OverHere
 	move_and_slide()
 	move()
-	#create_bomb()
+	
+	# Velocity based facing
+	
+	#if velocity.length() < 1:
+		#$AnimationPlayer.stop() # or play an idle animation
+	#elif abs(velocity.y) > abs(velocity.x):
+		#if velocity.y > 0:
+			#$AnimationPlayer.play("Down_Move")
+		#else:
+			#$AnimationPlayer.play("Up_Move")
+	#else:
+		#if velocity.x > 0:
+			#$AnimationPlayer.play("Right_Move")
+		#else:
+			#$AnimationPlayer.play("Left_Move")
+	
+	#rotation based facing
+	var mouse_position = get_global_mouse_position()		
+	var direction = mouse_position - global_position
+	var angle = direction.angle()	
+	if not isHit:
+		if velocity.length() < 1:
+			if abs(angle) < PI / 4:
+				shield.Right()
+				$AnimationPlayer.play("Right")
+			elif abs(angle) > 3 * PI / 4:
+				shield.Left()
+				$AnimationPlayer.play("Left")
+			elif angle > 0:
+				shield.Down()
+				$AnimationPlayer.play("Down")
+			else:
+				shield.Up()
+				$AnimationPlayer.play("Up")
+		else:
+			if abs(angle) < PI / 4:
+				$AnimationPlayer.play("Right_Move")
+			elif abs(angle) > 3 * PI / 4:
+				$AnimationPlayer.play("Left_Move")
+			elif angle > 0:
+				$AnimationPlayer.play("Down_Move")
+			else:
+				$AnimationPlayer.play("Up_Move")
+			
 func _input(event):
 	if isDead: #Can't Perform Actions if dead
 		return
@@ -102,3 +152,5 @@ func _input(event):
 		parry()
 	if event.is_action_pressed("bomb"):
 		use_Bomb()
+	if event.is_action_pressed("inventory"):
+		inventory.access()

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var HP:int = 3
+@export var HP:int = 8
 
 var attacking = false
 var is_dead = false
@@ -29,7 +29,6 @@ func flip():
 	$Sprite2D.set_scale(Vector2(-1,1))
 
 func attack():
-	print("ENTER ATTACK")
 	if is_dead || is_hit:
 		var stun_duration = $AnimationPlayer.current_animation_length
 		await get_tree().create_timer(stun_duration).timeout
@@ -40,10 +39,8 @@ func attack():
 	var attack_duration = $AnimationPlayer.current_animation_length + .1
 	await get_tree().create_timer(attack_duration).timeout
 	attacking = false
-	print("EXIT ATTACK")
 	
 func take_damage(dmg:int):
-	print("ENTER DMG")
 	if is_dead:
 		return
 		
