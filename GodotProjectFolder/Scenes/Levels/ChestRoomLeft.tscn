@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqovgjukcslmp"]
+[gd_scene load_steps=4 format=3 uid="uid://dqovgjukcslmp"]
 
 [ext_resource type="Texture2D" uid="uid://coyng8st7lxvy" path="res://Assets/Dungeon_Tileset.png" id="1_k1mx3"]
-[ext_resource type="PackedScene" uid="uid://cghx8ibvkewpx" path="res://Scenes/Levels/chest.tscn" id="2_vkcsr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yst0j"]
 texture = ExtResource("1_k1mx3")
@@ -122,7 +121,3 @@ layer_1/tile_data = PackedInt32Array(-262142, 0, 9, -196610, 0, 9, 393211, 65536
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
 polygon = PackedVector2Array(-79, -47, 95, -47, 95, 16, 112, 16, 112, -64, -96, -64, -96, 128, 112, 128, 112, 48, 95, 48, 95, 111, -79, 111)
-
-[node name="chest" parent="." instance=ExtResource("2_vkcsr")]
-position = Vector2(-56, 33)
-scale = Vector2(0.1, 0.1)
