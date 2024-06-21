@@ -41,7 +41,7 @@ func use_Bomb():
 		owner.add_child(bomb)
 		bomb.player = self
 		bomb.explode()
-
+		
 func parry():
 	if blocking || isHit: # since events handled on _input use just_pressed
 		return

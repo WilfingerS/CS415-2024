@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=10 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/Dungeon Parts/MultiRoom.tscn" id="1_88w2w"]
 [ext_resource type="Script" path="res://Hud/MainScene.gd" id="1_uv7rj"]
 [ext_resource type="PackedScene" uid="uid://oufsqmno882m" path="res://Scenes/Levels/Dungeon Parts/HallWay.tscn" id="5_e53sq"]
 [ext_resource type="PackedScene" uid="uid://dqovgjukcslmp" path="res://Scenes/Levels/Dungeon Parts/ChestRoom.tscn" id="6_4ceu3"]
+[ext_resource type="PackedScene" uid="uid://rvpiujtilw1o" path="res://Scenes/Levels/Interactable/chestNoKey.tscn" id="7_ige5o"]
+[ext_resource type="PackedScene" uid="uid://cs5nstle380af" path="res://Scenes/Items/potion.tscn" id="8_hy156"]
+[ext_resource type="PackedScene" uid="uid://clp3rxlbhwvv6" path="res://Scenes/Characters/slime_green.tscn" id="9_blyy6"]
 [ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="17_70ymj"]
 
 [node name="MainScene" type="Node2D"]
@@ -36,3 +39,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Chest Room" parent="." instance=ExtResource("6_4ceu3")]
 position = Vector2(591, 32)
 rotation = 3.14159
+
+[node name="chest" parent="." instance=ExtResource("7_ige5o")]
+position = Vector2(-8, -25)
+Path = ExtResource("8_hy156")
+
+[node name="Slime_Green" parent="." instance=ExtResource("9_blyy6")]
+position = Vector2(57, -26)

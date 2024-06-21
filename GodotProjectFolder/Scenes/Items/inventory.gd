@@ -33,11 +33,11 @@ func use_consumable(item:String):
 
 func add_consumable(item:String):
 	if item == "bomb":
+		if inventory[2][1] > 0:
+			inventory[2][1] += 1
+	if item == "potion":
 		if inventory[3][1] > 0:
 			inventory[3][1] += 1
-	if item == "potion":
-		if inventory[4][1] > 0:
-			inventory[4][1] += 1
 	update_ui()
 
 func update_ui():
