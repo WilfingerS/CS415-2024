@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://bcqpocv0rfv4o"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/Door.gd" id="1_f2rq2"]
-[ext_resource type="Texture2D" uid="uid://cj8vn420xqnre" path="res://Assets/Eli Door Open.png" id="2_uldup"]
-[ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="2_wsfaa"]
+[ext_resource type="Script" path="res://Scripts/Door.gd" id="1_yy8fv"]
+[ext_resource type="Texture2D" uid="uid://cj8vn420xqnre" path="res://Assets/Eli Door Open.png" id="2_77wbq"]
+[ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="3_3fxoc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncsu4"]
-size = Vector2(20, 33)
+size = Vector2(20, 40.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nodh8"]
-size = Vector2(14, 6)
+size = Vector2(14, 28)
 
 [sub_resource type="Animation" id="Animation_wdqx0"]
 length = 0.001
@@ -72,18 +72,18 @@ _data = {
 }
 
 [node name="Door" type="Node2D"]
-script = ExtResource("1_f2rq2")
+script = ExtResource("1_yy8fv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
-texture = ExtResource("2_uldup")
+texture = ExtResource("2_77wbq")
 hframes = 3
 
-[node name="InteractionArea" parent="." instance=ExtResource("2_wsfaa")]
+[node name="InteractionArea" parent="." instance=ExtResource("3_3fxoc")]
 action_name = "Open Door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(-1, -6)
+position = Vector2(-1, -9.75)
 shape = SubResource("RectangleShape2D_ncsu4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -91,7 +91,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1, -4)
+position = Vector2(-1, -15)
 shape = SubResource("RectangleShape2D_nodh8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

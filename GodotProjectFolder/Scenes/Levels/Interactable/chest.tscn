@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://rvpiujtilw1o"]
+[gd_scene load_steps=10 format=3 uid="uid://cghx8ibvkewpx"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/chestNoKey.gd" id="1_5bdnu"]
-[ext_resource type="Texture2D" uid="uid://burnvbdenagal" path="res://Assets/2D Pixel Dungeon Asset Pack/items and trap_animation/chest/AllTogetherChest.png" id="2_ao6cd"]
-[ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="3_wswgy"]
+[ext_resource type="Script" path="res://Scripts/chest.gd" id="1_v2m2a"]
+[ext_resource type="Texture2D" uid="uid://burnvbdenagal" path="res://Assets/2D Pixel Dungeon Asset Pack/items and trap_animation/chest/AllTogetherChest.png" id="2_ut7rv"]
+[ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="3_c47yh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh3du"]
 size = Vector2(120, 120)
@@ -67,11 +67,11 @@ _data = {
 
 [node name="chest" type="Node2D"]
 scale = Vector2(0.1, 0.1)
-script = ExtResource("1_5bdnu")
+script = ExtResource("1_v2m2a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(10, 10)
-texture = ExtResource("2_ao6cd")
+texture = ExtResource("2_ut7rv")
 hframes = 8
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -82,7 +82,7 @@ collision_mask = 3
 position = Vector2(-9.53674e-06, -9.53674e-06)
 shape = SubResource("RectangleShape2D_sh3du")
 
-[node name="InteractionArea" parent="." instance=ExtResource("3_wswgy")]
+[node name="InteractionArea" parent="." instance=ExtResource("3_c47yh")]
 action_name = "Open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
@@ -93,3 +93,13 @@ libraries = {
 "": SubResource("AnimationLibrary_jyqg5")
 }
 autoplay = "idle"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -160.0
+offset_top = -110.0
+offset_right = 144.0
+offset_bottom = -60.0
+theme_override_font_sizes/font_size = 34
+text = "You Have No Keys"
+horizontal_alignment = 1
+vertical_alignment = 1

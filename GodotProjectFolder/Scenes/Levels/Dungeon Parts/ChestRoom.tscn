@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqovgjukcslmp"]
+[gd_scene load_steps=9 format=3 uid="uid://dqovgjukcslmp"]
 
-[ext_resource type="Texture2D" uid="uid://coyng8st7lxvy" path="res://Assets/Dungeon_Tileset.png" id="1_k1mx3"]
-[ext_resource type="Texture2D" uid="uid://r7se2pkijaca" path="res://Assets/TILESET_DUNGEON.png" id="2_8mq6a"]
+[ext_resource type="Texture2D" uid="uid://coyng8st7lxvy" path="res://Assets/Dungeon_Tileset.png" id="1_7b8jk"]
+[ext_resource type="Texture2D" uid="uid://r7se2pkijaca" path="res://Assets/TILESET_DUNGEON.png" id="2_6rwrs"]
+[ext_resource type="PackedScene" uid="uid://bcqpocv0rfv4o" path="res://Scenes/Levels/Interactable/Door.tscn" id="3_gkepw"]
+[ext_resource type="PackedScene" uid="uid://bqbgrqlrxc8io" path="res://Scenes/Levels/Dungeon Parts/TorchWall.tscn" id="4_e4mko"]
+[ext_resource type="PackedScene" uid="uid://1ybnqh3qmc78" path="res://Scenes/Levels/Dungeon Parts/DoorPathCover.tscn" id="5_el13g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yst0j"]
-texture = ExtResource("1_k1mx3")
+texture = ExtResource("1_7b8jk")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -107,7 +110,7 @@ texture = ExtResource("1_k1mx3")
 9:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkgpj"]
-texture = ExtResource("2_8mq6a")
+texture = ExtResource("2_6rwrs")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -322,6 +325,7 @@ sources/0 = SubResource("TileSetAtlasSource_yst0j")
 sources/1 = SubResource("TileSetAtlasSource_fkgpj")
 
 [node name="Chest Room" type="Node2D"]
+z_index = -1
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vo7aq")
@@ -334,3 +338,37 @@ layer_1/tile_data = PackedInt32Array()
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
 polygon = PackedVector2Array(-80, -48, 80, -48, 80, 24, 112, 24, 112, -80, -112, -80, -112, 144, 112, 144, 112, 40, 80, 40, 80, 112, -80, 112)
+
+[node name="Door" parent="." instance=ExtResource("3_gkepw")]
+position = Vector2(79, 33)
+rotation = 1.57079
+
+[node name="TorchWall" parent="." instance=ExtResource("4_e4mko")]
+position = Vector2(-18, -57)
+
+[node name="TorchWall2" parent="." instance=ExtResource("4_e4mko")]
+position = Vector2(20, -57)
+
+[node name="TorchWall3" parent="." instance=ExtResource("4_e4mko")]
+position = Vector2(-18, 121)
+rotation = -3.14159
+
+[node name="TorchWall4" parent="." instance=ExtResource("4_e4mko")]
+position = Vector2(17, 121)
+rotation = -3.14159
+
+[node name="TorchWall5" parent="." instance=ExtResource("4_e4mko")]
+position = Vector2(-90, 33)
+rotation = -1.57079
+
+[node name="TorchWall6" parent="." instance=ExtResource("4_e4mko")]
+position = Vector2(89, 54)
+rotation = 1.57079
+
+[node name="TorchWall7" parent="." instance=ExtResource("4_e4mko")]
+position = Vector2(89, 11)
+rotation = 1.57079
+
+[node name="Top" parent="." instance=ExtResource("5_el13g")]
+position = Vector2(112, 32)
+rotation = -1.57079
