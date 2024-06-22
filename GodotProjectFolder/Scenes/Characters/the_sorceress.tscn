@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://rhhukbmueh53"]
+
+[ext_resource type="Texture2D" uid="uid://cmt4v348owlah" path="res://Assets/The Sorceress.png" id="1_23kwe"]
+[ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="2_1px53"]
+[ext_resource type="Script" path="res://Scripts/TheSorceress/Engage.gd" id="3_muakj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68wpp"]
+size = Vector2(32, 54)
+
+[node name="The Sorceress" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -27)
+scale = Vector2(0.3875, 0.613636)
+texture = ExtResource("1_23kwe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27)
+shape = SubResource("RectangleShape2D_68wpp")
+
+[node name="State Control" type="Node" parent="."]
+script = ExtResource("2_1px53")
+
+[node name="Engage" type="Node" parent="State Control"]
+script = ExtResource("3_muakj")
