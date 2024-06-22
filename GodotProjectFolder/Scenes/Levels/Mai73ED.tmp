@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://babnmxqdpfmjs"]
+
+[ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
+[ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/MultiRoom.tscn" id="1_88w2w"]
+[ext_resource type="Script" path="res://Hud/MainScene.gd" id="1_uv7rj"]
+[ext_resource type="PackedScene" uid="uid://5dnflp2x3nl4" path="res://Scenes/Projectiles/magic_missile.tscn" id="5_md4jj"]
+[ext_resource type="PackedScene" uid="uid://bcvjqylald7g8" path="res://Scenes/Projectiles/arcane_arrow.tscn" id="6_uj8xt"]
+[ext_resource type="PackedScene" uid="uid://4evtkf3vje6p" path="res://Scenes/Projectiles/summon_effect.tscn" id="7_b5s65"]
+[ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="17_70ymj"]
+
+[node name="MainScene" type="Node2D"]
+position = Vector2(529, 293)
+script = ExtResource("1_uv7rj")
+
+[node name="MultiRoom" parent="." instance=ExtResource("1_88w2w")]
+
+[node name="Character" parent="." instance=ExtResource("1_3u81v")]
+position = Vector2(-17, 34)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.6
+blend_mode = 1
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)
+
+[node name="HeartBar" parent="CanvasLayer" instance=ExtResource("17_70ymj")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Magic Missile" parent="." instance=ExtResource("5_md4jj")]
+position = Vector2(-75, -25)
+
+[node name="Arrow" parent="." instance=ExtResource("6_uj8xt")]
+position = Vector2(-74, -38)
+speed = null
+damage = null
+
+[node name="Summon Effect" parent="." instance=ExtResource("7_b5s65")]
+position = Vector2(-104, -49)
