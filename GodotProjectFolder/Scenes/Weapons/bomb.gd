@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player: CharacterBody2D
+@onready var explostion = $AudioStreamPlayer
 var damage:int = 3
 
 # creating bomb is now handled in the CharacterScript
@@ -19,6 +20,8 @@ func _on_animation_finished(anim_name):
 func explode():
 	self.position = player.position
 	$AnimationPlayer.play("explosion")
+	explostion.play()
+	
 	
 func _ready():
 	# Connect to the animation finished signal

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0kv8smv4doo2"]
+[gd_scene load_steps=9 format=3 uid="uid://c0kv8smv4doo2"]
 
 [ext_resource type="Texture2D" uid="uid://dooyv6iwtkcqw" path="res://Assets/bombPlaceholder.png" id="1_tgtdv"]
 [ext_resource type="Script" path="res://Scenes/Weapons/bomb.gd" id="1_vx7us"]
 [ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="2_dvpj8"]
+[ext_resource type="AudioStream" uid="uid://cexni2s4d07wn" path="res://Scenes/Weapons/explosion-6055.mp3" id="4_rmrnv"]
 
 [sub_resource type="Animation" id="Animation_6fpn1"]
 length = 0.001
@@ -64,3 +65,8 @@ script = ExtResource("2_dvpj8")
 scale = Vector2(1.165, 1.165)
 shape = SubResource("CircleShape2D_owj4c")
 disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rmrnv")
+volume_db = -1.874
+pitch_scale = 1.9

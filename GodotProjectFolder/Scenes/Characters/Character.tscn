@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bddrcwkuo7k48"]
+[gd_scene load_steps=24 format=3 uid="uid://bddrcwkuo7k48"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_pcl0v"]
 [ext_resource type="Shader" path="res://Assets/on_hit_flash.gdshader" id="2_mrv5d"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="4_62fq6"]
 [ext_resource type="PackedScene" uid="uid://r5aogxe6cokx" path="res://Scenes/Weapons/shield.tscn" id="5_yrdbc"]
 [ext_resource type="PackedScene" uid="uid://opno0b2nuak3" path="res://Scenes/Items/inventory.tscn" id="6_7tiec"]
+[ext_resource type="AudioStream" uid="uid://d06dl6026e4u" path="res://medieval-background-196571.mp3" id="8_44uus"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dqhrg"]
 shader = ExtResource("2_mrv5d")
@@ -291,3 +292,8 @@ script = ExtResource("4_62fq6")
 position = Vector2(4.76837e-06, -25)
 shape = SubResource("CapsuleShape2D_crbhn")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_44uus")
+volume_db = -16.199
+autoplay = true
