@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/States/EnemyRetreat.gd" id="8_7y2c8"]
 [ext_resource type="PackedScene" uid="uid://5dnflp2x3nl4" path="res://Scenes/Projectiles/magic_missile.tscn" id="8_ctycn"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="9_14fak"]
-[ext_resource type="Script" path="res://Scripts/States/EnemySummon.gd" id="9_vb21g"]
+[ext_resource type="Script" path="res://Scripts/Necromancer/EnemySummon.gd" id="9_vb21g"]
 [ext_resource type="PackedScene" uid="uid://cvk5t5c7vvgv6" path="res://Scenes/Characters/flail_skeleton.tscn" id="10_eo0t0"]
 [ext_resource type="PackedScene" uid="uid://4evtkf3vje6p" path="res://Scenes/Projectiles/summon_effect.tscn" id="11_eupuc"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmt4v348owlah"
-path="res://.godot/imported/The Sorceress.png-528c5942dd565745f4d851ed2cd607fd.ctex"
+uid="uid://ciitelgpejcdj"
+path="res://.godot/imported/BOSS_SHADOW.png-7077c9f518f3c31c5e66dc882d8a582a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/The Sorceress.png"
-dest_files=["res://.godot/imported/The Sorceress.png-528c5942dd565745f4d851ed2cd607fd.ctex"]
+source_file="res://Assets/BOSS_SHADOW.png"
+dest_files=["res://.godot/imported/BOSS_SHADOW.png-7077c9f518f3c31c5e66dc882d8a582a.ctex"]
 
 [params]
 
