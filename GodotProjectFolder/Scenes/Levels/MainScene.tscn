@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Hud/MainScene.gd" id="1_uv7rj"]
 [ext_resource type="PackedScene" uid="uid://oufsqmno882m" path="res://Scenes/Levels/Dungeon Parts/HallWay.tscn" id="5_e53sq"]
 [ext_resource type="PackedScene" uid="uid://dqovgjukcslmp" path="res://Scenes/Levels/Dungeon Parts/ChestRoom.tscn" id="6_4ceu3"]
-[ext_resource type="PackedScene" uid="uid://u1ixxtopxv2p" path="res://Scenes/Levels/Dungeon Parts/Starting Room.tscn" id="8_4yt8a"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/Dungeon Parts/Starting Room.tscn" id="8_4yt8a"]
 [ext_resource type="PackedScene" uid="uid://clp3rxlbhwvv6" path="res://Scenes/Characters/slime_green.tscn" id="9_blyy6"]
 [ext_resource type="Texture2D" uid="uid://dthkg88xvlsf5" path="res://Assets/BackGround.png" id="9_pemxe"]
 [ext_resource type="AudioStream" uid="uid://d06dl6026e4u" path="res://medieval-background-196571.mp3" id="10_gjugl"]

@@ -8,15 +8,23 @@ const FRICTION: float = 0.15
 # walking
 @export var acceleration: int = 40
 @export var maxSpeed: int = 100
-# hp stuff yea
+# hp stuff/items yea
 @export var maxHP: int = 10
 @export var HP: int = 10
+
 @export var coins: int = 0
-func addCoin():
-	coins+=1
-	print(str(coins) + " coins")
-#Signals
+@export var bombs: int = 5
+@export var keys: int = 0
+@export var potions: int = 0
+
+#Signals (Hopefully self explanatory)
 signal hp_changed # gonna be used for later with uh gui or something
+signal bomb_changed
+signal key_changed
+signal coin_changed
+signal potion_changed
+
+
 #Onready's
 @onready var sprite:Sprite2D = get_node("CharSprite")
 @onready var hurtBox:Hurtbox = get_node("Hurtbox")
@@ -25,22 +33,35 @@ signal hp_changed # gonna be used for later with uh gui or something
 @onready var weapon:Node2D = get_node("Weapon")
 @onready var shield:Sprite2D = get_node("Shield")
 @onready var damage = weapon.damage
+
 #other used variables
 var mov_Direction:Vector2 = Vector2.ZERO
 var blocking = false
 var isDead = false
 var isHit = false
+# Update Items?
+func upgradeWeapon():
+	weapon.upgrade()
+	damage = weapon.damage 
 	
+func addCoin():
+	coins+=1
+	print(str(coins) + " coins")
+	coin_changed.emit(coins)
+	
+func useKey():
+	if keys > 0:
+		keys -= 1
+		key_changed.emit(keys)
 # Actions
-func pickUP():
-	pass
-	
 func use_Bomb():
-	if inventory.use_consumable("bomb"):
+	if bombs > 0:
 		var bomb = bombScene.instantiate()
 		owner.add_child(bomb)
 		bomb.player = self
 		bomb.explode()
+		bombs -= 1
+		bomb_changed.emit(bombs)
 		
 func parry():
 	if blocking || isHit: # since events handled on _input use just_pressed
@@ -153,9 +174,8 @@ func _input(event):
 		
 	if event.is_action_pressed("attack"):
 		weapon.ATTACK()
+		upgradeWeapon()
 	if event.is_action_pressed("block"):
 		parry()
 	if event.is_action_pressed("bomb"):
 		use_Bomb()
-	if event.is_action_pressed("inventory"):
-		inventory.access()
