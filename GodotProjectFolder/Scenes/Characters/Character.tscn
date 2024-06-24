@@ -269,7 +269,7 @@ debug_color = Color(0.345241, 0.556973, 0.740921, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(4.76838e-06, -25)
-zoom = Vector2(4, 4)
+zoom = Vector2(6, 6)
 
 [node name="Inventory" parent="." instance=ExtResource("6_7tiec")]
 z_index = 20

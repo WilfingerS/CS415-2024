@@ -5,7 +5,7 @@ extends State
 @export var rayCast: RayCast2D
 
 func Enter():
-	print("Magic Missle")
+	print("Magic Missile")
 	enemy.velocity = Vector2.ZERO
 	await enemy.cast()
 	if projectile:

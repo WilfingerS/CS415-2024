@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://rhhukbmueh53"]
+[gd_scene load_steps=20 format=3 uid="uid://rhhukbmueh53"]
 
 [ext_resource type="Script" path="res://Scripts/TheSorceress/the_sorceress.gd" id="1_oe1ie"]
 [ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="2_1px53"]
@@ -9,15 +9,32 @@
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Cast.gd" id="7_tkkjf"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Summon.gd" id="8_loxtb"]
 [ext_resource type="PackedScene" uid="uid://cvk5t5c7vvgv6" path="res://Scenes/Characters/flail_skeleton.tscn" id="9_obl4o"]
+[ext_resource type="PackedScene" uid="uid://bj53m0le6fixn" path="res://Scenes/Characters/arcane_archer.tscn" id="10_kg8qd"]
 [ext_resource type="PackedScene" uid="uid://4evtkf3vje6p" path="res://Scenes/Projectiles/summon_effect.tscn" id="10_wyx51"]
-[ext_resource type="Script" path="res://Scripts/TheSorceress/Magic Missle.gd" id="11_3q8mw"]
 [ext_resource type="PackedScene" uid="uid://5dnflp2x3nl4" path="res://Scenes/Projectiles/magic_missile.tscn" id="12_dflla"]
+[ext_resource type="Script" path="res://Scripts/TheSorceress/Magic Missile.gd" id="12_uuafg"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Force Current.gd" id="13_j7uls"]
 [ext_resource type="PackedScene" uid="uid://cexkcx50jsodx" path="res://Scenes/Projectiles/force_wave.tscn" id="14_bb51k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_plssy"]
 radius = 18.0
 height = 62.0
+
+[sub_resource type="Animation" id="Animation_6284q"]
+resource_name = "Cast"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
 
 [sub_resource type="Animation" id="Animation_qfsa1"]
 resource_name = "Idle"
@@ -34,22 +51,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_6284q"]
-resource_name = "Cast"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11, 12, 13, 14, 15]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5rtrg"]
@@ -91,18 +92,22 @@ enemy = NodePath("../../..")
 [node name="Cast" type="Node" parent="State Control" node_paths=PackedStringArray("enemy", "rayCast")]
 script = ExtResource("7_tkkjf")
 enemy = NodePath("../..")
+cast_range = 100
 rayCast = NodePath("../../RayCast2D")
+
+[node name="spell_cast_cooldown" type="Timer" parent="State Control/Cast"]
 
 [node name="Summon" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy")]
 script = ExtResource("8_loxtb")
 enemy = NodePath("../../..")
 summoned_creature1 = ExtResource("9_obl4o")
+summoned_creature2 = ExtResource("10_kg8qd")
 summon_effect = ExtResource("10_wyx51")
 
 [node name="Curse" type="Node" parent="State Control/Cast"]
 
-[node name="Magic Missle" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy", "rayCast")]
-script = ExtResource("11_3q8mw")
+[node name="Magic Missile" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy", "rayCast")]
+script = ExtResource("12_uuafg")
 enemy = NodePath("../../..")
 projectile = ExtResource("12_dflla")
 rayCast = NodePath("../../../RayCast2D")
@@ -125,5 +130,6 @@ libraries = {
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(250, 0)
 
+[connection signal="timeout" from="State Control/Cast/spell_cast_cooldown" to="State Control/Cast" method="_on_spell_cast_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="State Control/Cast/Summon" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="State Control/Cast/Magic Missle" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="State Control/Cast/Magic Missile" method="_on_animation_player_animation_finished"]

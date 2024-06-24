@@ -2,6 +2,7 @@ extends State
 
 @export var enemy : CharacterBody2D
 @export var summoned_creature1: PackedScene = null
+@export var summoned_creature2: PackedScene = null
 @export var summon_effect: PackedScene = null
 
 @onready var tilemap_parent = get_tree().current_scene
@@ -10,7 +11,8 @@ func Enter():
 	print("Summon")
 	enemy.velocity = Vector2.ZERO
 	await enemy.cast()
-	summon_enemies(3)
+	summon_enemies(3, summoned_creature1)
+	summon_enemies(2, summoned_creature2) 
 	ChangeState.emit(self, "Cast")
 	
 func detect_tilemap() -> TileMap:
@@ -46,27 +48,19 @@ func detect_tilemap() -> TileMap:
 
 func find_empty_cells(tilemap: TileMap) -> Array:
 	var empty_cells = []
-	var wall_cells = tilemap.get_used_cells(1)  # Get cells occupied by walls in layer 1
-	var all_cells = tilemap.get_used_cells(0)  # Get all cells in layer 0
-
-	# Create a set of excluded cells
-	var excluded_cells = {}
-	for wall_cell in wall_cells:
-		excluded_cells[wall_cell] = true
-		# Add adjacent cells to the exclusion list
-		var adjacent_offsets = [Vector2i(-1, 0), Vector2i(1, 0), Vector2i(0, -1), Vector2i(0, 1)]
-		for offset in adjacent_offsets:
-			var adjacent_cell = wall_cell + offset
-			excluded_cells[adjacent_cell] = true
-
-	# Check all cells in layer 0
+	var all_cells = tilemap.get_used_cells(0)  # Get all used cells in layer 0
+	var collision_cells = tilemap.get_used_cells(1)  # Get used cells in layer 1
+	
 	for cell in all_cells:
-		if not excluded_cells.has(cell):
+		if !collision_cells.has(cell):
 			empty_cells.append(cell)
-
+	
+	print(all_cells.size())
+	print(collision_cells.size())
+	print(empty_cells.size())
 	return empty_cells
 
-func summon_enemies(amount: int):
+func summon_enemies(amount: int, enemy_scene: PackedScene):
 	var tilemap = detect_tilemap()
 	if tilemap:
 		var empty_cells = find_empty_cells(tilemap)
@@ -84,20 +78,18 @@ func summon_enemies(amount: int):
 		for cell_pos in chosen_cells:
 			var cell_local_pos = tilemap.map_to_local(cell_pos)
 			var cell_world_pos = tilemap.to_global(cell_local_pos)
-			summon_enemy_at_position(cell_world_pos)
+			summon_enemy_at_position(cell_world_pos, enemy_scene)
 			
-func summon_enemy_at_position(position: Vector2):
-	
+func summon_enemy_at_position(position: Vector2, enemy_scene: PackedScene):
 	if summon_effect:
 		var effect = summon_effect.instantiate()
 		get_tree().current_scene.add_child(effect)
 		effect.global_position = position
-		#effect.play()
 	
-	if summoned_creature1:
-		var skeleton = summoned_creature1.instantiate()
-		get_tree().current_scene.add_child(skeleton)
-		skeleton.global_position = position
+	if enemy_scene:
+		var enemy_instance = enemy_scene.instantiate()
+		get_tree().current_scene.add_child(enemy_instance)
+		enemy_instance.global_position = position
 			
 		print("Enemy summoned at position: ", position)
 	else:
