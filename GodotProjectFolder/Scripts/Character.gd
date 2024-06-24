@@ -174,7 +174,7 @@ func _input(event):
 		
 	if event.is_action_pressed("attack"):
 		weapon.ATTACK()
-		upgradeWeapon()
+		#upgradeWeapon() This was here for testing
 	if event.is_action_pressed("block"):
 		parry()
 	if event.is_action_pressed("bomb"):
