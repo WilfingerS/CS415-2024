@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=8 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/Dungeon Parts/MultiRoom.tscn" id="1_88w2w"]
 [ext_resource type="Script" path="res://Hud/MainScene.gd" id="1_uv7rj"]
 [ext_resource type="PackedScene" uid="uid://oufsqmno882m" path="res://Scenes/Levels/Dungeon Parts/HallWay.tscn" id="5_e53sq"]
 [ext_resource type="PackedScene" uid="uid://dqovgjukcslmp" path="res://Scenes/Levels/Dungeon Parts/ChestRoom.tscn" id="6_4ceu3"]
+[ext_resource type="PackedScene" uid="uid://rhhukbmueh53" path="res://Scenes/Characters/the_sorceress.tscn" id="7_d30x6"]
 [ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="17_70ymj"]
 
 [node name="MainScene" type="Node2D"]
@@ -17,7 +18,7 @@ script = ExtResource("1_uv7rj")
 position = Vector2(224, -32)
 
 [node name="Character" parent="." instance=ExtResource("1_3u81v")]
-position = Vector2(-17, 34)
+position = Vector2(2, 245)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.6
@@ -27,12 +28,18 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 0, 0)
 
 [node name="HeartBar" parent="CanvasLayer" instance=ExtResource("17_70ymj")]
+offset_left = 21.0
+offset_top = 28.0
+offset_right = 110.0
+offset_bottom = 36.0
+scale = Vector2(7, 7)
 metadata/_edit_use_anchors_ = true
 
 [node name="Chest Room" parent="." instance=ExtResource("6_4ceu3")]
 position = Vector2(591, 32)
 rotation = 3.14159
+
+[node name="The Sorceress" parent="." instance=ExtResource("7_d30x6")]
+position = Vector2(-2, -33)

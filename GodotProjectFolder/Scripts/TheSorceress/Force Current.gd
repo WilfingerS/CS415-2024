@@ -9,7 +9,7 @@ func Enter():
 	enemy.velocity = Vector2.ZERO
 	await enemy.cast()
 	if projectile:
-		var rounds = 10
+		var rounds = 5
 		var rotation_offset = 0
 		var delay_between_rounds = .75  # Adjust this value as needed
 		for round in range(rounds):
