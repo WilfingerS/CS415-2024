@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://Hud/MainScene.gd" id="1_uv7rj"]
 [ext_resource type="PackedScene" uid="uid://oufsqmno882m" path="res://Scenes/Levels/Dungeon Parts/HallWay.tscn" id="5_e53sq"]
 [ext_resource type="PackedScene" uid="uid://dqovgjukcslmp" path="res://Scenes/Levels/Dungeon Parts/ChestRoom.tscn" id="6_4ceu3"]
-[ext_resource type="PackedScene" uid="uid://rvpiujtilw1o" path="res://Scenes/Levels/Interactable/chestNoKey.tscn" id="7_ige5o"]
-[ext_resource type="PackedScene" uid="uid://cs5nstle380af" path="res://Scenes/Items/potion.tscn" id="8_hy156"]
+[ext_resource type="PackedScene" uid="uid://u1ixxtopxv2p" path="res://Scenes/Levels/Dungeon Parts/Starting Room.tscn" id="8_4yt8a"]
 [ext_resource type="PackedScene" uid="uid://clp3rxlbhwvv6" path="res://Scenes/Characters/slime_green.tscn" id="9_blyy6"]
+[ext_resource type="Texture2D" uid="uid://dthkg88xvlsf5" path="res://Assets/BackGround.png" id="9_pemxe"]
 [ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="17_70ymj"]
 
 [node name="MainScene" type="Node2D"]
@@ -19,8 +19,22 @@ script = ExtResource("1_uv7rj")
 [node name="HallWay" parent="." instance=ExtResource("5_e53sq")]
 position = Vector2(224, -32)
 
+[node name="HallWay2" parent="." instance=ExtResource("5_e53sq")]
+position = Vector2(32, 224)
+rotation = 1.57079
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.266667, 0.243137, 0.243137, 1)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1240, 1240)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("9_pemxe")
+
 [node name="Character" parent="." instance=ExtResource("1_3u81v")]
-position = Vector2(-17, 34)
+position = Vector2(-6, 737)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.6
@@ -40,9 +54,8 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(591, 32)
 rotation = 3.14159
 
-[node name="chest" parent="." instance=ExtResource("7_ige5o")]
-position = Vector2(-8, -25)
-Path = ExtResource("8_hy156")
-
 [node name="Slime_Green" parent="." instance=ExtResource("9_blyy6")]
 position = Vector2(57, -26)
+
+[node name="StartingRoom" parent="." instance=ExtResource("8_4yt8a")]
+position = Vector2(0, 640)
