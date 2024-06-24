@@ -9,8 +9,8 @@ const FRICTION: float = 0.15
 @export var acceleration: int = 40
 @export var maxSpeed: int = 100
 # hp stuff yea
-@export var maxHP: int = 3
-@export var HP: int = 3
+@export var maxHP: int = 10
+@export var HP: int = 10
 @export var coins: int = 0
 func addCoin():
 	coins+=1

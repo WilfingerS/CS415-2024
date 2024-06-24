@@ -42,6 +42,6 @@ func reflect():
 	self.add_to_group("Player")
 
 func _on_hitbox_body_entered(body):
-	if body != shooter and !first_collision and !body.get_groups() == shooter.get_groups() or body == player:
+	if !first_collision and body.get_groups() != self.get_groups() or body == player:
 		if not(body == player and player.blocking):
 			destroy()

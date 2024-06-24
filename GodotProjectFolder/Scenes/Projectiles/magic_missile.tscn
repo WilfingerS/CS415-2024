@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5dnflp2x3nl4"]
+[gd_scene load_steps=11 format=3 uid="uid://5dnflp2x3nl4"]
 
 [ext_resource type="Script" path="res://Scripts/Necromancer/magic_missile.gd" id="1_oudw1"]
 [ext_resource type="Script" path="res://Scripts/projectile_hitbox.gd" id="2_ws8qn"]
@@ -35,7 +35,16 @@ _data = {
 "Track": SubResource("Animation_rsxjp")
 }
 
-[node name="Magic Missile" type="Node2D"]
+[sub_resource type="Gradient" id="Gradient_y7mtt"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ua7vb"]
+gradient = SubResource("Gradient_y7mtt")
+fill = 1
+fill_from = Vector2(0.5, 0.527523)
+fill_to = Vector2(0.830275, 0.169725)
+
+[node name="Magic Missile" type="Node2D" groups=["Enemies"]]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_oudw1")
 
@@ -65,6 +74,12 @@ scale = Vector2(1.41667, 0.516667)
 libraries = {
 "": SubResource("AnimationLibrary_xw8l7")
 }
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(2.66667, 5.96046e-07)
+scale = Vector2(0.347656, 0.291667)
+color = Color(0.392157, 0.180392, 1, 1)
+texture = SubResource("GradientTexture2D_ua7vb")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_arcane_arrow_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

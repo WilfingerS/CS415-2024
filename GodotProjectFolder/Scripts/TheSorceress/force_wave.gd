@@ -19,7 +19,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_hitbox_body_entered(body):
 	player = get_tree().get_first_node_in_group("Player")
-	if body != shooter and player.blocking == false:
+	if body != shooter and body.get_groups() != self.get_groups() and player.blocking == false:
 		destroy()
 		
 func reflect():

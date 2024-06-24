@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cexkcx50jsodx"]
+[gd_scene load_steps=11 format=3 uid="uid://cexkcx50jsodx"]
 
 [ext_resource type="Script" path="res://Scripts/TheSorceress/force_wave.gd" id="1_um5a1"]
 [ext_resource type="Script" path="res://Scripts/projectile_hitbox.gd" id="2_18kql"]
@@ -11,8 +11,8 @@ shader_parameter/flash_color = Color(0.764706, 0.0509804, 0.0705882, 1)
 shader_parameter/flash_value = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4ntl"]
-radius = 5.33333
-height = 37.3333
+radius = 6.66667
+height = 58.6667
 
 [sub_resource type="Animation" id="Animation_nt0re"]
 resource_name = "Play"
@@ -36,7 +36,16 @@ _data = {
 "Play": SubResource("Animation_nt0re")
 }
 
-[node name="Force Wave" type="Node2D"]
+[sub_resource type="Gradient" id="Gradient_8d7y4"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7odju"]
+gradient = SubResource("Gradient_8d7y4")
+fill = 1
+fill_from = Vector2(0.5, 0.527523)
+fill_to = Vector2(0.830275, 0.169725)
+
+[node name="Force Wave" type="Node2D" groups=["Enemies"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_um5a1")
 
@@ -55,12 +64,12 @@ vframes = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 visibility_layer = 2
-position = Vector2(-2.66667, 0)
+position = Vector2(-4, 0)
 shape = SubResource("CapsuleShape2D_r4ntl")
 debug_color = Color(0.933354, 0, 0, 0.419608)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Hitbox"]
-position = Vector2(7.62939e-06, 0)
+position = Vector2(-1.33333, 0)
 rotation = -1.5708
 scale = Vector2(1.41667, 0.516667)
 
@@ -68,6 +77,11 @@ scale = Vector2(1.41667, 0.516667)
 libraries = {
 "": SubResource("AnimationLibrary_sjj7s")
 }
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.371745, 0.833333)
+color = Color(0.392157, 0.180392, 1, 1)
+texture = SubResource("GradientTexture2D_7odju")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_arcane_arrow_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

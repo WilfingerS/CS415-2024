@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://s0p7t5g4q00k"]
+[gd_scene load_steps=10 format=3 uid="uid://s0p7t5g4q00k"]
 
 [ext_resource type="Script" path="res://Scripts/TheSorceress/energy_star.gd" id="1_e5xby"]
 [ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="2_uurli"]
@@ -8,7 +8,7 @@
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mqxuc"]
-radius = 5.0
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_r1pt7"]
 resource_name = "Play"
@@ -31,6 +31,15 @@ tracks/0/keys = {
 _data = {
 "Play": SubResource("Animation_r1pt7")
 }
+
+[sub_resource type="Gradient" id="Gradient_qn40s"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ww2ve"]
+gradient = SubResource("Gradient_qn40s")
+fill = 1
+fill_from = Vector2(0.5, 0.527523)
+fill_to = Vector2(0.830275, 0.169725)
 
 [node name="Energy Star" type="CharacterBody2D" groups=["Enemies"]]
 z_index = 1
@@ -58,3 +67,9 @@ shape = SubResource("CircleShape2D_mqxuc")
 libraries = {
 "": SubResource("AnimationLibrary_t04hj")
 }
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(0.265625, 0.265625)
+color = Color(0.392157, 0.180392, 1, 1)
+texture = SubResource("GradientTexture2D_ww2ve")
