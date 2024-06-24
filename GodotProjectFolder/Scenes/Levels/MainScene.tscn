@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=11 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/Dungeon Parts/MultiRoom.tscn" id="1_88w2w"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://u1ixxtopxv2p" path="res://Scenes/Levels/Dungeon Parts/Starting Room.tscn" id="8_4yt8a"]
 [ext_resource type="PackedScene" uid="uid://clp3rxlbhwvv6" path="res://Scenes/Characters/slime_green.tscn" id="9_blyy6"]
 [ext_resource type="Texture2D" uid="uid://dthkg88xvlsf5" path="res://Assets/BackGround.png" id="9_pemxe"]
+[ext_resource type="AudioStream" uid="uid://d06dl6026e4u" path="res://medieval-background-196571.mp3" id="10_gjugl"]
 [ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="17_70ymj"]
 
 [node name="MainScene" type="Node2D"]
@@ -59,3 +60,8 @@ position = Vector2(57, -26)
 
 [node name="StartingRoom" parent="." instance=ExtResource("8_4yt8a")]
 position = Vector2(0, 640)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_gjugl")
+volume_db = -13.117
+autoplay = true
