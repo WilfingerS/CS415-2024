@@ -28,7 +28,7 @@ signal potion_changed
 #Onready's
 @onready var sprite:Sprite2D = get_node("CharSprite")
 @onready var hurtBox:Hurtbox = get_node("Hurtbox")
-@onready var inventory = get_node("Inventory")
+#@onready var inventory = get_node("Inventory")
 @onready var bombScene = preload("res://Scenes/Weapons/bomb.tscn")
 @onready var weapon:Node2D = get_node("Weapon")
 @onready var shield:Sprite2D = get_node("Shield")
