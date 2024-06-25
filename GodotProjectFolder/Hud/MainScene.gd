@@ -7,6 +7,7 @@ extends Node2D
 func _ready():
 	health_bar.setMaxHealth(player.maxHP)
 	health_bar.update(player.HP)
+	player.maxHp_changed.connect(health_bar.setMaxHealth)
 	player.hp_changed.connect(health_bar.update)
 	#Items
 	item_bar.update_bomb(player.bombs)

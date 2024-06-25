@@ -37,14 +37,16 @@ func closeShop():
 	
 func buyitem1():
 	if player.coins >= cost1:
-		player.potions += 1
-		player.coins -= cost1
+		player.spendCoin(cost1)
+		player.addPotion()
 	
 func buyitem2():
 	if player.coins >= cost2:
-		player.maxHP += 1
-		player.HP += 1
-		player.coins -= cost2
+		player.spendCoin(cost2)
+		player.set_maxHP(player.maxHP + 1)
+		#player.maxHP += 1
+		#player.HP += 1
+		#player.coins -= cost2
 
 func _input(event):
 	if event.is_action_pressed("buy1"):

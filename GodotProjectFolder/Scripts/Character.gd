@@ -19,6 +19,7 @@ const FRICTION: float = 0.15
 
 #Signals (Hopefully self explanatory)
 signal hp_changed # gonna be used for later with uh gui or something
+signal maxHp_changed
 signal bomb_changed
 signal key_changed
 signal coin_changed
@@ -34,22 +35,43 @@ signal potion_changed
 @onready var shield:Sprite2D = get_node("Shield")
 @onready var damage = weapon.damage
 
-var talking = false
-
 #other used variables
 var mov_Direction:Vector2 = Vector2.ZERO
 var blocking = false
 var isDead = false
 var isHit = false
+var talking = false
 # Update Items?
 func upgradeWeapon():
 	weapon.upgrade()
 	damage = weapon.damage 
 	
+func spendCoin(amount:int):
+	if coins >= amount:
+		coins -= amount
+		coin_changed.emit(coins)
+		
 func addCoin():
 	coins+=1
+	print(str(coins) + " coins")
 	coin_changed.emit(coins)
+
+func addKey():
+	keys += 1
+	key_changed.emit(keys)
 	
+func addPotion():
+	potions += 1
+	potion_changed.emit(potions)
+	
+func usePotion():
+	if HP > maxHP:
+		HP = maxHP
+		if HP == maxHP:
+			return
+		else:
+			HP = HP + Global.potionHealing
+			potions -= 1
 func useKey():
 	if keys > 0:
 		keys -= 1
@@ -82,7 +104,12 @@ func take_damage(dmg:int):
 	await get_tree().create_timer(invincibility_length).timeout
 	set_hp(HP - dmg)
 	isHit = false
-	
+
+func set_maxHP(amount:int):
+	maxHP = amount
+	maxHp_changed.emit(maxHP)
+	set_hp(maxHP)
+
 func set_hp(newHP):
 	if newHP < maxHP:
 		if newHP <= 0:
@@ -93,6 +120,7 @@ func set_hp(newHP):
 	else:
 		HP = maxHP
 	hp_changed.emit(newHP)
+	
 func kill():
 	#print("Player Dead?")
 	isDead = true
@@ -108,7 +136,7 @@ func kill():
 # Movement Stuff
 func move():
 	mov_Direction = Vector2.ZERO
-	if not(isDead || talking):
+	if not(isDead or talking):
 		mov_Direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
 			Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -170,9 +198,11 @@ func _physics_process(_delta):
 				$AnimationPlayer.play("Up_Move")
 			
 func _input(event):
-	if isDead || talking: #Can't Perform Actions if dead
+	if (isDead or talking): #Can't Perform Actions if dead
 		return
-		
+	if event.is_action_pressed("potion"):
+		usePotion()
+		print(HP)
 	if event.is_action_pressed("attack"):
 		weapon.ATTACK()
 		#upgradeWeapon() This was here for testing
