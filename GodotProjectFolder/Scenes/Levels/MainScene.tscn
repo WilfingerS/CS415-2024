@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=14 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/Dungeon Parts/MultiRoom.tscn" id="1_88w2w"]
@@ -6,10 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://oufsqmno882m" path="res://Scenes/Levels/Dungeon Parts/HallWay.tscn" id="5_e53sq"]
 [ext_resource type="PackedScene" uid="uid://dqovgjukcslmp" path="res://Scenes/Levels/Dungeon Parts/ChestRoom.tscn" id="6_4ceu3"]
 [ext_resource type="PackedScene" uid="uid://beu7po4d0rpog" path="res://ItemHud.tscn" id="7_d4npm"]
-[ext_resource type="PackedScene" path="res://Scenes/Levels/Dungeon Parts/Starting Room.tscn" id="8_4yt8a"]
+[ext_resource type="PackedScene" uid="uid://u1ixxtopxv2p" path="res://Scenes/Levels/Dungeon Parts/Starting Room.tscn" id="8_4yt8a"]
 [ext_resource type="PackedScene" uid="uid://clp3rxlbhwvv6" path="res://Scenes/Characters/slime_green.tscn" id="9_blyy6"]
 [ext_resource type="Texture2D" uid="uid://dthkg88xvlsf5" path="res://Assets/BackGround.png" id="9_pemxe"]
 [ext_resource type="AudioStream" uid="uid://d06dl6026e4u" path="res://medieval-background-196571.mp3" id="10_gjugl"]
+[ext_resource type="PackedScene" uid="uid://cqbfd3ribv0bg" path="res://Scenes/Items/coin.tscn" id="11_11qtc"]
+[ext_resource type="PackedScene" uid="uid://cghx8ibvkewpx" path="res://Scenes/Levels/Interactable/chest.tscn" id="12_j2qgw"]
 [ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="17_70ymj"]
 
 [node name="MainScene" type="Node2D"]
@@ -61,9 +63,6 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(591, 32)
 rotation = 3.14159
 
-[node name="Slime_Green" parent="." instance=ExtResource("9_blyy6")]
-position = Vector2(57, -26)
-
 [node name="StartingRoom" parent="." instance=ExtResource("8_4yt8a")]
 position = Vector2(0, 640)
 
@@ -71,3 +70,12 @@ position = Vector2(0, 640)
 stream = ExtResource("10_gjugl")
 volume_db = -30.0
 autoplay = true
+
+[node name="Coin" parent="." instance=ExtResource("11_11qtc")]
+position = Vector2(-1, 65)
+
+[node name="chest" parent="." instance=ExtResource("12_j2qgw")]
+position = Vector2(-1, 602)
+
+[node name="Slime_Green" parent="." instance=ExtResource("9_blyy6")]
+position = Vector2(-97, 558)

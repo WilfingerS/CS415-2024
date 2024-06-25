@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var HP:int = 5
 @export var damage:int = 2
+@onready var swing = $AudioStreamPlayer
 
 var attacking = false
 var is_dead = false
@@ -34,6 +35,7 @@ func attack():
 	
 	attacking = true
 	$AnimationPlayer.play("Attack")
+	swing.play()
 	var attack_duration = $AnimationPlayer.current_animation_length
 	await get_tree().create_timer(attack_duration).timeout
 	attacking = false

@@ -48,7 +48,22 @@ func addCoin():
 	coins+=1
 	print(str(coins) + " coins")
 	coin_changed.emit(coins)
+
+func addKey():
+	keys += 1
+	key_changed.emit(keys)
 	
+func addPotion():
+	potions += 1
+	potion_changed.emit(potions)
+	
+func usePotion():
+	if HP > maxHP:
+		HP = maxHP
+		if HP == maxHP:
+			return
+		else:
+			HP = HP + Global.potionHealing
 func useKey():
 	if keys > 0:
 		keys -= 1
@@ -171,7 +186,9 @@ func _physics_process(_delta):
 func _input(event):
 	if isDead: #Can't Perform Actions if dead
 		return
-		
+	if event.is_action_pressed("potion"):
+		usePotion()
+		print(HP)
 	if event.is_action_pressed("attack"):
 		weapon.ATTACK()
 		#upgradeWeapon() This was here for testing
