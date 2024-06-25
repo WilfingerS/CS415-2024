@@ -54,17 +54,18 @@ func lerp_angle(from, to, weight):
 	return (from + difference * weight) % 360
 
 func _on_beam_duration_timeout():
-	disapear()
 	beamCast.enabled = false
+	disappear()
 	await get_tree().create_timer(10).timeout
 	beam.visible = false
 	ChangeState.emit(self, "Cast")
+
 	
 func appear() -> void:
 	var tween = create_tween()
 	tween.tween_property($"../../../BeamRaycast/BeamLine", "width", 10.0, 2)
 
-func disapear() -> void:
+func disappear() -> void:
 	var tween = create_tween()
 	tween.tween_property($"../../../BeamRaycast/BeamLine", "width", 0, 1)
 	

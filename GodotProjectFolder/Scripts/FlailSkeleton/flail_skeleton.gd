@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var HP:int = 5
+@export var HP:int = 4
 @export var damage:int = 2
 @onready var swing = $AudioStreamPlayer
 

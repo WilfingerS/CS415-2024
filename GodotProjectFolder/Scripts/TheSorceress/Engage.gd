@@ -1,5 +1,8 @@
 extends State
 
+func _ready():
+	randomize()
+
 func Enter():
 	var random = randi_range(1,3)
 	print("ENGAGE MODE")
@@ -10,3 +13,5 @@ func Enter():
 			ChangeState.emit(self, "Melee")
 		3:
 			ChangeState.emit(self, "Cast")
+		4: 
+			ChangeState.emit(self, "SlideAway")
