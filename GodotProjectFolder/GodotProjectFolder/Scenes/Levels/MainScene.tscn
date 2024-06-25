@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://babnmxqdpfmjs"]
+
+[ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
+[ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/Dungeon Parts/MultiRoom.tscn" id="1_88w2w"]
+[ext_resource type="Script" path="res://Hud/MainScene.gd" id="1_uv7rj"]
+[ext_resource type="PackedScene" uid="uid://oufsqmno882m" path="res://Scenes/Levels/Dungeon Parts/HallWay.tscn" id="5_e53sq"]
+[ext_resource type="PackedScene" uid="uid://dqovgjukcslmp" path="res://Scenes/Levels/Dungeon Parts/ChestRoom.tscn" id="6_4ceu3"]
+[ext_resource type="PackedScene" uid="uid://beu7po4d0rpog" path="res://ItemHud.tscn" id="7_d4npm"]
+[ext_resource type="PackedScene" uid="uid://u1ixxtopxv2p" path="res://Scenes/Levels/Dungeon Parts/Starting Room.tscn" id="8_4yt8a"]
+[ext_resource type="PackedScene" uid="uid://clp3rxlbhwvv6" path="res://Scenes/Characters/slime_green.tscn" id="9_blyy6"]
+[ext_resource type="Texture2D" uid="uid://dthkg88xvlsf5" path="res://Assets/BackGround.png" id="9_pemxe"]
+[ext_resource type="AudioStream" uid="uid://d06dl6026e4u" path="res://medieval-background-196571.mp3" id="10_gjugl"]
+[ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="17_70ymj"]
+
+[node name="MainScene" type="Node2D"]
+position = Vector2(529, 293)
+script = ExtResource("1_uv7rj")
+
+[node name="MultiRoom" parent="." instance=ExtResource("1_88w2w")]
+
+[node name="HallWay" parent="." instance=ExtResource("5_e53sq")]
+position = Vector2(224, -32)
+
+[node name="HallWay2" parent="." instance=ExtResource("5_e53sq")]
+position = Vector2(32, 224)
+rotation = 1.57079
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.266667, 0.243137, 0.243137, 1)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1240, 1240)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("9_pemxe")
+
+[node name="Character" parent="." instance=ExtResource("1_3u81v")]
+position = Vector2(-6, 737)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.6
+blend_mode = 1
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)
+
+[node name="HeartBar" parent="CanvasLayer" instance=ExtResource("17_70ymj")]
+metadata/_edit_use_anchors_ = true
+
+[node name="ItemBar" parent="CanvasLayer" instance=ExtResource("7_d4npm")]
+offset_left = -1460.0
+offset_right = -1420.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Chest Room" parent="." instance=ExtResource("6_4ceu3")]
+position = Vector2(591, 32)
+rotation = 3.14159
+
+[node name="Slime_Green" parent="." instance=ExtResource("9_blyy6")]
+position = Vector2(57, -26)
+
+[node name="StartingRoom" parent="." instance=ExtResource("8_4yt8a")]
+position = Vector2(0, 640)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_gjugl")
+volume_db = -30.0
+autoplay = true
