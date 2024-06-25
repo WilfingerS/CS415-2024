@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://rhhukbmueh53"]
+[gd_scene load_steps=26 format=3 uid="uid://rhhukbmueh53"]
 
 [ext_resource type="Script" path="res://Scripts/TheSorceress/the_sorceress.gd" id="1_oe1ie"]
 [ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="2_1px53"]
@@ -12,13 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://bj53m0le6fixn" path="res://Scenes/Characters/arcane_archer.tscn" id="10_kg8qd"]
 [ext_resource type="PackedScene" uid="uid://4evtkf3vje6p" path="res://Scenes/Projectiles/summon_effect.tscn" id="10_wyx51"]
 [ext_resource type="PackedScene" uid="uid://5dnflp2x3nl4" path="res://Scenes/Projectiles/magic_missile.tscn" id="12_dflla"]
+[ext_resource type="Script" path="res://Scripts/TheSorceress/Curse.gd" id="12_kcyhd"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Magic Missile.gd" id="12_uuafg"]
+[ext_resource type="PackedScene" uid="uid://c8882waks7p3i" path="res://Scenes/Projectiles/curse_glyph.tscn" id="13_iphtl"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Force Current.gd" id="13_j7uls"]
 [ext_resource type="PackedScene" uid="uid://cexkcx50jsodx" path="res://Scenes/Projectiles/force_wave.tscn" id="14_bb51k"]
+[ext_resource type="Script" path="res://Scripts/TheSorceress/Beam.gd" id="18_hi8f4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_plssy"]
-radius = 18.0
-height = 62.0
+radius = 15.0
+height = 34.0
 
 [sub_resource type="Animation" id="Animation_6284q"]
 resource_name = "Cast"
@@ -59,11 +62,30 @@ _data = {
 "Idle": SubResource("Animation_qfsa1")
 }
 
+[sub_resource type="Curve" id="Curve_os55m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.739583, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rerdh"]
+curve = SubResource("Curve_os55m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6e4p8"]
+particle_flag_disable_z = true
+spread = 65.0
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_rerdh")
+color = Color(0.992822, 0.673956, 1, 1)
+
 [node name="The Sorceress" type="CharacterBody2D" groups=["Enemies"]]
 motion_mode = 1
 script = ExtResource("1_oe1ie")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(0, -43)
 texture = ExtResource("2_5abyf")
 hframes = 8
@@ -71,7 +93,7 @@ vframes = 3
 frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -31)
+position = Vector2(0, -17)
 shape = SubResource("CapsuleShape2D_plssy")
 
 [node name="State Control" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -92,7 +114,6 @@ enemy = NodePath("../../..")
 [node name="Cast" type="Node" parent="State Control" node_paths=PackedStringArray("enemy", "rayCast")]
 script = ExtResource("7_tkkjf")
 enemy = NodePath("../..")
-cast_range = 100
 rayCast = NodePath("../../RayCast2D")
 
 [node name="spell_cast_cooldown" type="Timer" parent="State Control/Cast"]
@@ -104,7 +125,10 @@ summoned_creature1 = ExtResource("9_obl4o")
 summoned_creature2 = ExtResource("10_kg8qd")
 summon_effect = ExtResource("10_wyx51")
 
-[node name="Curse" type="Node" parent="State Control/Cast"]
+[node name="Curse" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy")]
+script = ExtResource("12_kcyhd")
+enemy = NodePath("../../..")
+curse_glyph = ExtResource("13_iphtl")
 
 [node name="Magic Missile" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy", "rayCast")]
 script = ExtResource("12_uuafg")
@@ -118,9 +142,18 @@ enemy = NodePath("../../..")
 projectile = ExtResource("14_bb51k")
 rayCast = NodePath("../../../RayCast2D")
 
-[node name="Beam" type="Node" parent="State Control/Cast"]
+[node name="Beam" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy", "beamCast", "beam")]
+script = ExtResource("18_hi8f4")
+enemy = NodePath("../../..")
+beamCast = NodePath("../../../BeamRaycast")
+beam = NodePath("../../../BeamRaycast/BeamLine")
+
+[node name="beam_duration" type="Timer" parent="State Control/Cast/Beam"]
+wait_time = 7.0
 
 [node name="Retreat" type="Node" parent="State Control"]
+
+[node name="SlideAway" type="Node" parent="State Control/Retreat"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -130,6 +163,27 @@ libraries = {
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(250, 0)
 
+[node name="BeamRaycast" type="RayCast2D" parent="."]
+position = Vector2(19, -62)
+target_position = Vector2(500, 0)
+
+[node name="BeamLine" type="Line2D" parent="BeamRaycast"]
+visible = false
+z_index = 1
+points = PackedVector2Array(0, 0, 29, 0)
+width = 0.0
+default_color = Color(1.5, 0.445, 1.5, 1)
+begin_cap_mode = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BeamRaycast"]
+top_level = true
+position = Vector2(47, -25)
+scale = Vector2(0.612118, 0.464331)
+emitting = false
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_6e4p8")
+
 [connection signal="timeout" from="State Control/Cast/spell_cast_cooldown" to="State Control/Cast" method="_on_spell_cast_cooldown_timeout"]
+[connection signal="timeout" from="State Control/Cast/Beam/beam_duration" to="State Control/Cast/Beam" method="_on_beam_duration_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="State Control/Cast/Summon" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="State Control/Cast/Magic Missile" method="_on_animation_player_animation_finished"]
