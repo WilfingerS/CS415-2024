@@ -13,9 +13,6 @@ func Enter():
 func Physics_Update(delta:float):
 	var direction = player.global_position - enemy.global_position 
 	enemy.velocity = direction * speed	
-	
-	if player.global_position.x < enemy.global_position.x:
-		enemy.flip()
 		
 	if direction.length() < attempt_attack_range:
 		ChangeState.emit(self, "Engage")

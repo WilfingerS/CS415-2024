@@ -35,11 +35,11 @@ _data = {
 "Track": SubResource("Animation_rsxjp")
 }
 
-[sub_resource type="Gradient" id="Gradient_y7mtt"]
+[sub_resource type="Gradient" id="Gradient_wvvnu"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ua7vb"]
-gradient = SubResource("Gradient_y7mtt")
+gradient = SubResource("Gradient_wvvnu")
 fill = 1
 fill_from = Vector2(0.5, 0.527523)
 fill_to = Vector2(0.830275, 0.169725)

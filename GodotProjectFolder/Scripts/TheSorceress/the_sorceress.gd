@@ -18,15 +18,6 @@ func _physics_process(_delta):
 	else:
 		#$AnimationPlayer.play("Idle")
 		pass
-	if velocity.x >= 0:
-		$Sprite2D.set_scale(Vector2(1,1))
-	else:
-		flip()
-
-func flip():
-	if is_dead:
-		return
-	$Sprite2D.set_scale(Vector2(-1,1))
 
 func cast():
 	if attacking || is_dead:
