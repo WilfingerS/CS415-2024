@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://drxv8fgohuj1r"]
+[gd_scene load_steps=7 format=3 uid="uid://drxv8fgohuj1r"]
 
 [ext_resource type="Script" path="res://Scripts/Weapon.gd" id="1_bqjge"]
 [ext_resource type="Texture2D" uid="uid://cpxo8yur1wbhq" path="res://Assets/WEAPONS.png" id="2_fx64o"]
 [ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="3_2pag2"]
-[ext_resource type="AudioStream" uid="uid://eutxxirj2smr" path="res://sword-sound-2-36274.mp3" id="4_p3bgi"]
 
 [sub_resource type="Animation" id="Animation_8hnm3"]
 resource_name = "Swing"
@@ -74,8 +73,3 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1akml")
 disabled = true
 debug_color = Color(0.891461, 0.399691, 0.56023, 0.42)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_p3bgi")
-volume_db = -3.748
-pitch_scale = 1.4

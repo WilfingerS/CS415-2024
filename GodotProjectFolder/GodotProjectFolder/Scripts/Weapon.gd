@@ -8,16 +8,10 @@ class_name Weapon
 @onready var sprite:Sprite2D = weapon.get_node("Sprite2D")
 @onready var hitbox:Hitbox = weapon.get_node("Hitbox")
 @onready var animPlayer:AnimationPlayer = weapon.get_node("AnimationPlayer")
-@onready var swing = $AudioStreamPlayer
 
-func upgrade():
-	damage += 1
-	sprite.frame += 1
-	hitbox.scale += Vector2(.05,.05)
-
+	
 func ATTACK():
 	if not animPlayer.is_playing():
-		swing.play()
 		animPlayer.play("Swing")
 
 func _process(_delta):

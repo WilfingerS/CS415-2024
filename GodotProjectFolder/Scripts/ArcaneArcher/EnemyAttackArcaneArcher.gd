@@ -16,7 +16,6 @@ func _on_animation_player_animation_finished(animation):
 		if projectile:
 			var arrow = projectile.instantiate()
 			get_tree().current_scene.add_child(arrow)
-			arrow.shooter = enemy
 			arrow.add_to_group("Enemies")
 			
 			arrow.global_position = enemy.global_position
