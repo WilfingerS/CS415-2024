@@ -9,10 +9,10 @@ const FRICTION: float = 0.15
 @export var acceleration: int = 40
 @export var maxSpeed: int = 100
 # hp stuff/items yea
-@export var maxHP: int = 4
-@export var HP: int = 4
+@export var maxHP: int = 10
+@export var HP: int = 10
 
-@export var coins: int = 5
+@export var coins: int = 0
 @export var bombs: int = 5
 @export var keys: int = 0
 @export var potions: int = 0
@@ -34,8 +34,6 @@ signal potion_changed
 @onready var shield:Sprite2D = get_node("Shield")
 @onready var damage = weapon.damage
 
-var talking = false
-
 #other used variables
 var mov_Direction:Vector2 = Vector2.ZERO
 var blocking = false
@@ -48,6 +46,7 @@ func upgradeWeapon():
 	
 func addCoin():
 	coins+=1
+	print(str(coins) + " coins")
 	coin_changed.emit(coins)
 	
 func useKey():
@@ -108,7 +107,7 @@ func kill():
 # Movement Stuff
 func move():
 	mov_Direction = Vector2.ZERO
-	if not(isDead || talking):
+	if not(isDead):
 		mov_Direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
 			Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -170,7 +169,7 @@ func _physics_process(_delta):
 				$AnimationPlayer.play("Up_Move")
 			
 func _input(event):
-	if isDead || talking: #Can't Perform Actions if dead
+	if isDead: #Can't Perform Actions if dead
 		return
 		
 	if event.is_action_pressed("attack"):

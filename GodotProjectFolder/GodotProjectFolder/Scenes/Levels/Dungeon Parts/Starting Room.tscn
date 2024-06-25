@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://u1ixxtopxv2p"]
+[gd_scene load_steps=11 format=3 uid="uid://u1ixxtopxv2p"]
 
 [ext_resource type="Texture2D" uid="uid://r7se2pkijaca" path="res://Assets/TILESET_DUNGEON.png" id="1_8oiwq"]
 [ext_resource type="Texture2D" uid="uid://dfajj0rwmqcxr" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="2_mp1bw"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bcqpocv0rfv4o" path="res://Scenes/Levels/Interactable/Door.tscn" id="5_jvll2"]
 [ext_resource type="PackedScene" uid="uid://1ybnqh3qmc78" path="res://Scenes/Levels/Dungeon Parts/DoorPathCover.tscn" id="6_08jhn"]
 [ext_resource type="PackedScene" uid="uid://bqbgrqlrxc8io" path="res://Scenes/Levels/Dungeon Parts/TorchWall.tscn" id="7_6a5vh"]
-[ext_resource type="PackedScene" uid="uid://cmf7qxlp6g8rc" path="res://Scenes/Characters/potion_seller.tscn" id="8_he87o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mu2e2"]
 texture = ExtResource("1_8oiwq")
@@ -393,6 +392,3 @@ polygon = PackedVector2Array(143, -128, 8, -128, 8, -143, 8, -160, 176, -160, 17
 
 [node name="Door" parent="." instance=ExtResource("5_jvll2")]
 position = Vector2(1, -127)
-
-[node name="Potion Seller" parent="." instance=ExtResource("8_he87o")]
-position = Vector2(-90, -74)
