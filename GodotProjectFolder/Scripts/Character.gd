@@ -64,6 +64,7 @@ func usePotion():
 			return
 		else:
 			HP = HP + Global.potionHealing
+			potions -= 1
 func useKey():
 	if keys > 0:
 		keys -= 1
