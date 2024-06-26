@@ -66,6 +66,7 @@ _data = {
 }
 
 [node name="chest" type="Node2D"]
+modulate = Color(0.384314, 0.811765, 1, 1)
 scale = Vector2(0.1, 0.1)
 script = ExtResource("1_v2m2a")
 
