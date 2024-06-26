@@ -2,19 +2,13 @@ extends State
 
 @export var enemy: CharacterBody2D
 @export var speed := .5
-@export var cast_range := 100
+@export var cast_range := 75
 @export var rayCast: RayCast2D
-@export var spell_cast_delay := 5  # Delay in seconds before the enemy can cast another spell
 
 var player: CharacterBody2D
-var can_cast_spell := true
 
 func _ready():
 	randomize()
-	
-	# Configure the spell cast timer
-	$spell_cast_cooldown.wait_time = spell_cast_delay
-	$spell_cast_cooldown.one_shot = true
 
 func Enter():
 	player = get_tree().get_first_node_in_group("Player")
@@ -26,11 +20,13 @@ func Physics_Update(delta: float):
 	rayCast.global_rotation = angle_to_player
 	
 	if direction.length() > cast_range:
-		enemy.velocity = direction.normalized() * speed
+		enemy.velocity = direction * speed
 	else:
-		
-		if can_cast_spell and rayCast.is_colliding() and rayCast.get_collider() == player:
-			var random = randi_range(1, 5)
+		if enemy.HP <= enemy.transition_hp and not enemy.phase2:
+			ChangeState.emit(self, "Intervention")
+			
+		if rayCast.is_colliding() and rayCast.get_collider() == player:
+			var random = randi_range(1, 10)
 			match random:
 				1:
 					ChangeState.emit(self, "Summon")
@@ -42,9 +38,9 @@ func Physics_Update(delta: float):
 					ChangeState.emit(self, "Curse")
 				5:
 					ChangeState.emit(self, "Beam")
-			# Start the timer and set can_cast_spell to false
-			can_cast_spell = false
-			$spell_cast_cooldown.start()
-
-func _on_spell_cast_cooldown_timeout():
-	can_cast_spell = true
+				6:
+					ChangeState.emit(self, "Stars")
+				7:
+					ChangeState.emit(self, "SlideAway")
+				_:
+					ChangeState.emit(self, "Engage")

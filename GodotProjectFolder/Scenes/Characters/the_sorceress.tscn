@@ -1,9 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://rhhukbmueh53"]
+[gd_scene load_steps=39 format=3 uid="uid://rhhukbmueh53"]
 
 [ext_resource type="Script" path="res://Scripts/TheSorceress/the_sorceress.gd" id="1_oe1ie"]
 [ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="2_1px53"]
 [ext_resource type="Texture2D" uid="uid://ciitelgpejcdj" path="res://Assets/BOSS_SHADOW.png" id="2_5abyf"]
+[ext_resource type="Shader" path="res://Assets/on_hit_flash.gdshader" id="2_galxm"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Engage.gd" id="3_muakj"]
+[ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="4_h7y1i"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Melee.gd" id="5_xpevr"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/SlideInto.gd" id="6_ap4us"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Cast.gd" id="7_tkkjf"]
@@ -16,12 +18,28 @@
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Magic Missile.gd" id="12_uuafg"]
 [ext_resource type="PackedScene" uid="uid://c8882waks7p3i" path="res://Scenes/Projectiles/curse_glyph.tscn" id="13_iphtl"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Force Current.gd" id="13_j7uls"]
+[ext_resource type="PackedScene" uid="uid://dl6hpi8ycnpdd" path="res://Scenes/Characters/slime_red.tscn" id="13_ja1by"]
+[ext_resource type="PackedScene" uid="uid://ci70mpdu1yk5g" path="res://Scenes/Characters/necromancer.tscn" id="14_65sp2"]
 [ext_resource type="PackedScene" uid="uid://cexkcx50jsodx" path="res://Scenes/Projectiles/force_wave.tscn" id="14_bb51k"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Beam.gd" id="18_hi8f4"]
+[ext_resource type="Script" path="res://Scripts/TheSorceress/SlideAway.gd" id="21_5oglh"]
+[ext_resource type="Script" path="res://Scripts/TheSorceress/Intervention.gd" id="22_p483y"]
+[ext_resource type="Script" path="res://Scripts/TheSorceress/Stars.gd" id="23_sgqur"]
+[ext_resource type="PackedScene" uid="uid://lr1c6ppfwvt5" path="res://Scenes/Projectiles/intervention_light.tscn" id="23_y1eak"]
+[ext_resource type="PackedScene" uid="uid://s0p7t5g4q00k" path="res://Scenes/Projectiles/energy_star.tscn" id="24_dovkt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63oa0"]
+shader = ExtResource("2_galxm")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_plssy"]
 radius = 15.0
 height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e461x"]
+radius = 16.0
+height = 60.0
 
 [sub_resource type="Animation" id="Animation_6284q"]
 resource_name = "Cast"
@@ -62,6 +80,27 @@ _data = {
 "Idle": SubResource("Animation_qfsa1")
 }
 
+[sub_resource type="Animation" id="Animation_vrrb8"]
+resource_name = "OnHit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.5, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqeda"]
+_data = {
+"OnHit": SubResource("Animation_vrrb8")
+}
+
 [sub_resource type="Curve" id="Curve_os55m"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.739583, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -86,6 +125,7 @@ script = ExtResource("1_oe1ie")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
+material = SubResource("ShaderMaterial_63oa0")
 position = Vector2(0, -43)
 texture = ExtResource("2_5abyf")
 hframes = 8
@@ -96,9 +136,17 @@ frame = 8
 position = Vector2(0, -17)
 shape = SubResource("CapsuleShape2D_plssy")
 
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("4_h7y1i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -30)
+shape = SubResource("CapsuleShape2D_e461x")
+debug_color = Color(1, 0.0909423, 0.0594644, 0.419608)
+
 [node name="State Control" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_1px53")
-initial_state = NodePath("Cast")
+initial_state = NodePath("Engage")
 
 [node name="Engage" type="Node" parent="State Control"]
 script = ExtResource("3_muakj")
@@ -116,13 +164,13 @@ script = ExtResource("7_tkkjf")
 enemy = NodePath("../..")
 rayCast = NodePath("../../RayCast2D")
 
-[node name="spell_cast_cooldown" type="Timer" parent="State Control/Cast"]
-
 [node name="Summon" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy")]
 script = ExtResource("8_loxtb")
 enemy = NodePath("../../..")
 summoned_creature1 = ExtResource("9_obl4o")
 summoned_creature2 = ExtResource("10_kg8qd")
+summoned_creature3 = ExtResource("13_ja1by")
+summoned_creature4 = ExtResource("14_65sp2")
 summon_effect = ExtResource("10_wyx51")
 
 [node name="Curse" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy")]
@@ -149,15 +197,35 @@ beamCast = NodePath("../../../BeamRaycast")
 beam = NodePath("../../../BeamRaycast/BeamLine")
 
 [node name="beam_duration" type="Timer" parent="State Control/Cast/Beam"]
-wait_time = 7.0
+wait_time = 5.0
+
+[node name="Stars" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy", "rayCast")]
+script = ExtResource("23_sgqur")
+enemy = NodePath("../../..")
+projectile = ExtResource("24_dovkt")
+rayCast = NodePath("../../../RayCast2D")
 
 [node name="Retreat" type="Node" parent="State Control"]
 
-[node name="SlideAway" type="Node" parent="State Control/Retreat"]
+[node name="SlideAway" type="Node" parent="State Control/Retreat" node_paths=PackedStringArray("enemy")]
+script = ExtResource("21_5oglh")
+enemy = NodePath("../../..")
+
+[node name="Intervention" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
+script = ExtResource("22_p483y")
+enemy = NodePath("../..")
+intervention_light = ExtResource("23_y1eak")
+glyph = ExtResource("13_iphtl")
+force_wave = ExtResource("14_bb51k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5rtrg")
+}
+
+[node name="OnHitPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gqeda")
 }
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -183,7 +251,6 @@ emitting = false
 amount = 150
 process_material = SubResource("ParticleProcessMaterial_6e4p8")
 
-[connection signal="timeout" from="State Control/Cast/spell_cast_cooldown" to="State Control/Cast" method="_on_spell_cast_cooldown_timeout"]
 [connection signal="timeout" from="State Control/Cast/Beam/beam_duration" to="State Control/Cast/Beam" method="_on_beam_duration_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="State Control/Cast/Summon" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="State Control/Cast/Magic Missile" method="_on_animation_player_animation_finished"]

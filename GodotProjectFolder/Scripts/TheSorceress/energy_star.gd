@@ -14,10 +14,12 @@ func _ready():
 func _physics_process(delta):
 	
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
-		add_collision_exception_with(enemy)
+		if enemy is PhysicsBody2D:
+			add_collision_exception_with(enemy)
 	
 	for player in get_tree().get_nodes_in_group("Player"):
-		add_collision_exception_with(player)
+		if player is PhysicsBody2D:
+			add_collision_exception_with(player)
 		
 	var collision = move_and_collide(velocity)
 	if collision:
