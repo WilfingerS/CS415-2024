@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bj53m0le6fixn"]
+[gd_scene load_steps=20 format=3 uid="uid://bj53m0le6fixn"]
 
 [ext_resource type="Script" path="res://Scripts/ArcaneArcher/arcane_archer.gd" id="1_sqpd4"]
 [ext_resource type="Texture2D" uid="uid://dmqyal01b3l6v" path="res://Assets/archer_enemy.png" id="2_76b3y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/ArcaneArcher/EnemyAttackArcaneArcher.gd" id="6_qgvvr"]
 [ext_resource type="PackedScene" uid="uid://bcvjqylald7g8" path="res://Scenes/Projectiles/arcane_arrow.tscn" id="7_0t3rh"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="8_o4u7d"]
+[ext_resource type="AudioStream" uid="uid://bbs7l1gwd8n1m" path="res://bow-release-bow-and-arrow-4-101936.mp3" id="10_gdiw0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iu8kf"]
 resource_local_to_scene = true
@@ -170,5 +171,8 @@ script = ExtResource("8_o4u7d")
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_to1xr")
 debug_color = Color(0, 1, 0, 0.0901961)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_gdiw0")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="State Control/EnemyAttack" method="_on_animation_player_animation_finished"]
