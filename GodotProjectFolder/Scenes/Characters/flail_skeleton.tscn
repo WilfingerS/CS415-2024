@@ -1,16 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://cvk5t5c7vvgv6"]
+[gd_scene load_steps=17 format=3 uid="uid://cvk5t5c7vvgv6"]
 
 [ext_resource type="Texture2D" uid="uid://cr1lcmu6h5pcj" path="res://Assets/Skeleton enemy.png" id="1_1h51o"]
 [ext_resource type="Script" path="res://Scripts/FlailSkeleton/flail_skeleton.gd" id="1_f6r1p"]
-[ext_resource type="Script" path="res://Scenes/Characters/State Control.gd" id="3_b4qnn"]
+[ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="3_b4qnn"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="3_h1s6u"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyChase.gd" id="5_eaaco"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyAttack.gd" id="6_iecc1"]
-[ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="7_4inpg"]
-[ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="8_86xpa"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyAttack.gd" id="5_gev0g"]
+[ext_resource type="Script" path="res://Scripts/FlailSkeleton/EnemyChaseSkeleton.gd" id="6_nnboq"]
+[ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="7_ifxcb"]
+[ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="8_0m26a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tyh7b"]
-height = 33.7778
+height = 32.1285
 
 [sub_resource type="Animation" id="Animation_7shn8"]
 resource_name = "Attack"
@@ -30,26 +30,42 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Attack1 Hitbox:monitoring")
+tracks/1/path = NodePath("Sprite2D/Attack1 Hitbox/CollisionPolygon2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Attack2 Hitbox:monitoring")
+tracks/2/path = NodePath("Sprite2D/Attack2 Hitbox/CollisionPolygon2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.8, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_nwmiq"]
+resource_name = "Death"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
 }
 
 [sub_resource type="Animation" id="Animation_6s8tn"]
@@ -66,6 +82,46 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [39, 40, 41, 42]
+}
+
+[sub_resource type="Animation" id="Animation_a3g8w"]
+resource_name = "OnHit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [52, 53, 54]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Attack1 Hitbox/CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Attack2 Hitbox/CollisionPolygon2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_7asvx"]
@@ -88,32 +144,50 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wsuqd"]
 _data = {
 "Attack": SubResource("Animation_7shn8"),
+"Death": SubResource("Animation_nwmiq"),
 "Idle": SubResource("Animation_6s8tn"),
+"OnHit": SubResource("Animation_a3g8w"),
 "Walk": SubResource("Animation_7asvx")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07sj3"]
-radius = 13.282
-height = 46.6667
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_06kw0"]
+radius = 12.0
+height = 32.1285
 
-[node name="Flail_Skeleton" type="CharacterBody2D"]
-position = Vector2(0, -1)
-scale = Vector2(1.5058, 1.5)
+[node name="Flail_Skeleton" type="CharacterBody2D" groups=["Enemies"]]
+position = Vector2(0, -5.96046e-08)
+scale = Vector2(0.65, 0.648)
+motion_mode = 1
 script = ExtResource("1_f6r1p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_1h51o")
 offset = Vector2(0, -16)
 hframes = 13
 vframes = 5
-frame = 12
+frame = 52
 region_rect = Rect2(9, 208, 33, 33)
+
+[node name="Attack1 Hitbox" type="Area2D" parent="Sprite2D"]
+script = ExtResource("7_ifxcb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Attack1 Hitbox"]
+position = Vector2(-7.45058e-09, 6.0241)
+scale = Vector2(0.736377, 0.794167)
+polygon = PackedVector2Array(-27.3333, -54, -8, -59.3333, 20.6667, -55.3333, 41.3333, -46.6667, 43.456, -35.3987, 40.74, -25.2848, 21.728, -17.6993, 13.58, -17.6993)
+disabled = true
+
+[node name="Attack2 Hitbox" type="Area2D" parent="Sprite2D"]
+script = ExtResource("7_ifxcb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Attack2 Hitbox"]
+position = Vector2(12, 16.0643)
+polygon = PackedVector2Array(-42, -42.1687, -24, -28.1125, -4, -24.0964, 14, -28.1124, 20, -36.1446, 12, -44.1767, 2, -48.1928, 0, -38.1526, -40, -47.3333)
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
-position = Vector2(5.96046e-08, -25.3333)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-1.19209e-07, -16.0643)
 shape = SubResource("CapsuleShape2D_tyh7b")
 
 [node name="State Control" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -123,47 +197,28 @@ initial_state = NodePath("EnemyIdle")
 [node name="EnemyIdle" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
 script = ExtResource("3_h1s6u")
 enemy = NodePath("../..")
+detection_range = 120
 
 [node name="EnemyChase" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
-script = ExtResource("5_eaaco")
+script = ExtResource("6_nnboq")
 enemy = NodePath("../..")
+chase_drop_distance = 150
 
 [node name="EnemyAttack" type="Node" parent="State Control" node_paths=PackedStringArray("enemy")]
-script = ExtResource("6_iecc1")
+script = ExtResource("5_gev0g")
 enemy = NodePath("../..")
-
-[node name="CooldownTimer" type="Timer" parent="State Control/EnemyAttack"]
-wait_time = 0.079
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wsuqd")
 }
 
-[node name="Attack1 Hitbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 0
-monitoring = false
-script = ExtResource("7_4inpg")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack1 Hitbox"]
-polygon = PackedVector2Array(-27.3333, -54, -8, -59.3333, 20.6667, -55.3333, 41.3333, -46.6667, 46, -34, 44, -26.6667, 23.3333, -18, 16, -19.3333)
-
-[node name="Attack2 Hitbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 0
-monitoring = false
-script = ExtResource("7_4inpg")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack2 Hitbox"]
-polygon = PackedVector2Array(-45.3333, -41.3333, -21.3333, -21.3333, 7.33333, -13.3333, 38.6667, -19.3333, 46, -30, 37.3333, -43.3333, 24, -48, 9.33333, -36, -40, -47.3333)
-
 [node name="Hurtbox" type="Area2D" parent="."]
-script = ExtResource("8_86xpa")
+light_mask = 0
+visibility_layer = 2
+script = ExtResource("8_0m26a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-5.96046e-08, -25.3333)
-shape = SubResource("CapsuleShape2D_07sj3")
-debug_color = Color(0.164532, 0.642121, 0.147528, 0.42)
-
-[connection signal="timeout" from="State Control/EnemyAttack/CooldownTimer" to="State Control/EnemyAttack" method="_on_cooldown_timer_timeout"]
+position = Vector2(-8.07794e-28, -16.0643)
+shape = SubResource("CapsuleShape2D_06kw0")
+debug_color = Color(0, 0.615686, 0, 0.419608)

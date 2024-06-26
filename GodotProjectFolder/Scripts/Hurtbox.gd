@@ -1,3 +1,4 @@
+
 extends Area2D
 class_name Hurtbox
 
@@ -8,13 +9,27 @@ func _init():
 func _ready():
 	connect("area_entered", self._on_area_entered)
 
-func _on_area_entered(hitbox:Hitbox) -> void:
-	#print(hitbox.owner.name) #the hitbox that hit them
-	#print(self.get_parent().name) #Hurtbox that should be damaged?
-	if hitbox == null or hitbox.owner == self.get_parent(): #No hitbox detected
-		print("No hitbox or Hit itself lol?")
-		return
+func _on_area_entered(area: Area2D) -> void:
+	if _is_valid_hit(area):
+		var hitbox = area as Hitbox
+		var hurtOwner = self.get_owner()
+		print(hitbox.owner.name + " hit: " + self.get_parent().name)
 		
-	print(hitbox.owner.name + " hit: " + self.get_parent().name)
-	#self.get_wparent().take_damage(hitbox.owner.damage)
-	
+		if hurtOwner.is_in_group("Player"):
+			if hurtOwner.blocking == true:
+				if hitbox.get_parent().has_method("reflect"):
+					hitbox.owner.reflect()
+				else:
+					hitbox.owner.take_damage(0)
+			else:
+				hurtOwner.take_damage(hitbox.owner.damage)
+		else:
+			hurtOwner.take_damage(hitbox.owner.damage)
+
+func _is_valid_hit(area: Area2D) -> bool:
+	if area is Hitbox:
+		var hitbox = area as Hitbox
+		var hitboxGroup = hitbox.get_owner().get_groups()
+		var hurtboxGroup = self.get_owner().get_groups()
+		return hitboxGroup != hurtboxGroup and hitbox.owner != self.get_parent() and not self.get_parent().is_ancestor_of(hitbox)
+	return false
