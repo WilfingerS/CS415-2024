@@ -2,23 +2,24 @@ extends Node2D
 
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var player = get_tree().get_first_node_in_group("Player")
+@onready var upgraded = 1
 
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
-	get_node("NPC Dialog").textFile = "res://Scripts/Dialogue/healDialog1.txt"
+	get_node("NPC Dialog").textFile = "res://Scripts/Dialogue/smithDialog1.txt"
 	get_node("Shop2").cost1 = 1
 	get_node("Shop2").cost2 = 1
-	get_node("Shop2").item1 = "Potion"
-	get_node("Shop2").item2 = "Max HP+"
-	get_node("Shop2").imgfile = "res://Assets/2D Pixel Dungeon Asset Pack/items and trap_animation/flasks/flasks_1_1.png"
-	get_node("Shop2").imgfile2 = "res://Assets/plus.png"
-	get_node("Shop2").max1 = 10
+	get_node("Shop2").item1 = "Bomb"
+	get_node("Shop2").item2 = "Sword lvl+"
+	get_node("Shop2").imgfile = "res://Assets/bombPlaceholder.png"
+	get_node("Shop2").imgfile2 = "res://Assets/WEAPONS.png"
+	get_node("Shop2").max1 = 4
 	
 func items1():
-	player.addPotion()
+	player.bombs += 1
 	
 func items2():
-	player.set_maxHP(player.maxHP + 1)
+		player.upgradeWeapon()
 	
 func _on_interact():
 	if get_node("NPC Dialog").spoke == false:

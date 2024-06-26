@@ -204,7 +204,7 @@ func _physics_process(_delta):
 				$AnimationPlayer.play("Up_Move")
 			
 func _input(event):
-	if (isDead or talking and event != "quit"): #Can't Perform Actions if dead
+	if (isDead or talking): #Can't Perform Actions if dead
 		if event.is_action_pressed("quit"):
 			get_tree().change_scene_to_file("res://Hud/MainMenu.tscn")
 		return
@@ -214,6 +214,8 @@ func _input(event):
 	if event.is_action_pressed("attack"):
 		weapon.ATTACK()
 		#upgradeWeapon() This was here for testing
+	if event.is_action_pressed("quit"):
+		get_tree().quit()
 	if event.is_action_pressed("block"):
 		parry()
 	if event.is_action_pressed("bomb"):

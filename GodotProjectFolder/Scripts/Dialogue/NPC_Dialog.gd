@@ -5,12 +5,11 @@ var active = false
 var spoke = false
 
 @onready var player = get_tree().get_first_node_in_group("Player")
-var textFile = "res://Scripts/Dialogue/healDialog1.txt"
+var textFile = ""
 var dialogue = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$NinePatchRect.visible = false
-	load_file()
 	
 func load_file():
 	var file = FileAccess.open(textFile,FileAccess.READ)
@@ -30,6 +29,7 @@ func talk():
 			return
 		$NinePatchRect/text.text = dialogue[page]
 	else:
+		load_file()
 		active = true
 		$NinePatchRect.visible = true
 		$NinePatchRect/text.text = dialogue[page]
