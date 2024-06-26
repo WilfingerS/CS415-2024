@@ -5,7 +5,8 @@ extends State
 @export var beamCast : RayCast2D
 @export var beam : Line2D
 @export var rotation_speed : float = 8.0  # Adjust this value to control the tracking speed
-@export var beam_damage = 3
+@export var beam_damage = 2
+@export var beam_recovery = 5
 
 var player : CharacterBody2D
 var target_rotation : float = 0.0
@@ -19,7 +20,7 @@ func Enter():
 	
 	print("Beam")
 	enemy.velocity = Vector2.ZERO
-	enemy.cast()
+	enemy.beam()
 	player = get_tree().get_first_node_in_group("Player")
 	particles = $"../../../BeamRaycast/GPUParticles2D"
 	beamCast.enabled = true
@@ -30,7 +31,7 @@ func Enter():
 func _physics_process(_delta):
 	
 	if player:
-		var raycast_start = enemy.global_position + Vector2(19, -62)
+		var raycast_start = enemy.global_position + Vector2(15, -80)
 		var direction = (player.global_position - raycast_start).normalized()
 		target_rotation = direction.angle()
 		current_rotation = lerp_angle(current_rotation, target_rotation, rotation_speed * get_process_delta_time())
@@ -56,7 +57,7 @@ func lerp_angle(from, to, weight):
 func _on_beam_duration_timeout():
 	beamCast.enabled = false
 	disappear()
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(beam_recovery).timeout
 	beam.visible = false
 	ChangeState.emit(self, "Cast")
 

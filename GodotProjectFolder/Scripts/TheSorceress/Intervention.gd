@@ -9,12 +9,13 @@ extends State
 func Enter():
 	print("Intervention")
 	enemy.velocity = Vector2.ZERO
-	
+	enemy.is_glide = true
 	if glyph:
 		var warning = glyph.instantiate()
+		warning.scale = Vector2(4,4)
 		get_tree().current_scene.add_child(warning)
 		warning.add_to_group("Enemies")
-		warning.global_position = enemy.global_position + Vector2(0, 0)
+		warning.global_position = enemy.global_position + Vector2(-5, -5)
 	
 	await get_tree().create_timer(3).timeout
 
@@ -24,6 +25,7 @@ func Enter():
 		light.add_to_group("Enemies")
 		light.global_position = enemy.global_position + Vector2(0, -40)
 	
+	enemy.is_glide = false
 	await get_tree().create_timer(.5).timeout
 	
 	if force_wave:
@@ -36,6 +38,7 @@ func Enter():
 				var proj = force_wave.instantiate()
 				get_tree().current_scene.add_child(proj)
 				proj.add_to_group("Enemies")
+				proj.scale = Vector2(2,2)
 				proj.global_position = enemy.global_position + Vector2(0, 0)
 				proj.global_rotation = rotation
 				rotation_offset += 90  # Increase rotation offset for next projectile

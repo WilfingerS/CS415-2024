@@ -25,7 +25,7 @@ func Physics_Update(delta: float):
 		if enemy.HP <= enemy.transition_hp and not enemy.phase2:
 			ChangeState.emit(self, "Intervention")
 			
-		if rayCast.is_colliding() and rayCast.get_collider() == player:
+		if rayCast.is_colliding() and rayCast.get_collider() == player and enemy.attacking == false:
 			var random = randi_range(1, 10)
 			match random:
 				1:

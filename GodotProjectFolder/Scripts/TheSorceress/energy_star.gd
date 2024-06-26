@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed := 1
 @export var damage:int = 1
-@export var duration:int = 10
+@export var duration:int = 5
 
 var shooter: CharacterBody2D = null
 

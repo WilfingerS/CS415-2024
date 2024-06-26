@@ -10,6 +10,11 @@ class_name Weapon
 @onready var animPlayer:AnimationPlayer = weapon.get_node("AnimationPlayer")
 @onready var swing = $AudioStreamPlayer
 
+func _ready():
+	upgrade()
+	upgrade()
+	upgrade()
+	
 func upgrade():
 	damage += 1
 	sprite.frame += 1

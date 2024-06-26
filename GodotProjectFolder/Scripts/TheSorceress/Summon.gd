@@ -12,7 +12,7 @@ extends State
 func Enter():
 	print("Summon")
 	enemy.velocity = Vector2.ZERO
-	await enemy.cast()
+	await enemy.big_cast()
 	if enemy.phase2 == false:
 		summon_enemies(3, summoned_creature1)
 		summon_enemies(2, summoned_creature2) 
