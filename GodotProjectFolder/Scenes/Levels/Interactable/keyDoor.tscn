@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://06fson1afemk"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Interactable/keyDoor.gd" id="1_jb23n"]
-[ext_resource type="Texture2D" uid="uid://cj8vn420xqnre" path="res://Assets/Eli Door Open.png" id="2_es2e0"]
+[ext_resource type="Texture2D" uid="uid://db8i5hw3ddrlo" path="res://Scenes/Levels/image.png" id="2_34n7f"]
 [ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="3_eki16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqm0d"]
@@ -72,12 +72,13 @@ _data = {
 }
 
 [node name="KeyDoor" type="Node2D"]
-modulate = Color(0.384314, 0.811765, 1, 1)
 script = ExtResource("1_jb23n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_es2e0")
+position = Vector2(-1, -1)
+texture = ExtResource("2_34n7f")
 hframes = 3
+vframes = 4
 
 [node name="Label" type="Label" parent="."]
 offset_left = -29.0
