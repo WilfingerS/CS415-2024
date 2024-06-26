@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=13 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/Dungeon Parts/MultiRoom.tscn" id="1_88w2w"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://clp3rxlbhwvv6" path="res://Scenes/Characters/slime_green.tscn" id="9_blyy6"]
 [ext_resource type="Texture2D" uid="uid://dthkg88xvlsf5" path="res://Assets/BackGround.png" id="9_pemxe"]
 [ext_resource type="AudioStream" uid="uid://d06dl6026e4u" path="res://medieval-background-196571.mp3" id="10_gjugl"]
+[ext_resource type="PackedScene" uid="uid://06fson1afemk" path="res://Scenes/Levels/Interactable/keyDoor.tscn" id="12_u63x0"]
 [ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="17_70ymj"]
 
 [node name="MainScene" type="Node2D"]
@@ -71,3 +72,6 @@ position = Vector2(0, 640)
 stream = ExtResource("10_gjugl")
 volume_db = -30.0
 autoplay = true
+
+[node name="KeyDoor" parent="." instance=ExtResource("12_u63x0")]
+position = Vector2(-86, 566)
