@@ -204,6 +204,8 @@ func _input(event):
 	if event.is_action_pressed("potion"):
 		usePotion()
 		print(HP)
+	if event.is_action_pressed("quit"):
+		get_tree().change_scene_to_file("res://Hud/MainMenu.tscn")
 	if event.is_action_pressed("attack"):
 		weapon.ATTACK()
 		#upgradeWeapon() This was here for testing

@@ -12,7 +12,6 @@ func _ready():
 	#Items
 	item_bar.update_bomb(player.bombs)
 	item_bar.update_key(player.keys)
-	item_bar.update_coin(player.coins)
 	item_bar.update_potion(player.potions)
 	# Item Signals
 	player.bomb_changed.connect(item_bar.update_bomb)
