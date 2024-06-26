@@ -13,6 +13,7 @@ func _ready():
 	item_bar.update_bomb(player.bombs)
 	item_bar.update_key(player.keys)
 	item_bar.update_potion(player.potions)
+	item_bar.update_coin(player.coins)
 	# Item Signals
 	player.bomb_changed.connect(item_bar.update_bomb)
 	player.key_changed.connect(item_bar.update_key)
