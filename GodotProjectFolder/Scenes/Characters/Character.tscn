@@ -284,3 +284,18 @@ debug_color = Color(1, 0, 0, 0.419608)
 stream = ExtResource("8_44uus")
 volume_db = -16.199
 autoplay = true
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.811765, 0.184314, 0, 1)
+offset_left = -346.667
+offset_top = -200.0
+offset_right = 346.333
+offset_bottom = -81.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "YOU ARE DEAD!
+Press Esc to return to Title Screen!"
+horizontal_alignment = 1
+vertical_alignment = 1

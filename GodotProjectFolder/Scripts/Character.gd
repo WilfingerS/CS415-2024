@@ -5,6 +5,7 @@ const FRICTION: float = 0.15
 
 # Custom Values
 @onready var healthbar = get_tree().get_first_node_in_group("health")
+@onready var label = $Label
 # walking
 @export var acceleration: int = 40
 @export var maxSpeed: int = 100
@@ -41,6 +42,9 @@ var blocking = false
 var isDead = false
 var isHit = false
 var talking = false
+
+func _ready():
+	label.hide()
 # Update Items?
 func upgradeWeapon():
 	weapon.upgrade()
@@ -128,6 +132,7 @@ func kill():
 	weapon.visible = false
 	shield.visible = false  
 	$AnimationPlayer.play("Death_Roll")
+	label.show()
 	await get_tree().create_timer(1.5).timeout
 	$AnimationPlayer.play("Death")
 	
@@ -199,13 +204,13 @@ func _physics_process(_delta):
 				$AnimationPlayer.play("Up_Move")
 			
 func _input(event):
-	if (isDead or talking): #Can't Perform Actions if dead
+	if (isDead or talking and event != "quit"): #Can't Perform Actions if dead
+		if event.is_action_pressed("quit"):
+			get_tree().change_scene_to_file("res://Hud/MainMenu.tscn")
 		return
 	if event.is_action_pressed("potion"):
 		usePotion()
 		print(HP)
-	if event.is_action_pressed("quit"):
-		get_tree().change_scene_to_file("res://Hud/MainMenu.tscn")
 	if event.is_action_pressed("attack"):
 		weapon.ATTACK()
 		#upgradeWeapon() This was here for testing

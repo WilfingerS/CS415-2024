@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var HP:int = 3
+@onready var bow = $AudioStreamPlayer
 
 var attacking = false
 var is_dead = false
@@ -38,6 +39,7 @@ func attack():
 	$AnimationPlayer.play("Attack")
 	var attack_duration = $AnimationPlayer.current_animation_length + .1
 	await get_tree().create_timer(attack_duration).timeout
+	bow.play()
 	attacking = false
 	
 func take_damage(dmg:int):

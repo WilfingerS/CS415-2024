@@ -3,6 +3,8 @@ extends State
 @export var enemy : CharacterBody2D
 @export var summoned_creature1: PackedScene = null
 @export var summoned_creature2: PackedScene = null
+@export var summoned_creature3: PackedScene = null
+@export var summoned_creature4: PackedScene = null
 @export var summon_effect: PackedScene = null
 
 @onready var tilemap_parent = get_tree().current_scene
@@ -10,9 +12,17 @@ extends State
 func Enter():
 	print("Summon")
 	enemy.velocity = Vector2.ZERO
-	await enemy.cast()
-	summon_enemies(3, summoned_creature1)
-	summon_enemies(2, summoned_creature2) 
+	await enemy.big_cast()
+	if enemy.phase2 == false:
+		summon_enemies(3, summoned_creature1)
+		summon_enemies(2, summoned_creature2) 
+	else:
+		var rand = randi_range(1,2)
+		if rand == 1:
+			summon_enemies(3, summoned_creature3)
+			summon_enemies(2, summoned_creature4)
+		else:
+			summon_enemies(7, summoned_creature3)
 	ChangeState.emit(self, "Cast")
 	
 func detect_tilemap() -> TileMap:

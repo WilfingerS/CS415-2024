@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var HP:int = 2
-@export var damage:int = 5
+@export var damage:int = 2
 
 var is_hit = false
 var attacking = false
