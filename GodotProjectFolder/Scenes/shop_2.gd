@@ -10,6 +10,9 @@ var item2 : String
 var imgfile : String
 var imgfile2 : String
 var loaded = false
+var upgrade = 1
+var health = 1
+var max1 = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	closeShop()
@@ -45,8 +48,10 @@ func buyitem1():
 	
 func buyitem2():
 	if player.coins >= cost2:
-		player.spendCoin(cost2)
-		get_parent().items2()
+		if upgrade < max1:
+			upgrade += 1
+			player.spendCoin(cost2)
+			get_parent().items2()
 		#player.maxHP += 1
 		#player.HP += 1
 		#player.coins -= cost2

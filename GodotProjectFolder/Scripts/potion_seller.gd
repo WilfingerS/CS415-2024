@@ -12,6 +12,7 @@ func _ready():
 	get_node("Shop2").item2 = "Max HP+"
 	get_node("Shop2").imgfile = "res://Assets/2D Pixel Dungeon Asset Pack/items and trap_animation/flasks/flasks_1_1.png"
 	get_node("Shop2").imgfile2 = "res://Assets/plus.png"
+	get_node("Shop2").max1 = 10
 	
 func items1():
 	player.addPotion()
