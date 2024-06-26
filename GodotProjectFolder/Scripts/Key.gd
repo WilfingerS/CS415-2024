@@ -9,6 +9,6 @@ func _ready():
 	
 	
 func _on_interact():
-	Global.Keys += 1
+	Global.player.addKey()
 	queue_free()
 	
