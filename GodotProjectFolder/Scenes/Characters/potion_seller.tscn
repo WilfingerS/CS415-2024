@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/potion_seller.gd" id="1_pxott"]
 [ext_resource type="Script" path="res://Interaction/Interaction Area/Interaction_area.gd" id="2_lnmde"]
 [ext_resource type="PackedScene" uid="uid://bh78n0fysivyr" path="res://Scripts/Dialogue/NPC_Dialog.tscn" id="4_lbb0m"]
-[ext_resource type="PackedScene" uid="uid://bwbvyluhh87tb" path="res://Scenes/shop_2.tscn" id="5_47u7r"]
+[ext_resource type="PackedScene" uid="uid://dyt3f5dy5h3es" path="res://Scenes/shop_2.tscn" id="5_47u7r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_stdoa"]
 radius = 6.0
