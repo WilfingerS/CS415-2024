@@ -1,55 +1,63 @@
 extends CharacterBody2D
 
-@export var HP:int = 5
-@export var damage:int = 2
+@export var HP:int = 150
+@export var transition_hp:int = 75
+@export var damage:int = 1
+@export var phase2 = false
 
 var attacking = false
 var is_dead = false
 var is_hit = false
+var is_glide = false
 
 func _physics_process(_delta):
-	if is_dead || is_hit || attacking:
+	if is_dead or is_hit or attacking:
 		return
 		
 	move_and_slide()
-		
-	if velocity.length() > 0:
-		$AnimationPlayer.play("Idle")
+	
+	if is_glide:
+		$AnimationPlayer.play("Move")
 	else:
-		#$AnimationPlayer.play("Idle")
-		pass
-	if velocity.x >= 0:
-		$Sprite2D.set_scale(Vector2(1,1))
-	else:
-		flip()
+		if velocity.length() > 0:
+			$AnimationPlayer.play("Idle")
 
-func flip():
-	if is_dead:
-		return
-	$Sprite2D.set_scale(Vector2(-1,1))
-
-func cast():
-	if attacking || is_dead:
+func perform_action(animation_name: String):
+	if attacking or is_dead:
 		return
 	
 	attacking = true
-	$AnimationPlayer.play("Cast")
-	var attack_duration = $AnimationPlayer.current_animation_length +.01
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play(animation_name)
+	var attack_duration = $AnimationPlayer.current_animation_length + .01
 	await get_tree().create_timer(attack_duration).timeout
 	attacking = false
+
+func melee():
+	perform_action("Melee")
 	
-func take_damage(dmg:int):
-	if is_dead:
+func cast():
+	perform_action("Cast")
+
+func big_cast():
+	perform_action("Cast2")
+
+func beam():
+	perform_action("Beam")
+	
+func move():
+	perform_action("Move")
+	
+func take_damage(dmg: int):
+	if is_dead or is_hit:
 		return
 		
 	is_hit = true
-	#$AnimationPlayer.play("OnHit")
-	#var stun_duration = $AnimationPlayer.current_animation_length
-	#await get_tree().create_timer(stun_duration).timeout
+	$OnHitPlayer.play("OnHit")
 	set_hp(HP - dmg)
 	is_hit = false
 
-func set_hp(newHP):
+func set_hp(newHP: int):
 	if newHP <= 0:
 		HP = 0
 		kill()
@@ -60,9 +68,8 @@ func kill():
 	if is_dead:
 		return
 	
-	print("Dead?")
 	is_dead = true
-	#$AnimationPlayer.play("Death")
-	#var death_duration = $AnimationPlayer.current_animation_length
-	#await get_tree().create_timer(death_duration).timeout
+	$AnimationPlayer.play("Death")
+	var death_duration = $AnimationPlayer.current_animation_length
+	await get_tree().create_timer(death_duration).timeout
 	queue_free() # This will delete the node after the animation completes

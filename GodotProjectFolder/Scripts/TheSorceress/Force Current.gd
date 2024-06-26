@@ -3,13 +3,16 @@ extends State
 @export var enemy: CharacterBody2D
 @export var projectile: PackedScene = null
 @export var rayCast: RayCast2D
+@export var rounds = 5
+@export var phase2_rounds = 7
 
 func Enter():
 	print("Force Current")
 	enemy.velocity = Vector2.ZERO
 	await enemy.cast()
+	if enemy.phase2:
+		rounds = phase2_rounds
 	if projectile:
-		var rounds = 5
 		var rotation_offset = 0
 		var delay_between_rounds = .75  # Adjust this value as needed
 		for round in range(rounds):
