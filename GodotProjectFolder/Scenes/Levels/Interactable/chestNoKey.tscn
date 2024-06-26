@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://rvpiujtilw1o"]
 
 [ext_resource type="Script" path="res://Scripts/chestNoKey.gd" id="1_5bdnu"]
-[ext_resource type="Texture2D" uid="uid://burnvbdenagal" path="res://Assets/2D Pixel Dungeon Asset Pack/items and trap_animation/chest/AllTogetherChest.png" id="2_ao6cd"]
+[ext_resource type="Texture2D" uid="uid://bs30ohxi52fd2" path="res://Assets/CHEST.png" id="2_x4dhw"]
 [ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="3_wswgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh3du"]
@@ -20,10 +20,22 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [4, 5, 6]
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(2, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_o601p"]
@@ -40,6 +52,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(2, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_1h0g8"]
 resource_name = "idle"
@@ -52,10 +76,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyqg5"]
@@ -71,8 +95,9 @@ script = ExtResource("1_5bdnu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(10, 10)
-texture = ExtResource("2_ao6cd")
-hframes = 8
+texture = ExtResource("2_x4dhw")
+hframes = 3
+frame = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 3

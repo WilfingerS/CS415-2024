@@ -112,13 +112,13 @@ height = 14.0
 
 [node name="Slime_Green" type="CharacterBody2D" groups=["Enemies"]]
 position = Vector2(0, -4)
-scale = Vector2(0.6, 0.6)
 motion_mode = 1
 script = SubResource("GDScript_s6cru")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_oclns")
 position = Vector2(0, -1.507)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_75lyw")
 hframes = 2
 vframes = 4
