@@ -50,7 +50,7 @@ shadow_filter = 1
 scale = Vector2(4, 4)
 transform = Transform2D(4, 0, 0, 4, 0, 0)
 
-[node name="HeartBar" parent="CanvasLayer" instance=ExtResource("17_70ymj")]
+[node name="HeartBar" parent="CanvasLayer" groups=["health"] instance=ExtResource("17_70ymj")]
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemBar" parent="CanvasLayer" instance=ExtResource("7_d4npm")]
@@ -75,3 +75,6 @@ autoplay = true
 
 [node name="KeyDoor" parent="." instance=ExtResource("12_u63x0")]
 position = Vector2(-86, 566)
+
+[node name="Slime_Green2" parent="." instance=ExtResource("9_blyy6")]
+position = Vector2(-71, 669)

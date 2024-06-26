@@ -10,6 +10,7 @@ func _ready():
 	
 	
 func _on_interact():
+	Global.player.addPotion()
 	queue_free()
 	
 

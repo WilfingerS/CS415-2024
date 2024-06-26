@@ -4,7 +4,7 @@ class_name Character
 const FRICTION: float = 0.15
 
 # Custom Values
-
+@onready var healthbar = get_tree().get_first_node_in_group("health")
 # walking
 @export var acceleration: int = 40
 @export var maxSpeed: int = 100
@@ -65,13 +65,14 @@ func addPotion():
 	potion_changed.emit(potions)
 	
 func usePotion():
-	if HP > maxHP:
-		HP = maxHP
+	if HP < maxHP:
 		if HP == maxHP:
 			return
 		else:
 			HP = HP + Global.potionHealing
 			potions -= 1
+			potion_changed.emit(potions)
+			healthbar.update(HP)
 func useKey():
 	if keys > 0:
 		keys -= 1
