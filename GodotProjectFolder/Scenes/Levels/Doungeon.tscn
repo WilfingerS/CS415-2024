@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=27 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/Dungeon Parts/MultiRoom.tscn" id="1_88w2w"]
@@ -24,13 +24,15 @@
 [ext_resource type="PackedScene" uid="uid://1ybnqh3qmc78" path="res://Scenes/Levels/Dungeon Parts/DoorPathCover.tscn" id="22_x41wc"]
 [ext_resource type="PackedScene" uid="uid://bps0k3jhyu0ia" path="res://Scenes/Levels/Interactable/NoOPEN.tscn" id="23_okywr"]
 [ext_resource type="PackedScene" uid="uid://cghx8ibvkewpx" path="res://Scenes/Levels/Interactable/chest.tscn" id="24_xt1mi"]
+[ext_resource type="PackedScene" uid="uid://dyxkbx71d8tuv" path="res://Scenes/Items/bossKey.tscn" id="25_n8rgc"]
+[ext_resource type="PackedScene" uid="uid://dgiujaj1xoyn7" path="res://BOSSROOM.tscn" id="26_fcabj"]
 
 [node name="MainScene" type="Node2D"]
 position = Vector2(529, 293)
 script = ExtResource("1_uv7rj")
 
 [node name="Character" parent="." instance=ExtResource("1_3u81v")]
-position = Vector2(-6, 737)
+position = Vector2(-4, 682)
 
 [node name="MultiRoom" parent="." instance=ExtResource("1_88w2w")]
 
@@ -183,6 +185,9 @@ position = Vector2(-592, -32)
 [node name="Arcane_Archer" parent="Chest Room4" instance=ExtResource("15_p3dh8")]
 position = Vector2(-14, 50)
 
+[node name="Bossroom" parent="." instance=ExtResource("26_fcabj")]
+position = Vector2(0, 2161)
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -321,6 +326,7 @@ rotation = 1.57079
 
 [node name="chest" parent="." instance=ExtResource("24_xt1mi")]
 position = Vector2(0, -3217)
+Path = ExtResource("25_n8rgc")
 
 [node name="Necromancer" parent="." instance=ExtResource("14_64rlk")]
 position = Vector2(-79, -2891)
@@ -351,3 +357,18 @@ position = Vector2(-3, -2908)
 
 [node name="Arcane_Archer" parent="." instance=ExtResource("15_p3dh8")]
 position = Vector2(1, -2846)
+
+[node name="Key" parent="." instance=ExtResource("10_7ae0s")]
+position = Vector2(-12, -3146)
+
+[node name="HallWay14" parent="." instance=ExtResource("5_e53sq")]
+position = Vector2(32, 865)
+rotation = 1.57079
+
+[node name="HallWay15" parent="." instance=ExtResource("5_e53sq")]
+position = Vector2(32, 1185)
+rotation = 1.57079
+
+[node name="HallWay16" parent="." instance=ExtResource("5_e53sq")]
+position = Vector2(32, 1505)
+rotation = 1.57079

@@ -12,9 +12,9 @@ func _ready():
 	
 	
 func _on_interact():
-	if Global.player.keys > 0:
+	if Global.hasBossKey:
 		if !open:
-			Global.player.useKey()
+			Global.hasBossKey = false
 			open = true
 			animation.play("open")
 			await get_tree().create_timer(Global.time_in_seconds-.5).timeout

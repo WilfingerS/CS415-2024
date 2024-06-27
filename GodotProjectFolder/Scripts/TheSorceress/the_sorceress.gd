@@ -9,6 +9,8 @@ var attacking = false
 var is_dead = false
 var is_hit = false
 var is_glide = false
+var is_active = false
+
 
 func _physics_process(_delta):
 	if is_dead or is_hit or attacking:
@@ -54,6 +56,9 @@ func take_damage(dmg: int):
 		
 	is_hit = true
 	$OnHitPlayer.play("OnHit")
+	if not is_active:
+		is_active = true
+		$"State Control/Idle".activate()
 	set_hp(HP - dmg)
 	is_hit = false
 
