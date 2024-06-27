@@ -5,6 +5,7 @@ extends Node2D
 @onready var player = $Character
 
 func _ready():
+	Global.player = player
 	health_bar.setMaxHealth(player.maxHP)
 	health_bar.update(player.HP)
 	player.maxHp_changed.connect(health_bar.setMaxHealth)

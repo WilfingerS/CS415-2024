@@ -287,6 +287,7 @@ autoplay = true
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(0.811765, 0.184314, 0, 1)
+z_index = 50
 offset_left = -346.667
 offset_top = -200.0
 offset_right = 346.333

@@ -217,7 +217,7 @@ script = ExtResource("7_ifxcb")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Attack1 Hitbox"]
 position = Vector2(-8.88178e-16, 13.8889)
 scale = Vector2(0.736377, 0.794167)
-polygon = PackedVector2Array(-27.3333, -54, -8, -59.3333, 20.6667, -55.3333, 41.3333, -46.6667, 43.456, -35.3987, 40.74, -25.2848, 21.728, -17.6993, 13.58, -17.6993)
+polygon = PackedVector2Array(-6.79, -33.2284, -18.6725, -39.5243, -15.2775, -48.9682, -8.4875, -53.6901, 8.4875, -56.838, 20.6667, -55.3333, 25.4625, -55.2641, 25.4625, -52.1161, 28.8575, -39.5243, 27.16, -30.0805, 11.8825, -20.6366, -11.8825, -20.6366, -22.0675, -25.3585, -30.555, -37.9503)
 disabled = true
 
 [node name="Attack2 Hitbox" type="Area2D" parent="Sprite2D"]
@@ -225,7 +225,7 @@ script = ExtResource("7_ifxcb")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Attack2 Hitbox"]
 position = Vector2(10.7692, 24.6914)
-polygon = PackedVector2Array(-42, -42.1687, -24, -28.1125, -4, -24.0964, 14, -28.1124, 20, -36.1446, 12, -44.1767, 2, -48.1928, 0, -38.1526, -40, -47.3333)
+polygon = PackedVector2Array(-32.0192, -30.9414, -27.0192, -27.1914, -15.7692, -25.9414, -5.7692, -25.9414, 1.7308, -29.6914, 7.9808, -34.6914, 9.2308, -42.1914, 6.57312, -47.9138, -3.2692, -54.6914, -10.7692, -53.4414, -15.7692, -50.9414, -18.2692, -44.6914, -19.5192, -47.1914, -22.0192, -49.6914, -29.5192, -49.6914, -32.0192, -48.4414, -35.7692, -40.9414, -33.2692, -35.9414)
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

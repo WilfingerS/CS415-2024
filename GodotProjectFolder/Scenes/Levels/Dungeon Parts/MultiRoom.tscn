@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b74j72sy4ihbx"]
+[gd_scene load_steps=9 format=3 uid="uid://b74j72sy4ihbx"]
 
 [ext_resource type="Texture2D" uid="uid://dfajj0rwmqcxr" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_ym8fr"]
 [ext_resource type="Texture2D" uid="uid://r7se2pkijaca" path="res://Assets/TILESET_DUNGEON.png" id="2_mctnb"]
 [ext_resource type="PackedScene" uid="uid://bky72twc6w0xk" path="res://Scenes/Levels/Dungeon Parts/torch.tscn" id="3_bdtjk"]
 [ext_resource type="PackedScene" uid="uid://bqbgrqlrxc8io" path="res://Scenes/Levels/Dungeon Parts/TorchWall.tscn" id="4_nykpv"]
-[ext_resource type="PackedScene" uid="uid://bcqpocv0rfv4o" path="res://Scenes/Levels/Interactable/Door.tscn" id="5_y507h"]
 [ext_resource type="PackedScene" uid="uid://1ybnqh3qmc78" path="res://Scenes/Levels/Dungeon Parts/DoorPathCover.tscn" id="6_1ww5k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yn1tl"]
@@ -382,21 +381,6 @@ rotation = -1.57079
 [node name="TorchLeftR" parent="." instance=ExtResource("4_nykpv")]
 position = Vector2(-137, -21)
 rotation = -1.57079
-
-[node name="DoorTop" parent="." instance=ExtResource("5_y507h")]
-position = Vector2(1, -128)
-
-[node name="DoorRight" parent="." instance=ExtResource("5_y507h")]
-position = Vector2(127, 1)
-rotation = 1.5708
-
-[node name="DoorBottom" parent="." instance=ExtResource("5_y507h")]
-position = Vector2(-1, 127)
-rotation = -3.14159
-
-[node name="DoorLeft" parent="." instance=ExtResource("5_y507h")]
-position = Vector2(-127, -1)
-rotation = -1.5708
 
 [node name="DoorPathCoverT" parent="." instance=ExtResource("6_1ww5k")]
 position = Vector2(0, -160)

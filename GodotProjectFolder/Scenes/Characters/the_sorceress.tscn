@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://rhhukbmueh53"]
+[gd_scene load_steps=47 format=3 uid="uid://rhhukbmueh53"]
 
 [ext_resource type="Script" path="res://Scripts/TheSorceress/the_sorceress.gd" id="1_oe1ie"]
 [ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="2_1px53"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Intervention.gd" id="22_p483y"]
 [ext_resource type="Script" path="res://Scripts/TheSorceress/Stars.gd" id="23_sgqur"]
 [ext_resource type="PackedScene" uid="uid://lr1c6ppfwvt5" path="res://Scenes/Projectiles/intervention_light.tscn" id="23_y1eak"]
+[ext_resource type="AudioStream" uid="uid://b3shrwwetxpvd" path="res://chargeup.mp3" id="24_4ob3e"]
 [ext_resource type="PackedScene" uid="uid://s0p7t5g4q00k" path="res://Scenes/Projectiles/energy_star.tscn" id="24_dovkt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_63oa0"]
@@ -323,6 +324,9 @@ beam = NodePath("../../../BeamRaycast/BeamLine")
 
 [node name="beam_duration" type="Timer" parent="State Control/Cast/Beam"]
 wait_time = 5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="State Control/Cast/Beam"]
+stream = ExtResource("24_4ob3e")
 
 [node name="Stars" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy", "rayCast")]
 script = ExtResource("23_sgqur")

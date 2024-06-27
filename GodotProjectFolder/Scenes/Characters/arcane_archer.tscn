@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/ArcaneArcher/EnemyAttackArcaneArcher.gd" id="6_qgvvr"]
 [ext_resource type="PackedScene" uid="uid://bcvjqylald7g8" path="res://Scenes/Projectiles/arcane_arrow.tscn" id="7_0t3rh"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="8_o4u7d"]
-[ext_resource type="AudioStream" path="res://bow-release-bow-and-arrow-4-101936.mp3" id="10_gdiw0"]
+[ext_resource type="AudioStream" uid="uid://bbs7l1gwd8n1m" path="res://bow-release-bow-and-arrow-4-101936.mp3" id="10_gdiw0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iu8kf"]
 resource_local_to_scene = true

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqovgjukcslmp"]
+[gd_scene load_steps=8 format=3 uid="uid://dqovgjukcslmp"]
 
 [ext_resource type="Texture2D" uid="uid://coyng8st7lxvy" path="res://Assets/Dungeon_Tileset.png" id="1_7b8jk"]
 [ext_resource type="Texture2D" uid="uid://r7se2pkijaca" path="res://Assets/TILESET_DUNGEON.png" id="2_6rwrs"]
-[ext_resource type="PackedScene" uid="uid://bcqpocv0rfv4o" path="res://Scenes/Levels/Interactable/Door.tscn" id="3_gkepw"]
 [ext_resource type="PackedScene" uid="uid://bqbgrqlrxc8io" path="res://Scenes/Levels/Dungeon Parts/TorchWall.tscn" id="4_e4mko"]
 [ext_resource type="PackedScene" uid="uid://1ybnqh3qmc78" path="res://Scenes/Levels/Dungeon Parts/DoorPathCover.tscn" id="5_el13g"]
 
@@ -338,10 +337,6 @@ layer_1/tile_data = PackedInt32Array()
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
 polygon = PackedVector2Array(-80, -48, 80, -48, 80, 24, 112, 24, 112, -80, -112, -80, -112, 144, 112, 144, 112, 40, 80, 40, 80, 112, -80, 112)
-
-[node name="Door" parent="." instance=ExtResource("3_gkepw")]
-position = Vector2(79, 33)
-rotation = 1.57079
 
 [node name="TorchWall" parent="." instance=ExtResource("4_e4mko")]
 position = Vector2(-18, -57)

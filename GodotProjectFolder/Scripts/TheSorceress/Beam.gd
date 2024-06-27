@@ -7,6 +7,7 @@ extends State
 @export var rotation_speed : float = 8.0  # Adjust this value to control the tracking speed
 @export var beam_damage = 2
 @export var beam_recovery = 5
+@onready var charge = $AudioStreamPlayer
 
 var player : CharacterBody2D
 var target_rotation : float = 0.0
@@ -20,6 +21,8 @@ func Enter():
 	
 	print("Beam")
 	enemy.velocity = Vector2.ZERO
+	charge.play()
+	await Global.time_in_seconds
 	enemy.beam()
 	player = get_tree().get_first_node_in_group("Player")
 	particles = $"../../../BeamRaycast/GPUParticles2D"

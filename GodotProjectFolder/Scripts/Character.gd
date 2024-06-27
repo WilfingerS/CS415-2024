@@ -50,13 +50,13 @@ func upgradeWeapon():
 	weapon.upgrade()
 	damage = weapon.damage 
 	
-func spendCoin(amount:int):
+func spendCoin(amount: int):
 	if coins >= amount:
 		coins -= amount
 		coin_changed.emit(coins)
 		
-func addCoin():
-	coins+=1
+func addCoin(add: int):
+	coins+=add
 	print(str(coins) + " coins")
 	coin_changed.emit(coins)
 
