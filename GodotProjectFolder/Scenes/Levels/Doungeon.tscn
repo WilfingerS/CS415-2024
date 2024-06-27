@@ -59,7 +59,11 @@ rotation = 3.14159
 [node name="chest" parent="Chest Room" instance=ExtResource("7_4gpne")]
 position = Vector2(0.999702, 102)
 rotation = -3.14159
+<<<<<<< Updated upstream
 Path = ExtResource("12_8lsky")
+=======
+Path = ExtResource("8_kyx11")
+>>>>>>> Stashed changes
 
 [node name="Flail_Skeleton" parent="Chest Room" instance=ExtResource("17_bq0el")]
 position = Vector2(-2.00012, 22)
@@ -368,9 +372,12 @@ position = Vector2(-3, -2908)
 [node name="Arcane_Archer" parent="." instance=ExtResource("15_p3dh8")]
 position = Vector2(1, -2846)
 
+<<<<<<< Updated upstream
 [node name="Key" parent="." instance=ExtResource("10_7ae0s")]
 position = Vector2(-12, -3146)
 
+=======
+>>>>>>> Stashed changes
 [node name="HallWay14" parent="." instance=ExtResource("5_e53sq")]
 position = Vector2(32, 865)
 rotation = 1.57079
@@ -402,3 +409,132 @@ rotation = 1.57079
 [node name="Top6" parent="." instance=ExtResource("22_x41wc")]
 position = Vector2(0, -2400)
 rotation = 1.57079
+<<<<<<< Updated upstream
+=======
+
+[node name="Coin" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-596, 62)
+
+[node name="Coin2" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-596, 41)
+
+[node name="Coin3" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-584, 51)
+
+[node name="Coin4" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-609, 52)
+
+[node name="Coin5" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-622, 63)
+
+[node name="Coin6" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-570, 61)
+
+[node name="Coin7" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-30, 56)
+
+[node name="Coin8" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-46, -72)
+
+[node name="Coin9" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(65, -50)
+
+[node name="Coin10" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(46, 82)
+
+[node name="Coin11" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(591, 32)
+
+[node name="Coin12" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(0, -257)
+
+[node name="Coin13" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(0, -368)
+
+[node name="Coin14" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(0, -3138)
+
+[node name="Coin15" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(0, -3152)
+
+[node name="Coin16" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(11, -3174)
+
+[node name="Coin17" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-11, -3175)
+
+[node name="Coin18" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-22, -3166)
+
+[node name="Coin19" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(0, -3122)
+
+[node name="Coin20" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(23, -3163)
+
+[node name="Coin21" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(0, -3108)
+
+[node name="Coin22" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(654, -1869)
+
+[node name="Coin23" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-107, -1842)
+
+[node name="Coin24" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(653, -1885)
+
+[node name="Coin25" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-2, -1965)
+
+[node name="Coin26" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(654, -1855)
+
+[node name="Coin27" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(111, -1848)
+
+[node name="Coin28" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(530, -1856)
+
+[node name="Coin29" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(530, -1869)
+
+[node name="Coin30" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(530, -1884)
+
+[node name="Coin31" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(592, -1856)
+
+[node name="Coin32" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(592, -1871)
+
+[node name="Coin33" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(592, -1886)
+
+[node name="Coin34" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-620, -1967)
+
+[node name="Coin35" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-591, -1968)
+
+[node name="Coin36" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-559, -1968)
+
+[node name="Coin37" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(37, -945)
+
+[node name="Coin38" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(-38, -969)
+
+[node name="Coin39" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(14, -992)
+
+[node name="Coin40" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(0, -3184)
+
+[node name="Coin41" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(0, -3167)
+
+[node name="Coin42" parent="." instance=ExtResource("12_8lsky")]
+position = Vector2(0, 543)
+>>>>>>> Stashed changes

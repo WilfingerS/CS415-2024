@@ -11,8 +11,12 @@ var imgfile : String
 var imgfile2 : String
 var loaded = false
 var upgrade = 1
+<<<<<<< Updated upstream
 var health = 1
 var max1 = 10
+=======
+var max1 : int
+>>>>>>> Stashed changes
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	closeShop()

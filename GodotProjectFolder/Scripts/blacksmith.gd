@@ -8,7 +8,7 @@ func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
 	get_node("NPC Dialog").textFile = "res://Scripts/Dialogue/smithDialog1.txt"
 	get_node("Shop2").cost1 = 1
-	get_node("Shop2").cost2 = 1
+	get_node("Shop2").cost2 = 5
 	get_node("Shop2").item1 = "Bomb"
 	get_node("Shop2").item2 = "Sword lvl+"
 	get_node("Shop2").imgfile = "res://Assets/bombPlaceholder.png"

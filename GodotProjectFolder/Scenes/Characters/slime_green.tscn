@@ -112,7 +112,6 @@ height = 13.3333
 
 [node name="Slime_Green" type="CharacterBody2D" groups=["Enemies"]]
 position = Vector2(0, -4)
-scale = Vector2(0.6, 0.6)
 motion_mode = 1
 script = SubResource("GDScript_s6cru")
 

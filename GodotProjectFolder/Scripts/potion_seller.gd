@@ -6,13 +6,17 @@ extends Node2D
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
 	get_node("NPC Dialog").textFile = "res://Scripts/Dialogue/healDialog1.txt"
-	get_node("Shop2").cost1 = 1
-	get_node("Shop2").cost2 = 1
+	get_node("Shop2").cost1 = 2
+	get_node("Shop2").cost2 = 3
 	get_node("Shop2").item1 = "Potion"
 	get_node("Shop2").item2 = "Max HP+"
 	get_node("Shop2").imgfile = "res://Assets/2D Pixel Dungeon Asset Pack/items and trap_animation/flasks/flasks_1_1.png"
 	get_node("Shop2").imgfile2 = "res://Assets/plus.png"
+<<<<<<< Updated upstream
 	get_node("Shop2").max1 = 10
+=======
+	get_node("Shop2").max1 = 7
+>>>>>>> Stashed changes
 	
 func items1():
 	player.addPotion()
