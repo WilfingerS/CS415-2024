@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://u1ixxtopxv2p"]
+[gd_scene load_steps=11 format=3 uid="uid://u1ixxtopxv2p"]
 
 [ext_resource type="Texture2D" uid="uid://r7se2pkijaca" path="res://Assets/TILESET_DUNGEON.png" id="1_8oiwq"]
 [ext_resource type="Texture2D" uid="uid://dfajj0rwmqcxr" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="2_mp1bw"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://1ybnqh3qmc78" path="res://Scenes/Levels/Dungeon Parts/DoorPathCover.tscn" id="6_08jhn"]
 [ext_resource type="PackedScene" uid="uid://bqbgrqlrxc8io" path="res://Scenes/Levels/Dungeon Parts/TorchWall.tscn" id="7_6a5vh"]
 [ext_resource type="PackedScene" uid="uid://bxbick14tkq7a" path="res://Scenes/Levels/Interactable/BossDoor.tscn" id="7_e0a6t"]
-[ext_resource type="PackedScene" uid="uid://dyxkbx71d8tuv" path="res://Scenes/Items/bossKey.tscn" id="8_6mvjg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mu2e2"]
 texture = ExtResource("1_8oiwq")
@@ -395,9 +394,6 @@ position = Vector2(1, -127)
 [node name="KeyDoor" parent="." instance=ExtResource("7_e0a6t")]
 position = Vector2(-1, 135)
 rotation = -3.14159
-
-[node name="BossKey" parent="." instance=ExtResource("8_6mvjg")]
-position = Vector2(-87, 94)
 
 [node name="Top2" parent="." instance=ExtResource("6_08jhn")]
 position = Vector2(0, 160)

@@ -196,6 +196,7 @@ motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(1240, 1240)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+rotation = -0.000443679
 texture = ExtResource("9_pemxe")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
@@ -371,4 +372,24 @@ rotation = 1.57079
 
 [node name="HallWay16" parent="." instance=ExtResource("5_e53sq")]
 position = Vector2(32, 1505)
+rotation = 1.57079
+
+[node name="Top2" parent="." instance=ExtResource("22_x41wc")]
+position = Vector2(0, -479)
+rotation = 1.57079
+
+[node name="Top3" parent="." instance=ExtResource("22_x41wc")]
+position = Vector2(0, 1121)
+rotation = 1.57079
+
+[node name="Top4" parent="." instance=ExtResource("22_x41wc")]
+position = Vector2(0, 1441)
+rotation = 1.57079
+
+[node name="Top5" parent="." instance=ExtResource("22_x41wc")]
+position = Vector2(0, 1761)
+rotation = 1.57079
+
+[node name="Top6" parent="." instance=ExtResource("22_x41wc")]
+position = Vector2(0, -2400)
 rotation = 1.57079

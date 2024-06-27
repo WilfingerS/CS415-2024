@@ -10,8 +10,8 @@ const FRICTION: float = 0.15
 @export var acceleration: int = 60
 @export var maxSpeed: int = 100
 # hp stuff/items yea
-@export var maxHP: int = 10
-@export var HP: int = 10
+@export var maxHP: int = 6
+@export var HP: int = 6
 
 @export var coins: int = 5
 @export var bombs: int = 5
