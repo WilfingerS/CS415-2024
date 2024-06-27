@@ -59,11 +59,7 @@ rotation = 3.14159
 [node name="chest" parent="Chest Room" instance=ExtResource("7_4gpne")]
 position = Vector2(0.999702, 102)
 rotation = -3.14159
-<<<<<<< Updated upstream
-Path = ExtResource("12_8lsky")
-=======
 Path = ExtResource("8_kyx11")
->>>>>>> Stashed changes
 
 [node name="Flail_Skeleton" parent="Chest Room" instance=ExtResource("17_bq0el")]
 position = Vector2(-2.00012, 22)
@@ -372,12 +368,6 @@ position = Vector2(-3, -2908)
 [node name="Arcane_Archer" parent="." instance=ExtResource("15_p3dh8")]
 position = Vector2(1, -2846)
 
-<<<<<<< Updated upstream
-[node name="Key" parent="." instance=ExtResource("10_7ae0s")]
-position = Vector2(-12, -3146)
-
-=======
->>>>>>> Stashed changes
 [node name="HallWay14" parent="." instance=ExtResource("5_e53sq")]
 position = Vector2(32, 865)
 rotation = 1.57079
@@ -409,8 +399,6 @@ rotation = 1.57079
 [node name="Top6" parent="." instance=ExtResource("22_x41wc")]
 position = Vector2(0, -2400)
 rotation = 1.57079
-<<<<<<< Updated upstream
-=======
 
 [node name="Coin" parent="." instance=ExtResource("12_8lsky")]
 position = Vector2(-596, 62)
@@ -537,4 +525,3 @@ position = Vector2(0, -3167)
 
 [node name="Coin42" parent="." instance=ExtResource("12_8lsky")]
 position = Vector2(0, 543)
->>>>>>> Stashed changes

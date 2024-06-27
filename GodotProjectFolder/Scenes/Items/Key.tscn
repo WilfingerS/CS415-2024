@@ -1,19 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://mijfb7acl1x1"]
 
 [ext_resource type="Script" path="res://Scripts/Key.gd" id="1_mp82r"]
-[ext_resource type="Texture2D" uid="uid://ws3ngcsd20v1" path="res://Scenes/Items/KEY.png" id="2_qpoyn"]
+[ext_resource type="Texture2D" uid="uid://ddrtt14rnkv4p" path="res://Assets/2D Pixel Dungeon Asset Pack/items and trap_animation/keys/keys_1_1.png" id="2_3h0xl"]
 [ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="3_60pol"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tu4d"]
 radius = 16.0312
 
 [node name="Key" type="Node2D"]
-scale = Vector2(0.6, 0.6)
 script = ExtResource("1_mp82r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qpoyn")
-hframes = 2
+texture = ExtResource("2_3h0xl")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_60pol")]
 action_name = "Pick Up"

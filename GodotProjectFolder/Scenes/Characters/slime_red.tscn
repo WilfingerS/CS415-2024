@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/SlimeRed/slime_red.gd" id="1_brr4j"]
 [ext_resource type="Shader" path="res://Assets/on_hit_flash.gdshader" id="1_pf7gv"]
+[ext_resource type="Texture2D" uid="uid://bmctyjn7krper" path="res://Assets/ENEMY_slime.png" id="2_ckhae"]
+[ext_resource type="Texture2D" uid="uid://dooyv6iwtkcqw" path="res://Assets/bombPlaceholder.png" id="3_eodk1"]
 [ext_resource type="Script" path="res://Scripts/States/State Control.gd" id="3_le46k"]
-[ext_resource type="Texture2D" uid="uid://civoe3tpgge0d" path="res://Assets/BOMB_SPRITE.png" id="3_u0t0a"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_ocfdr"]
 [ext_resource type="Script" path="res://Scripts/Hitbox.gd" id="6_14bye"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="7_oqxeq"]
@@ -17,7 +18,6 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evy1c"]
-radius = 22.2474
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_52k7c"]
 radius = 8.27585
@@ -40,8 +40,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_n7kbo"]
 resource_name = "Explode"
-length = 0.9
-step = 0.05
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -52,7 +51,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_u0t0a")]
+"values": [ExtResource("3_eodk1")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -64,7 +63,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -76,7 +75,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -85,34 +84,34 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [2]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/Explosion Hitbox/CollisionShape2D:disabled")
+tracks/4/path = NodePath("Sprite2D:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1.75, 1.75), Vector2(2, 2)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D:frame_coords")
+tracks/5/path = NodePath("Sprite2D/Explosion Hitbox/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2), Vector2i(7, 2), Vector2i(0, 3), Vector2i(1, 3)]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_y2xea"]
@@ -131,27 +130,11 @@ tracks/0/keys = {
 "values": [1.0, 0.5, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_tho2m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3e2ay"]
 _data = {
 "Bounce": SubResource("Animation_dugc8"),
 "Explode": SubResource("Animation_n7kbo"),
-"OnHit": SubResource("Animation_y2xea"),
-"RESET": SubResource("Animation_tho2m")
+"OnHit": SubResource("Animation_y2xea")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_la8bw"]
@@ -166,10 +149,10 @@ script = ExtResource("1_brr4j")
 material = SubResource("ShaderMaterial_sfh3l")
 position = Vector2(0, -1.507)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_u0t0a")
-hframes = 8
+texture = ExtResource("2_ckhae")
+hframes = 2
 vframes = 4
-frame = 8
+frame = 2
 
 [node name="Explosion Hitbox" type="Area2D" parent="Sprite2D"]
 position = Vector2(0, 1.507)
@@ -178,6 +161,7 @@ script = ExtResource("6_14bye")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Explosion Hitbox"]
 position = Vector2(0, -1.66667)
 shape = SubResource("CircleShape2D_evy1c")
+disabled = true
 debug_color = Color(1, 0, 0, 0.113725)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

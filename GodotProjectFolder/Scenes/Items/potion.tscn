@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://8x43ap0v3wo5"]
+[gd_scene load_steps=8 format=3 uid="uid://cs5nstle380af"]
 
 [ext_resource type="Script" path="res://Scenes/Items/potion.gd" id="1_d5if6"]
+[ext_resource type="Texture2D" uid="uid://dqedk2fisvka1" path="res://Assets/Potion.png" id="1_e5bpn"]
 [ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="3_dk3c5"]
-[ext_resource type="Texture2D" uid="uid://cf34v3bhbyd42" path="res://Assets/ITEM_potion.png" id="3_yjjws"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdqgk"]
 radius = 21.095
@@ -33,10 +33,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qrtxy"]
@@ -46,7 +46,6 @@ _data = {
 }
 
 [node name="Potion" type="Node2D"]
-scale = Vector2(0.6, 0.6)
 script = ExtResource("1_d5if6")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_dk3c5")]
@@ -57,8 +56,8 @@ position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_rdqgk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_yjjws")
-hframes = 6
+texture = ExtResource("1_e5bpn")
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

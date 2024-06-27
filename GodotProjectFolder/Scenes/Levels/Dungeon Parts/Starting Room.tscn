@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=11 format=3 uid="uid://u1ixxtopxv2p"]
-=======
 [gd_scene load_steps=12 format=3 uid="uid://u1ixxtopxv2p"]
->>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://r7se2pkijaca" path="res://Assets/TILESET_DUNGEON.png" id="1_8oiwq"]
 [ext_resource type="Texture2D" uid="uid://dfajj0rwmqcxr" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="2_mp1bw"]
@@ -11,10 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://1ybnqh3qmc78" path="res://Scenes/Levels/Dungeon Parts/DoorPathCover.tscn" id="6_08jhn"]
 [ext_resource type="PackedScene" uid="uid://bqbgrqlrxc8io" path="res://Scenes/Levels/Dungeon Parts/TorchWall.tscn" id="7_6a5vh"]
 [ext_resource type="PackedScene" uid="uid://bxbick14tkq7a" path="res://Scenes/Levels/Interactable/BossDoor.tscn" id="7_e0a6t"]
-<<<<<<< Updated upstream
-=======
 [ext_resource type="PackedScene" uid="uid://c5keinhto18dy" path="res://Scenes/Characters/tutorial_npc.tscn" id="8_ax6jy"]
->>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mu2e2"]
 texture = ExtResource("1_8oiwq")
@@ -406,8 +399,5 @@ rotation = -3.14159
 [node name="Top2" parent="." instance=ExtResource("6_08jhn")]
 position = Vector2(0, 160)
 rotation = -1.57079
-<<<<<<< Updated upstream
-=======
 
 [node name="TutorialNPC" parent="." instance=ExtResource("8_ax6jy")]
->>>>>>> Stashed changes
