@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxbick14tkq7a"]
+[gd_scene load_steps=10 format=3 uid="uid://bxbick14tkq7a"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Interactable/keyDoor.gd" id="1_il8x0"]
 [ext_resource type="Texture2D" uid="uid://bp2uakrp73hja" path="res://Scenes/Levels/Interactable/BOSS_DOOR.png" id="2_8b1q1"]
 [ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="3_825ch"]
+[ext_resource type="AudioStream" uid="uid://b1nmoff8xioc4" path="res://Scenes/Levels/Interactable/dorm-door-opening-6038.mp3" id="4_qbe6s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqm0d"]
 size = Vector2(20, 45)
@@ -108,3 +109,4 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qbe6s")

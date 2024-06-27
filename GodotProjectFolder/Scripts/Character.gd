@@ -105,6 +105,7 @@ func take_damage(dmg:int):
 	
 	isHit = true
 	$AnimationPlayer.play("OnHit")
+	$AudioStreamPlayer.play()
 	var  invincibility_length = $AnimationPlayer.current_animation_length
 	await get_tree().create_timer(invincibility_length).timeout
 	set_hp(HP - dmg)

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://1h4rtwaxgf8v" path="res://Assets/PLAYER_blade.png" id="3_lddmy"]
 [ext_resource type="Script" path="res://Scripts/Hurtbox.gd" id="4_62fq6"]
 [ext_resource type="PackedScene" uid="uid://r5aogxe6cokx" path="res://Scenes/Weapons/shield.tscn" id="5_yrdbc"]
-[ext_resource type="AudioStream" uid="uid://d06dl6026e4u" path="res://medieval-background-196571.mp3" id="8_44uus"]
+[ext_resource type="AudioStream" uid="uid://db4hyly4pqm7o" path="res://Assets/Sounds/ouch.mp3" id="7_ja2h5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dqhrg"]
 shader = ExtResource("2_mrv5d")
@@ -281,7 +281,7 @@ shape = SubResource("CapsuleShape2D_crbhn")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_44uus")
+stream = ExtResource("7_ja2h5")
 volume_db = -16.199
 autoplay = true
 

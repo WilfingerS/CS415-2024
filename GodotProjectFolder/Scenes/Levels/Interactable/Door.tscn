@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcqpocv0rfv4o"]
+[gd_scene load_steps=10 format=3 uid="uid://bcqpocv0rfv4o"]
 
 [ext_resource type="Script" path="res://Scripts/Door.gd" id="1_yy8fv"]
 [ext_resource type="Texture2D" uid="uid://cj8vn420xqnre" path="res://Assets/Eli Door Open.png" id="2_77wbq"]
 [ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="3_3fxoc"]
+[ext_resource type="AudioStream" uid="uid://d3beneff5ug0s" path="res://Scenes/Characters/dorm-door-opening-6038.mp3" id="4_cfo3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncsu4"]
 size = Vector2(20, 40.5)
@@ -98,3 +99,6 @@ shape = SubResource("RectangleShape2D_nodh8")
 libraries = {
 "": SubResource("AnimationLibrary_7ykm2")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cfo3e")

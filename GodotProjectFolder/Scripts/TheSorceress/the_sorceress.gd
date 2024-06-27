@@ -74,6 +74,7 @@ func kill():
 		return
 	
 	is_dead = true
+	$AudioStreamPlayer2D.play()
 	$AnimationPlayer.play("Death")
 	var death_duration = $AnimationPlayer.current_animation_length
 	await get_tree().create_timer(death_duration).timeout
