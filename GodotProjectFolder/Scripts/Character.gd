@@ -7,11 +7,11 @@ const FRICTION: float = 0.15
 @onready var healthbar = get_tree().get_first_node_in_group("health")
 @onready var label = $Label
 # walking
-@export var acceleration: int = 40
+@export var acceleration: int = 60
 @export var maxSpeed: int = 100
 # hp stuff/items yea
-@export var maxHP: int = 4
-@export var HP: int = 4
+@export var maxHP: int = 10
+@export var HP: int = 10
 
 @export var coins: int = 5
 @export var bombs: int = 5
@@ -213,7 +213,7 @@ func _input(event):
 		print(HP)
 	if event.is_action_pressed("attack"):
 		weapon.ATTACK()
-		#upgradeWeapon() This was here for testing
+		upgradeWeapon() #This was here for testing
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
 	if event.is_action_pressed("block"):

@@ -11,9 +11,10 @@ class_name Weapon
 @onready var swing = $AudioStreamPlayer
 
 func upgrade():
-	damage += 1
-	sprite.frame += 1
-	hitbox.scale += Vector2(.05,.05)
+	if sprite.frame < 3:
+		damage += 1
+		sprite.frame += 1
+		hitbox.scale += Vector2(.05,.05)
 
 func ATTACK():
 	if not animPlayer.is_playing():

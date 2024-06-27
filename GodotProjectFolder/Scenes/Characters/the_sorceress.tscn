@@ -327,6 +327,7 @@ wait_time = 5.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="State Control/Cast/Beam"]
 stream = ExtResource("24_4ob3e")
+volume_db = 10.0
 
 [node name="Stars" type="Node" parent="State Control/Cast" node_paths=PackedStringArray("enemy", "rayCast")]
 script = ExtResource("23_sgqur")

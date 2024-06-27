@@ -4,7 +4,7 @@ extends Area2D
 @export var acceleration_division_factor = 6
 
 var player: CharacterBody2D	
-var default_acceleration = 40
+var default_acceleration = 60
 var restored_acceleration
 
 func _ready():

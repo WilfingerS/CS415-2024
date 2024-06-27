@@ -4,7 +4,7 @@ extends State
 @export var collision_layer = 1
 @export var beamCast : RayCast2D
 @export var beam : Line2D
-@export var rotation_speed : float = 8.0  # Adjust this value to control the tracking speed
+@export var rotation_speed : float = 6.0  # Adjust this value to control the tracking speed
 @export var beam_damage = 2
 @export var beam_recovery = 5
 @onready var charge = $AudioStreamPlayer
