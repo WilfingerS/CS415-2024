@@ -61,8 +61,8 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nokm8"]
-radius = 8.27585
-height = 16.5517
+radius = 6.89655
+height = 13.7931
 
 [sub_resource type="Animation" id="Animation_mxul5"]
 resource_name = "Bounce"
@@ -103,15 +103,16 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wso5k"]
-radius = 8.33333
-height = 16.6667
+radius = 5.0
+height = 10.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_to14j"]
-radius = 7.0
-height = 14.0
+radius = 6.66667
+height = 13.3333
 
 [node name="Slime_Green" type="CharacterBody2D" groups=["Enemies"]]
 position = Vector2(0, -4)
+scale = Vector2(0.6, 0.6)
 motion_mode = 1
 script = SubResource("GDScript_s6cru")
 
@@ -162,6 +163,6 @@ visibility_layer = 2
 script = ExtResource("7_st1ej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -0.345)
+position = Vector2(0, -3.8743e-07)
 shape = SubResource("CapsuleShape2D_to14j")
 debug_color = Color(0, 0.6, 0, 0.419608)
