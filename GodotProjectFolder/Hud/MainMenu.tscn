@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmwnmxg8cp250"]
+[gd_scene load_steps=6 format=3 uid="uid://dmwnmxg8cp250"]
 
 [ext_resource type="Script" path="res://Hud/MainMenu.gd" id="1_44hk2"]
+[ext_resource type="Texture2D" uid="uid://78v8dad0ynym" path="res://Assets/Title1.png" id="2_aet3l"]
 [ext_resource type="Texture2D" uid="uid://c7o5ncw62btlp" path="res://Scenes/Levels/PlayButton.png" id="2_v20y5"]
 [ext_resource type="Texture2D" uid="uid://dbunxm3qqde4g" path="res://Scenes/Levels/fantasy_desktop_wallpaper_5887_by_grimwalds_ai_fantasy_dgf82rt-pre.jpg" id="2_xptpa"]
 [ext_resource type="Texture2D" uid="uid://cg6spyk6b7nlc" path="res://Scenes/Levels/QuitButton.png" id="3_utm4f"]
@@ -13,6 +14,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_44hk2")
+
+[node name="John Duoungeon GUy" type="Sprite2D" parent="."]
+position = Vector2(996, 364)
+scale = Vector2(0.775238, 0.716)
+texture = ExtResource("2_aet3l")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0

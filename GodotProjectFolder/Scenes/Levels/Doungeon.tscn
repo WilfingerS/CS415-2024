@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://babnmxqdpfmjs"]
+[gd_scene load_steps=29 format=3 uid="uid://babnmxqdpfmjs"]
 
 [ext_resource type="PackedScene" uid="uid://bddrcwkuo7k48" path="res://Scenes/Characters/Character.tscn" id="1_3u81v"]
 [ext_resource type="PackedScene" uid="uid://b74j72sy4ihbx" path="res://Scenes/Levels/Dungeon Parts/MultiRoom.tscn" id="1_88w2w"]
@@ -18,10 +18,12 @@
 [ext_resource type="PackedScene" uid="uid://06fson1afemk" path="res://Scenes/Levels/Interactable/keyDoor.tscn" id="12_u63x0"]
 [ext_resource type="PackedScene" uid="uid://dl6hpi8ycnpdd" path="res://Scenes/Characters/slime_red.tscn" id="13_8nqph"]
 [ext_resource type="PackedScene" uid="uid://ci70mpdu1yk5g" path="res://Scenes/Characters/necromancer.tscn" id="14_64rlk"]
+[ext_resource type="PackedScene" uid="uid://bji7ka5w8l7k" path="res://Scenes/Characters/blacksmith.tscn" id="15_ng8to"]
 [ext_resource type="PackedScene" uid="uid://bj53m0le6fixn" path="res://Scenes/Characters/arcane_archer.tscn" id="15_p3dh8"]
 [ext_resource type="PackedScene" uid="uid://7i30u8mpwy4y" path="res://Hud/heart_bar.tscn" id="17_70ymj"]
 [ext_resource type="PackedScene" uid="uid://cvk5t5c7vvgv6" path="res://Scenes/Characters/flail_skeleton.tscn" id="17_bq0el"]
 [ext_resource type="PackedScene" uid="uid://1ybnqh3qmc78" path="res://Scenes/Levels/Dungeon Parts/DoorPathCover.tscn" id="22_x41wc"]
+[ext_resource type="PackedScene" uid="uid://cmf7qxlp6g8rc" path="res://Scenes/Characters/potion_seller.tscn" id="23_65nk1"]
 [ext_resource type="PackedScene" uid="uid://bps0k3jhyu0ia" path="res://Scenes/Levels/Interactable/NoOPEN.tscn" id="23_okywr"]
 [ext_resource type="PackedScene" uid="uid://cghx8ibvkewpx" path="res://Scenes/Levels/Interactable/chest.tscn" id="24_xt1mi"]
 [ext_resource type="PackedScene" uid="uid://dyxkbx71d8tuv" path="res://Scenes/Items/bossKey.tscn" id="25_n8rgc"]
@@ -132,6 +134,10 @@ Path = ExtResource("12_8lsky")
 position = Vector2(592, -928)
 rotation = 3.14159
 
+[node name="Blacksmith" parent="Chest Room2" instance=ExtResource("15_ng8to")]
+position = Vector2(-0.000244141, 89)
+rotation = -3.14159
+
 [node name="HallWay6" parent="." instance=ExtResource("5_e53sq")]
 position = Vector2(-416, -992)
 
@@ -228,6 +234,9 @@ autoplay = true
 
 [node name="Chest Room3" parent="." instance=ExtResource("6_4ceu3")]
 position = Vector2(-592, -992)
+
+[node name="Potion Seller" parent="Chest Room3" instance=ExtResource("23_65nk1")]
+position = Vector2(0, -23)
 
 [node name="HallWay7" parent="." instance=ExtResource("5_e53sq")]
 position = Vector2(-416, -32)
