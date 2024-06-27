@@ -20,4 +20,3 @@ func _ready():
 	player.key_changed.connect(item_bar.update_key)
 	player.potion_changed.connect(item_bar.update_potion)
 	player.coin_changed.connect(item_bar.update_coin)
-	

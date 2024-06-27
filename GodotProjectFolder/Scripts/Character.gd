@@ -213,7 +213,7 @@ func _input(event):
 		print(HP)
 	if event.is_action_pressed("attack"):
 		weapon.ATTACK()
-		upgradeWeapon() #This was here for testing
+		#upgradeWeapon() #This was here for testing
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
 	if event.is_action_pressed("block"):
