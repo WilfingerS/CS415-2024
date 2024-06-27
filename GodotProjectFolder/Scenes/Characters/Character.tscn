@@ -283,7 +283,6 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ja2h5")
 volume_db = -16.199
-autoplay = true
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(0.811765, 0.184314, 0, 1)

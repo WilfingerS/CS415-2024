@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxbick14tkq7a"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/Interactable/keyDoor.gd" id="1_il8x0"]
+[ext_resource type="Script" path="res://Scenes/Levels/Interactable/bosskeyDoor.gd" id="1_4kna6"]
 [ext_resource type="Texture2D" uid="uid://bp2uakrp73hja" path="res://Scenes/Levels/Interactable/BOSS_DOOR.png" id="2_8b1q1"]
 [ext_resource type="PackedScene" uid="uid://dhajlijwh6uy4" path="res://Interaction/Interaction Area/Interaction_area.tscn" id="3_825ch"]
 [ext_resource type="AudioStream" uid="uid://b1nmoff8xioc4" path="res://Scenes/Levels/Interactable/dorm-door-opening-6038.mp3" id="4_qbe6s"]
@@ -73,7 +73,7 @@ _data = {
 }
 
 [node name="KeyDoor" type="Node2D"]
-script = ExtResource("1_il8x0")
+script = ExtResource("1_4kna6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -1)

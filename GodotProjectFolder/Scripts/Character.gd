@@ -16,7 +16,7 @@ const FRICTION: float = 0.15
 @export var coins: int = 5
 @export var bombs: int = 5
 @export var keys: int = 0
-@export var potions: int = 0
+@export var potions: int = 1
 
 #Signals (Hopefully self explanatory)
 signal hp_changed # gonna be used for later with uh gui or something
@@ -69,14 +69,10 @@ func addPotion():
 	potion_changed.emit(potions)
 	
 func usePotion():
-	if HP < maxHP:
-		if HP == maxHP:
-			return
-		else:
-			HP = HP + Global.potionHealing
-			potions -= 1
-			potion_changed.emit(potions)
-			healthbar.update(HP)
+	if potions > 0:
+		set_hp(HP + Global.potionHealing)
+		potions -= 1
+		potion_changed.emit(potions)
 func useKey():
 	if keys > 0:
 		keys -= 1
@@ -125,7 +121,7 @@ func set_hp(newHP):
 			HP = newHP
 	else:
 		HP = maxHP
-	hp_changed.emit(newHP)
+	hp_changed.emit(HP)
 	
 func kill():
 	#print("Player Dead?")
